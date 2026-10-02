@@ -25,11 +25,37 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <script dangerouslySetInnerHTML={{ __html: themeInitializerScript }} />
+        {/* Browser Tab Favicons & Logo */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/logo.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="image_src" href="/logo.png" />
+
+        {/* URL Page Open Graph & Social Preview Metadata */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Muhammad Abdul Moiz" />
+        <meta property="og:title" content="Muhammad Abdul Moiz — AI & Software Engineer" />
+        <meta
+          property="og:description"
+          content="Portfolio of Muhammad Abdul Moiz — Machine Learning Engineer, GenAI Specialist, Full-Stack & DevOps Engineer based in Paris."
+        />
+        <meta property="og:image" content="/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Muhammad Abdul Moiz" />
+        <meta property="og:logo" content="/logo.png" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Muhammad Abdul Moiz — AI & Software Engineer" />
+        <meta
+          name="twitter:description"
+          content="Portfolio of Muhammad Abdul Moiz — Machine Learning Engineer, GenAI Specialist, Full-Stack & DevOps Engineer based in Paris."
+        />
+        <meta name="twitter:image" content="/og-image.png" />
       </Head>
       <body className="bg-slate-50 text-slate-900 dark:bg-[#030712] dark:text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-900 dark:selection:text-white transition-colors duration-200">
         <Main />

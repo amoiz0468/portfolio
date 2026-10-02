@@ -88,8 +88,13 @@ export default function App({ Component, pageProps, router }: AppProps & { route
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <link rel="icon" type="image/png" sizes="512x512" href="/logo.png" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="image_src" href="/logo.png" />
+          <meta property="og:image" content="/og-image.png" />
+          <meta property="og:logo" content="/logo.png" />
+          <meta name="twitter:image" content="/og-image.png" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
           <meta name="apple-mobile-web-app-title" content="Moiz" />

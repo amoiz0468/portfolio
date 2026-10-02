@@ -52,7 +52,7 @@ export default function SpotlightCard({
         ref={spotlightRef}
         className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 will-change-[background,opacity]"
       />
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 h-full flex flex-col justify-between">{children}</div>
     </div>
   );
 }
