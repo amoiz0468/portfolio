@@ -4,6 +4,7 @@ type Theme = 'light' | 'dark';
 
 interface ThemeContextType {
   theme: Theme;
+  mounted: boolean;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
@@ -58,7 +59,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, mounted, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -70,6 +71,7 @@ export function useTheme(): ThemeContextType {
     // Provide a resilient fallback if rendered outside provider
     return {
       theme: 'light',
+      mounted: false,
       setTheme: () => {},
       toggleTheme: () => {},
     };

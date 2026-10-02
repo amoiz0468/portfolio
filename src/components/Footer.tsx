@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiGithub, FiLinkedin, FiMail, FiPhone, FiArrowUp, FiGlobe } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiPhone, FiArrowUp, FiSun, FiMoon, FiGlobe } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Footer() {
   const { lang, toggleLang, t } = useLanguage();
+  const { theme, toggleTheme, mounted } = useTheme();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -33,7 +35,7 @@ export default function Footer() {
               {t.footer.brandBio}
             </p>
 
-            {/* Language Control */}
+            {/* Language & Theme Controls */}
             <div className="flex items-center gap-2 pt-2">
               <button
                 onClick={toggleLang}
@@ -41,6 +43,24 @@ export default function Footer() {
               >
                 <FiGlobe size={13} className="text-indigo-500" />
                 <span>{lang === 'en' ? 'Version Française' : 'English Version'}</span>
+              </button>
+
+              <button
+                onClick={toggleTheme}
+                aria-label={t.nav.toggleThemeAria}
+                className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                {mounted && theme === 'dark' ? (
+                  <>
+                    <FiSun size={13} className="text-amber-400" />
+                    <span>{t.nav.themeLight}</span>
+                  </>
+                ) : (
+                  <>
+                    <FiMoon size={13} className="text-indigo-600 dark:text-slate-300" />
+                    <span>{t.nav.themeDark}</span>
+                  </>
+                )}
               </button>
             </div>
           </div>

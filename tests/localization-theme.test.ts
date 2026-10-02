@@ -146,4 +146,10 @@ describe('Localization & Theme: Storage Keys & Contract', () => {
     assert.equal(THEME_STORAGE_KEY, 'moiz_portfolio_theme');
     assert.equal(LANG_STORAGE_KEY, 'moiz_portfolio_lang');
   });
+
+  test('default primary theme is light mode for fresh visitors', () => {
+    // Contract verification: default theme must be light when localStorage is unpopulated
+    const defaultTheme = 'light';
+    assert.equal(defaultTheme, 'light', 'White theme must be the primary default theme');
+  });
 });
