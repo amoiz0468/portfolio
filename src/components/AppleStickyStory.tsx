@@ -113,7 +113,7 @@ export default function AppleStickyStory() {
   };
 
   return (
-    <section id="milestones" className="relative w-full bg-slate-100/70 dark:bg-black transition-colors duration-200">
+    <section id="milestones" className="relative w-full bg-slate-100/70 dark:bg-[#090d16] transition-colors duration-200">
       {/* ======================================================== */}
       {/* 1. MOBILE & TABLET APP-FIRST EXPERIENCE (lg:hidden) */}
       {/* ======================================================== */}
@@ -160,11 +160,11 @@ export default function AppleStickyStory() {
             })}
           </div>
 
-          {/* Horizontal Snap Card Deck (Silky 120Hz native touch momentum) */}
+          {/* Horizontal Snap Card Deck (Fluid native touch momentum without blocking vertical page scroll) */}
           <div
             ref={mobileCarouselRef}
             onScroll={handleMobileScroll}
-            className="mt-6 -mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-2 pt-1 touch-pan-x"
+            className="mt-6 -mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-2 pt-1 overscroll-x-contain touch-auto"
           >
             {storiesData.map((story, idx) => {
               const Icon = STORY_ICONS[idx % STORY_ICONS.length];

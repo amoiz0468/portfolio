@@ -141,6 +141,22 @@ function renderQuestionCard(
   );
 }
 
+function renderSuggestionCard(text: string, key: string | number) {
+  return (
+    <div
+      key={key}
+      className="my-1 flex w-full items-center gap-2.5 rounded-xl border border-slate-200/90 bg-slate-50/80 p-2.5 text-left dark:border-white/10 dark:bg-white/[0.03]"
+    >
+      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-lg bg-slate-200/70 text-[11px] font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
+        &bull;
+      </span>
+      <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+        {renderInlineStyles(text)}
+      </span>
+    </div>
+  );
+}
+
 /**
  * Helper to render Markdown text cleanly without emojis.
  */
@@ -158,6 +174,7 @@ function FormattedText({
       {rawParagraphs.map((para, pIdx) => {
         const lines = para.split('\n').map((l) => l.trim()).filter(Boolean);
 
+        // Clickable interactive question cards
         const isQuestionPromptBlock =
           lines.length > 0 &&
           lines.every((l) => l.startsWith('? ') || /^[-*]\s+\?\s+/.test(l));
@@ -167,6 +184,21 @@ function FormattedText({
               {lines.map((line, lIdx) => {
                 const text = line.replace(/^(?:[-*]\s+)?\?\s+/, '').trim();
                 return renderQuestionCard(text, lIdx, onPromptClick);
+              })}
+            </div>
+          );
+        }
+
+        // Non-clickable suggestion cards
+        const isSuggestionBlock =
+          lines.length > 0 &&
+          lines.every((l) => l.startsWith('~ ') || /^[-*]\s+~\s+/.test(l));
+        if (isSuggestionBlock) {
+          return (
+            <div key={pIdx} className="my-1.5 space-y-1.5">
+              {lines.map((line, lIdx) => {
+                const text = line.replace(/^(?:[-*]\s+)?~\s+/, '').trim();
+                return renderSuggestionCard(text, lIdx);
               })}
             </div>
           );
@@ -321,16 +353,23 @@ export default function PortfolioChat() {
     el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
   }, [messages, isLoading, isOpen]);
 
+  const isFinePointer = () => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  };
+
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && isFinePointer()) {
       inputRef.current?.focus();
     }
-  }, [isOpen, isLoading]);
+  }, [isOpen]);
 
   useEffect(() => {
     const handleOpen = () => {
       setIsOpen(true);
-      setTimeout(() => inputRef.current?.focus(), 100);
+      if (isFinePointer()) {
+        setTimeout(() => inputRef.current?.focus(), 120);
+      }
     };
 
     const checkHash = () => {
@@ -374,7 +413,10 @@ export default function PortfolioChat() {
     setInput('');
     setIsLoading(true);
 
-    inputRef.current?.focus();
+    // Only focus input if user manually typed on desktop; NEVER when clicking question chips or on mobile/touch
+    if (!questionOverride && isFinePointer()) {
+      inputRef.current?.focus();
+    }
 
     try {
       const response = await fetch('/api/chat', {

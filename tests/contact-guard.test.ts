@@ -77,7 +77,7 @@ describe('Contact Guard Security: Anti-Troll & Spam Defense', () => {
 
     const res = validateContact({
       name: 'Troll User',
-      email: 'troll@example.com',
+      email: 'candidate@example.com',
       message: 'aaaaaaaaaaaaaaaaaaaaa',
       elapsedMs: 5000,
     });
@@ -116,7 +116,7 @@ describe('Contact Guard Security: Anti-Troll & Spam Defense', () => {
   test('intercepts crypto / telegram promotion spam', () => {
     const res = validateContact({
       name: 'Crypto Scammer',
-      email: 'scam@crypto.com',
+      email: 'promoter@marketing-network.com',
       message: 'Hey, buy crypto now for high returns and telegram: @scamchannel',
       elapsedMs: 5000,
     });
@@ -126,7 +126,36 @@ describe('Contact Guard Security: Anti-Troll & Spam Defense', () => {
     assert.equal(EMOJI_REGEX.test(res.errorReason || ''), false);
   });
 
-  test('validates legitimate inquiries smoothly', () => {
+  test('intercepts disposable and placeholder troll emails', () => {
+    const disposableRes = validateContact({
+      name: 'Troll Disposable',
+      email: 'throwaway@mailinator.com',
+      message: 'Hello, this is a legitimate message but with a temporary disposable email address.',
+      elapsedMs: 5000,
+    });
+    assert.equal(disposableRes.valid, false);
+    assert.match(disposableRes.errorReason || '', /permanent|temporaire/i);
+
+    const dummyRes = validateContact({
+      name: 'Troll Dummy',
+      email: 'test@test.com',
+      message: 'Just testing with dummy credentials on your portfolio form.',
+      elapsedMs: 5000,
+    });
+    assert.equal(dummyRes.valid, false);
+    assert.match(dummyRes.errorReason || '', /permanent|temporaire/i);
+
+    const abusiveRes = validateContact({
+      name: 'Abusive User',
+      email: 'fuck@gmail.com',
+      message: 'Inquiring with an inappropriate email handle for testing.',
+      elapsedMs: 5000,
+    });
+    assert.equal(abusiveRes.valid, false);
+    assert.match(abusiveRes.errorReason || '', /permanent|temporaire/i);
+  });
+
+  test('validates legitimate inquiries smoothly without false positives', () => {
     const res = validateContact({
       name: 'Alice Recruiter',
       email: 'alice@innovative-tech.fr',
@@ -136,5 +165,14 @@ describe('Contact Guard Security: Anti-Troll & Spam Defense', () => {
 
     assert.equal(res.valid, true);
     assert.equal(res.errorReason, undefined);
+
+    const resEdu = validateContact({
+      name: 'Professor Dupont',
+      email: 'dupont@epitech.eu',
+      message: 'Reaching out regarding your academic research presentation.',
+      elapsedMs: 8000,
+    });
+    assert.equal(resEdu.valid, true);
   });
 });
+

@@ -54,6 +54,67 @@ const TROLL_PATTERNS = [
   /earn\s+money\s+fast/i,
 ];
 
+// Disposable and throwaway email domains used by trolls/bots
+const DISPOSABLE_EMAIL_DOMAINS = new Set([
+  'tempmail.com',
+  '10minutemail.com',
+  'guerrillamail.com',
+  'mailinator.com',
+  'throwawaymail.com',
+  'yopmail.com',
+  'sharklasers.com',
+  'trashmail.com',
+  'dispostable.com',
+  'temp-mail.org',
+  'fakeinbox.com',
+  'burnermail.io',
+  'nada.ltd',
+  'getnada.com',
+  'generator.email',
+]);
+
+const TROLL_EMAIL_EXACT = new Set([
+  'test@test.com',
+  'asdf@asdf.com',
+  'admin@admin.com',
+  'fake@fake.com',
+  'none@none.com',
+  'nobody@nobody.com',
+  'spam@spam.com',
+  'troll@troll.com',
+  'no@no.com',
+  'xyz@xyz.com',
+  'abc@abc.com',
+  'aaa@aaa.com',
+]);
+
+const TROLL_EMAIL_PREFIXES = [
+  /^(?:fuck|bitch|kys|troll)\b/i,
+];
+
+export function isTrollEmail(email: string): boolean {
+  if (typeof email !== 'string') return true;
+  const normalized = email.toLowerCase().trim();
+  if (TROLL_EMAIL_EXACT.has(normalized)) return true;
+
+  const parts = normalized.split('@');
+  if (parts.length !== 2) return true;
+  const [local, domain] = parts;
+
+  if (DISPOSABLE_EMAIL_DOMAINS.has(domain)) return true;
+
+  for (const rx of TROLL_EMAIL_PREFIXES) {
+    if (rx.test(local)) return true;
+  }
+
+  const domainRoot = domain.split('.')[0];
+  if (local.length <= 4 && local === domainRoot) {
+    return true;
+  }
+
+  return false;
+}
+
 // Check if message is a repeated character keysmash (e.g. "asdfasdfasdfasdf" or "aaaaaaaaaa")
 export function isCharacterMash(str: string): boolean {
   if (/(.)\1{7,}/.test(str)) return true; // 8+ identical characters in a row
@@ -80,7 +141,7 @@ export function validateContact(
   }
 
   // Fast submissions (500ms - 1800ms) can occur via browser autofill
-  // If the user has valid name, email format, and genuine message, accept as legitimate autofill;
+  // If the user has valid name, genuine email format, and genuine message, accept as legitimate autofill;
   // otherwise, silently trap suspicious rapid payloads.
   const cleanEmailPrelim = sanitizeSingleLine(email, 254);
   const cleanNamePrelim = sanitizeSingleLine(name, 100);
@@ -91,6 +152,7 @@ export function validateContact(
     const isAutofillLegitimate =
       cleanNamePrelim.length >= 2 &&
       emailRegex.test(cleanEmailPrelim) &&
+      !isTrollEmail(cleanEmailPrelim) &&
       cleanMessagePrelim.length >= 10 &&
       !isCharacterMash(cleanMessagePrelim);
 
@@ -118,6 +180,15 @@ export function validateContact(
       errorReason: isFrench
         ? 'Veuillez fournir une adresse email valide.'
         : 'Please provide a valid email address.',
+    };
+  }
+
+  if (isTrollEmail(cleanEmail)) {
+    return {
+      valid: false,
+      errorReason: isFrench
+        ? 'Veuillez fournir une adresse email valide et non temporaire.'
+        : 'Please provide a valid, permanent email address.',
     };
   }
 

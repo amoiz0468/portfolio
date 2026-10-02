@@ -85,7 +85,7 @@ export default function App({ Component, pageProps, router }: AppProps & { route
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
         </Head>
-        <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900 selection:bg-indigo-500/25 selection:text-indigo-900 dark:bg-[#030712] dark:text-slate-100 dark:selection:bg-indigo-500/30 dark:selection:text-white pb-16 md:pb-0 transition-colors duration-200">
+        <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900 selection:bg-indigo-500/25 selection:text-indigo-900 dark:bg-[#090d16] dark:text-slate-100 dark:selection:bg-indigo-500/30 dark:selection:text-white pb-16 md:pb-0 transition-colors duration-200">
           <Navbar />
           <main className="flex-1 flex flex-col">
             <AnimatePresence mode="wait" initial={false}>

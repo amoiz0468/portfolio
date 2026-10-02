@@ -7,7 +7,7 @@
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#030712",
+  "background_color": "#090d16",
   "theme_color": "#4f46e5",
   "categories": ["portfolio", "technology", "education"],
   "icons": [

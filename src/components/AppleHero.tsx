@@ -37,8 +37,8 @@ export default function AppleHero() {
     offset: ['start start', 'end start'],
   });
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.65], [1, 0.92]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.85], [1, 0.96]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 1, 0]);
 
   return (
     <div ref={containerRef} className="relative min-h-[95vh] w-full">
@@ -69,13 +69,13 @@ export default function AppleHero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: APPLE_EASE }}
-              className="mt-8 text-[clamp(2.75rem,6.5vw+1rem,5.6rem)] font-black leading-[0.95] tracking-[-0.04em] text-slate-900 dark:text-white"
+              className="mt-8 text-[clamp(2.5rem,5.8vw+1rem,5.2rem)] font-black leading-[1.08] tracking-[-0.03em] text-slate-900 dark:text-white"
             >
               {t.hero.headlinePart1}{' '}
-              <span className="block bg-gradient-to-r from-indigo-600 via-purple-600 to-amber-500 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-amber-200">
+              <span className="block py-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-amber-500 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-amber-200">
                 {t.hero.headlinePart2}
               </span>
-              <span className="block text-slate-500 dark:text-slate-400">{t.hero.headlinePart3}</span>
+              <span className="block pt-0.5 text-slate-500 dark:text-slate-400">{t.hero.headlinePart3}</span>
             </motion.h1>
 
             {/* Subtitle / Pitch */}

@@ -43,7 +43,7 @@ export default function Document() {
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#030712" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090d16" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Muhammad Abdul Moiz" />
         <meta property="og:title" content="Muhammad Abdul Moiz — AI & Software Engineer" />
@@ -66,7 +66,7 @@ export default function Document() {
         />
         <meta name="twitter:image" content="/og-image.png" />
       </Head>
-      <body className="bg-slate-50 text-slate-900 dark:bg-[#030712] dark:text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-900 dark:selection:text-white transition-colors duration-200">
+      <body className="bg-slate-50 text-slate-900 dark:bg-[#090d16] dark:text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-900 dark:selection:text-white transition-colors duration-200">
         <Main />
         <NextScript />
       </body>
