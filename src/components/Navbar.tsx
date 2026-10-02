@@ -9,7 +9,6 @@ import {
   FiMail,
   FiMenu,
   FiX,
-  FiMessageSquare,
   FiGlobe,
 } from 'react-icons/fi';
 import { useLanguage } from '../context/LanguageContext';
@@ -22,7 +21,7 @@ export default function Navbar() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
-  type NavItem = { href: string; label: string; highlight?: boolean };
+  type NavItem = { href: string; label: string };
   const navItems: NavItem[] = [
     { href: '/#overview', label: t.nav.overview },
     { href: '/#projects', label: t.nav.projects },
@@ -116,16 +115,9 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`relative rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-200 ${
-                  item.highlight
-                    ? 'border border-indigo-500/30 bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-500/25 hover:text-indigo-900 dark:hover:text-white'
-                    : 'text-slate-700 hover:bg-slate-200/70 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/[0.06] dark:hover:text-white'
-                }`}
+                className="relative rounded-full px-3.5 py-1.5 text-xs font-medium text-slate-700 transition-all duration-200 hover:bg-slate-200/70 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/[0.06] dark:hover:text-white"
               >
-                <span className="flex items-center gap-1.5">
-                  {item.highlight && <FiMessageSquare className="text-[11px]" />}
-                  {item.label}
-                </span>
+                <span>{item.label}</span>
               </Link>
             ))}
           </nav>
@@ -230,16 +222,9 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
-                    item.highlight
-                      ? 'border border-indigo-500/30 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-500/20'
-                      : 'text-slate-800 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white'
-                  }`}
+                  className="rounded-xl px-4 py-2 text-sm font-medium text-slate-800 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white"
                 >
-                  <span className="flex items-center gap-2">
-                    {item.highlight && <FiMessageSquare />}
-                    {item.label}
-                  </span>
+                  <span>{item.label}</span>
                 </Link>
               ))}
             </div>
