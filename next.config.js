@@ -18,6 +18,11 @@ const nextConfig = {
 
   // Defensive Cybersecurity Headers & Caching Optimization
   async headers() {
+    // In development mode, disable custom caching headers to prevent Fast Refresh infinite reloads
+    if (process.env.NODE_ENV !== 'production') {
+      return [];
+    }
+
     return [
       {
         source: '/:path*',
