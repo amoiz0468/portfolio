@@ -221,7 +221,7 @@ export default function AppleHero() {
               </div>
 
               {/* Specs Breakdown */}
-              <div className="mt-6 space-y-2.5 rounded-2xl border border-slate-200/80 bg-slate-50/80 dark:border-white/10 dark:bg-black/40 p-4 text-xs">
+              <div className="mt-6 space-y-2.5 rounded-2xl border border-slate-200/80 bg-slate-50/80 dark:border-white/10 dark:bg-slate-950/40 p-4 text-xs">
                 <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-white/10 pb-2">
                   <span className="text-slate-500 dark:text-slate-400">{t.hero.coreFocus}</span>
                   <span className="font-semibold text-slate-900 dark:text-white">{t.hero.coreFocusValue}</span>

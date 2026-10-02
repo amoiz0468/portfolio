@@ -93,7 +93,7 @@ export default function Home() {
         <AppleHero />
 
         {/* 2. STATS & METRICS */}
-        <section id="stats" className="content-auto border-y border-slate-200/90 bg-white/70 py-6 sm:py-20 backdrop-blur-md dark:border-white/[0.08] dark:bg-black/40 transition-colors duration-200">
+        <section id="stats" className="content-auto border-y border-slate-200/90 bg-white/70 py-6 sm:py-20 backdrop-blur-md dark:border-white/[0.08] dark:bg-white/[0.02] transition-colors duration-200">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 gap-2.5 sm:gap-6 lg:grid-cols-4">
               {statsList.map((stat, index) => (
@@ -186,7 +186,7 @@ export default function Home() {
         {/* 7. CAREER TIMELINE */}
         <section
           id="experience"
-          className="content-auto border-y border-slate-200/90 bg-white/70 py-14 sm:py-20 text-slate-900 backdrop-blur-md dark:border-white/[0.08] dark:bg-[linear-gradient(180deg,rgba(15,23,42,0.6),rgba(3,7,18,0.9))] dark:text-white transition-colors duration-200"
+          className="content-auto border-y border-slate-200/90 bg-white/70 py-14 sm:py-20 text-slate-900 backdrop-blur-md dark:border-white/[0.08] dark:bg-[linear-gradient(180deg,rgba(15,23,42,0.5),rgba(9,13,22,0.85))] dark:text-white transition-colors duration-200"
         >
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <Reveal>
@@ -251,7 +251,7 @@ export default function Home() {
                     {t.educationSection.items.map((edu) => (
                       <div
                         key={edu.title}
-                        className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 transition hover:border-indigo-400 dark:border-white/10 dark:bg-black/40 dark:hover:border-indigo-400/40"
+                        className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 transition hover:border-indigo-400 dark:border-white/10 dark:bg-slate-950/40 dark:hover:border-indigo-400/40"
                       >
                         <div className="flex items-start justify-between gap-3">
                           <p className="font-bold text-slate-900 dark:text-white leading-snug">{edu.title}</p>
@@ -280,7 +280,7 @@ export default function Home() {
                     {t.educationSection.achievements.map((item, idx) => (
                       <div
                         key={item}
-                        className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-sm leading-relaxed text-slate-700 transition hover:border-indigo-400 dark:border-white/10 dark:bg-black/40 dark:text-slate-200 dark:hover:border-indigo-400/40"
+                        className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-sm leading-relaxed text-slate-700 transition hover:border-indigo-400 dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-200 dark:hover:border-indigo-400/40"
                       >
                         <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-700 dark:bg-indigo-500/20 font-mono text-xs font-bold dark:text-indigo-300">
                           {idx + 1}
@@ -296,7 +296,7 @@ export default function Home() {
         </section>
 
         {/* 9. PASSIONS & LIFE BEYOND CODE */}
-        <section id="passions" className="content-auto border-t border-slate-200/90 bg-white/70 py-14 sm:py-20 backdrop-blur-md dark:border-white/[0.08] dark:bg-black/40 transition-colors duration-200">
+        <section id="passions" className="content-auto border-t border-slate-200/90 bg-white/70 py-14 sm:py-20 backdrop-blur-md dark:border-white/[0.08] dark:bg-white/[0.02] transition-colors duration-200">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <Reveal>
               <SectionTitle

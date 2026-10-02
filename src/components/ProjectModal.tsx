@@ -28,7 +28,7 @@ export default function ProjectModal({ open, title, description, stack, onClose 
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-2xl rounded-[2rem] border border-slate-200/90 bg-white/95 p-6 text-slate-900 shadow-[0_30px_90px_rgba(0,0,0,0.18)] backdrop-blur-2xl dark:border-white/15 dark:bg-gradient-to-b dark:from-slate-900/95 dark:to-slate-950/95 dark:text-white dark:shadow-[0_30px_90px_rgba(0,0,0,0.8)] sm:p-8"
+            className="relative w-full max-w-2xl rounded-[2rem] border border-slate-200/90 bg-white/95 p-6 text-slate-900 shadow-[0_30px_90px_rgba(0,0,0,0.18)] backdrop-blur-2xl dark:border-white/15 dark:bg-slate-900 dark:text-white dark:shadow-[0_30px_90px_rgba(0,0,0,0.8)] sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top Close Button */}

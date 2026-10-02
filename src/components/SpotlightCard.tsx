@@ -43,9 +43,9 @@ export default function SpotlightCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      className={`relative overflow-hidden rounded-[2rem] border border-slate-200/90 dark:border-white/10 bg-white/85 dark:bg-gradient-to-b dark:from-white/[0.07] dark:via-white/[0.02] dark:to-transparent ${
+      className={`relative overflow-hidden rounded-[2rem] border border-slate-200/90 bg-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-md transition-all duration-300 dark:border-white/10 dark:bg-slate-900/80 dark:shadow-[0_16px_40px_rgba(0,0,0,0.5)] hover:border-indigo-500/40 dark:hover:border-indigo-400/50 hover:shadow-[0_14px_40px_rgba(79,70,229,0.12)] dark:hover:shadow-[0_20px_50px_rgba(99,102,241,0.25)] transform-gpu ${
         className.includes('p-') ? '' : 'p-4 sm:p-7'
-      } shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-2xl backdrop-blur-md transition-all duration-300 hover:border-indigo-500/40 dark:hover:border-indigo-400/40 hover:shadow-[0_14px_40px_rgba(79,70,229,0.12)] dark:hover:shadow-[0_20px_50px_rgba(99,102,241,0.25)] transform-gpu ${className}`}
+      } ${className}`}
     >
       {/* High-speed Direct DOM Spotlight Layer (Zero React component re-render overhead) */}
       <div

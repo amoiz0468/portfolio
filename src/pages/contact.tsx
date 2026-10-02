@@ -176,7 +176,7 @@ export default function ContactPage() {
         <div className="mt-8 sm:mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] items-stretch">
           {/* Left Column: Direct Links, Instant Copy & Fallbacks */}
           <Reveal delay={0.05}>
-            <div className="flex h-full flex-col justify-between rounded-3xl border border-slate-200/90 bg-white/85 p-6 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-gradient-to-b dark:from-white/[0.08] dark:via-white/[0.02] dark:to-transparent dark:shadow-2xl">
+            <div className="flex h-full flex-col justify-between rounded-3xl border border-slate-200/90 bg-white/90 p-6 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-slate-900/80 dark:shadow-[0_16px_40px_rgba(0,0,0,0.5)]">
               <div>
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400">
@@ -286,7 +286,7 @@ export default function ContactPage() {
 
           {/* Right Column: Web3Forms Secured Form */}
           <Reveal delay={0.08}>
-            <div className="rounded-3xl border border-slate-200/90 bg-white/85 p-6 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-gradient-to-b dark:from-white/[0.08] dark:via-white/[0.02] dark:to-transparent dark:shadow-2xl">
+            <div className="rounded-3xl border border-slate-200/90 bg-white/90 p-6 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-slate-900/80 dark:shadow-[0_16px_40px_rgba(0,0,0,0.5)]">
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Honeypot anti-bot protection input (invisible to humans) */}
                 <input

@@ -27,7 +27,7 @@ export default function About() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-8 sm:mt-10 rounded-[2.5rem] border border-slate-200/90 bg-white/85 p-6 sm:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-gradient-to-b dark:from-white/[0.08] dark:via-white/[0.02] dark:to-transparent dark:shadow-2xl">
+          <div className="mt-8 sm:mt-10 rounded-[2.5rem] border border-slate-200/90 bg-white/90 p-6 sm:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-slate-900/80 dark:shadow-2xl">
             <p className="text-lg leading-relaxed text-slate-900 dark:text-slate-200 sm:text-xl font-medium">
               {aboutPage.summary}
             </p>
@@ -39,7 +39,7 @@ export default function About() {
 
         <div className="mt-8 sm:mt-10 grid gap-6 lg:grid-cols-2">
           <Reveal>
-            <div className="flex h-full flex-col justify-between rounded-[2.5rem] border border-slate-200/90 bg-white/85 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-gradient-to-b dark:from-white/[0.07] dark:to-white/[0.02] dark:shadow-xl">
+            <div className="flex h-full flex-col justify-between rounded-[2.5rem] border border-slate-200/90 bg-white/90 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-slate-900/80 dark:shadow-xl">
               <div>
                 <SectionTitle
                   eyebrow={aboutPage.academicEyebrow}
@@ -50,7 +50,7 @@ export default function About() {
                   {educationSection.items.map((item) => (
                     <div
                       key={item.title}
-                      className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 transition hover:border-indigo-400 dark:border-white/10 dark:bg-black/40 dark:hover:border-indigo-400/40"
+                      className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 transition hover:border-indigo-400 dark:border-white/10 dark:bg-slate-950/40 dark:hover:border-indigo-400/40"
                     >
                       <p className="font-bold text-slate-900 dark:text-white">{item.title}</p>
                       <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{item.school}</p>
@@ -65,7 +65,7 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="flex h-full flex-col justify-between rounded-[2.5rem] border border-slate-200/90 bg-white/85 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-gradient-to-b dark:from-white/[0.07] dark:to-white/[0.02] dark:shadow-xl">
+            <div className="flex h-full flex-col justify-between rounded-[2.5rem] border border-slate-200/90 bg-white/90 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-slate-900/80 dark:shadow-xl">
               <div>
                 <SectionTitle
                   eyebrow={aboutPage.valuesEyebrow}
@@ -76,7 +76,7 @@ export default function About() {
                   {skillsSection.values.map((value) => (
                     <div
                       key={value}
-                      className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-xs font-medium text-slate-700 transition hover:border-indigo-400 dark:border-white/10 dark:bg-black/40 dark:text-slate-200 dark:hover:border-indigo-400/40"
+                      className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-xs font-medium text-slate-700 transition hover:border-indigo-400 dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-200 dark:hover:border-indigo-400/40"
                     >
                       {value}
                     </div>

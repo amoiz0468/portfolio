@@ -95,7 +95,7 @@ export default function AppleSkillsSection() {
               {languages.map((l) => (
                 <div
                   key={l.language}
-                  className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-center transition hover:border-indigo-400 dark:border-white/10 dark:bg-black/40 dark:hover:border-indigo-400/30"
+                  className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-center transition hover:border-indigo-400 dark:border-white/10 dark:bg-slate-950/40 dark:hover:border-indigo-400/30"
                 >
                   <p className="text-base font-bold text-slate-900 dark:text-white">{l.language}</p>
                   <p className="mt-1 text-xs font-semibold text-indigo-600 dark:text-indigo-300">{l.level}</p>

@@ -81,8 +81,8 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? 'border-b border-slate-200/80 bg-white/85 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:border-white/[0.08] dark:bg-black/85 dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-[20px]'
-            : 'border-b border-slate-200/50 bg-white/60 dark:border-white/[0.04] dark:bg-black/40 backdrop-blur-[16px]'
+            ? 'border-b border-slate-200/80 bg-white/85 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:border-white/[0.08] dark:bg-[#090d16]/90 dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-[20px]'
+            : 'border-b border-slate-200/50 bg-white/60 dark:border-white/[0.04] dark:bg-[#090d16]/75 backdrop-blur-[16px]'
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -249,7 +249,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="border-b border-slate-200 bg-white/98 px-4 pb-6 pt-3 shadow-xl backdrop-blur-2xl dark:border-white/10 dark:bg-black/95 sm:hidden"
+            className="border-b border-slate-200 bg-white/98 px-4 pb-6 pt-3 shadow-xl backdrop-blur-2xl dark:border-white/10 dark:bg-[#090d16]/95 sm:hidden"
           >
             <div className="flex flex-col gap-1.5">
               {navItems.map((item) => (

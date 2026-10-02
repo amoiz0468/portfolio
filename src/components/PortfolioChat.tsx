@@ -124,7 +124,7 @@ function renderQuestionCard(
       key={key}
       type="button"
       onClick={isClickable ? () => onPromptClick!(text) : undefined}
-      className="group my-1 flex w-full items-center justify-between gap-3 rounded-xl border border-indigo-200 bg-indigo-50/70 p-2.5 text-left transition-all duration-200 hover:border-indigo-400 hover:bg-indigo-100 hover:shadow-sm active:scale-[0.99] cursor-pointer dark:border-indigo-500/25 dark:bg-gradient-to-r dark:from-indigo-500/10 dark:via-slate-900/80 dark:to-purple-500/10 dark:hover:border-indigo-400/60 dark:hover:bg-indigo-500/20 dark:hover:shadow-[0_0_18px_rgba(99,102,241,0.25)]"
+      className="group my-1 flex w-full items-center justify-between gap-3 rounded-xl border border-indigo-200 bg-indigo-50/70 p-2.5 text-left transition-all duration-200 hover:border-indigo-400 hover:bg-indigo-100 hover:shadow-sm active:scale-[0.99] cursor-pointer dark:border-indigo-500/25 dark:bg-slate-900/90 dark:bg-gradient-to-r dark:from-indigo-500/10 dark:via-slate-900/80 dark:to-purple-500/10 dark:hover:border-indigo-400/60 dark:hover:bg-indigo-500/20 dark:hover:shadow-[0_0_18px_rgba(99,102,241,0.25)]"
     >
       <div className="flex items-center gap-2.5 min-w-0">
         <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-lg bg-indigo-100 text-[11px] font-bold text-indigo-700 ring-1 ring-indigo-300 dark:bg-indigo-500/20 dark:text-indigo-300 dark:ring-indigo-400/30">
@@ -616,7 +616,7 @@ export default function PortfolioChat() {
                         <div
                           className={`group relative max-w-[92%] rounded-2xl text-xs leading-relaxed transition-all ${
                             isAssistant
-                              ? 'rounded-tl-sm border border-slate-200 bg-white p-3.5 text-slate-800 shadow-sm dark:border-white/15 dark:bg-gradient-to-b dark:from-slate-900/95 dark:via-slate-900/90 dark:to-slate-950/95 dark:text-slate-100 dark:shadow-[0_6px_25px_rgba(0,0,0,0.5)] backdrop-blur-xl'
+                              ? 'rounded-tl-sm border border-slate-200 bg-white p-3.5 text-slate-800 shadow-sm dark:border-white/15 dark:bg-slate-900 dark:bg-gradient-to-b dark:from-slate-900/95 dark:via-slate-900/90 dark:to-slate-950/95 dark:text-slate-100 dark:shadow-[0_6px_25px_rgba(0,0,0,0.5)] backdrop-blur-xl'
                               : 'rounded-tr-sm bg-gradient-to-r from-indigo-600 to-violet-600 p-3 text-white shadow-md'
                           }`}
                         >

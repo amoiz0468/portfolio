@@ -14,7 +14,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="mt-28 border-t border-slate-200/90 bg-white/85 text-slate-800 backdrop-blur-2xl dark:border-white/[0.08] dark:bg-black/60 dark:text-slate-100 transition-colors duration-200">
+    <footer className="mt-28 border-t border-slate-200/90 bg-white/85 text-slate-800 backdrop-blur-2xl dark:border-white/[0.08] dark:bg-[#090d16]/90 dark:text-slate-100 transition-colors duration-200">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_0.8fr_1fr]">
           {/* Brand & Summary */}

@@ -173,7 +173,7 @@ export default function AppleStickyStory() {
               return (
                 <div
                   key={story.step}
-                  className={`w-[86vw] max-w-[380px] shrink-0 snap-center rounded-[1.75rem] border bg-white dark:bg-gradient-to-b dark:from-[#0e1426] dark:via-[#0a0f1d] dark:to-[#060a14] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.65)] transition-all duration-300 flex flex-col justify-between ${
+                  className={`w-[86vw] max-w-[380px] shrink-0 snap-center rounded-[1.75rem] border bg-white dark:bg-[#0a0f1d] dark:bg-gradient-to-b dark:from-[#0e1426] dark:via-[#0a0f1d] dark:to-[#060a14] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.65)] transition-all duration-300 flex flex-col justify-between ${
                     isActive
                       ? 'border-indigo-500 shadow-[0_0_25px_rgba(79,70,229,0.18)] dark:border-indigo-400/50 dark:shadow-[0_0_35px_rgba(99,102,241,0.22)]'
                       : 'border-slate-200/90 dark:border-white/10'
