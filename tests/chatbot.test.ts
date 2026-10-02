@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 import { generateHumanFallbackReply, buildSystemPrompt, detectDomainTopic } from '../src/lib/chatbot';
 import { isRateLimited, sanitizeText, resetRateLimitsForTesting } from '../src/pages/api/chat';
 import { profile, projects } from '../src/data/portfolio';
@@ -442,6 +444,25 @@ test('Security & Data Integrity: Non-Monolithic Data & Route Verification', asyn
     assert.match(profile.linkedin, /^https:\/\/linkedin\.com\/in\//);
     assert.match(profile.github, /^https:\/\/github\.com\//);
     assert.match(profile.phone, /^\+33/);
+  });
+
+  await t.test('favicon and chrome tab assets exist with non-zero size', () => {
+    const requiredAssets = [
+      'public/favicon.ico',
+      'public/favicon-32x32.png',
+      'public/favicon-16x16.png',
+      'public/apple-touch-icon.png',
+      'public/icons/icon-192.png',
+      'public/icons/icon-512.png',
+      'public/manifest.webmanifest',
+    ];
+
+    for (const relPath of requiredAssets) {
+      const fullPath = path.join(process.cwd(), relPath);
+      assert.ok(fs.existsSync(fullPath), `Asset ${relPath} must exist`);
+      const stat = fs.statSync(fullPath);
+      assert.ok(stat.size > 0, `Asset ${relPath} must not be empty`);
+    }
   });
 });
 

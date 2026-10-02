@@ -82,13 +82,17 @@ export default function App({ Component, pageProps, router }: AppProps & { route
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
         <meta name="theme-color" content="#030712" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Moiz" />
         <meta name="application-name" content="Moiz" />
         <meta name="mobile-web-app-capable" content="yes" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </Head>
       <div className="min-h-screen bg-[#030712] text-slate-100 selection:bg-indigo-500/30 selection:text-white pb-16 md:pb-0">
         <Navbar />
