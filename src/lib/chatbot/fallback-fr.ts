@@ -5,33 +5,7 @@ import { profile } from '../../data/portfolio';
  * Strictly ZERO emojis.
  */
 export function generateFrenchFallbackReply(q: string): string {
-  // 1. GREETINGS & CASUAL HELLOS
-  if (
-    /^(bonjour|salut|coucou|hello|hi|hey|bonsoir|bienvenue|salutations|yo)\b/i.test(q) ||
-    q === 'bonjour' ||
-    q === 'salut' ||
-    q === 'coucou'
-  ) {
-    return `Bonjour ! Ravi d'échanger avec vous.
-
-Je suis le double numérique IA de **Muhammad Abdul Moiz**. Vous pouvez explorer :
-- **DevOps & Software Factory Cloud** : Automatisation CI/CD, conteneurisation Docker, déploiements AWS/GCP, SonarQube & métriques DORA
-- **Pourquoi recruter Moiz** : Microservices haute disponibilité, pipelines GenAI, agents intelligents & leadership pédagogique
-- **Passions & Hobbies** : Cuisine, voyages, poésie, photographie, fitness & échecs
-- **Formation Académique** : MSc en Technologies de l'Information à l'**EPITECH Paris** & BSCS à **FAST-NUCES**
-- **Expérience** : Assistant Pédagogique à l'**EPITECH Paris** & Ingénieur Logiciel chez **Brackets**
-- **Projets Phares** : *DoctorIQ*, *Brackets Genie*, *VIF*, *Ledgeroo*, *Trinity*, et *Zoidberg 2.0*
-- **Stack Technique** : Python (FastAPI/Django), TypeScript, React 18, Vue 3, Elixir, Docker, AWS, GCP, PyTorch
-- **Opportunité Ciblée** : Recherche active d'une **Alternance de 12 mois (dès Septembre 2026)** ou CDI/CDD à Paris ou en télétravail
-
-### Suggestions de questions :
-? Quelles sont vos compétences et vos services en DevOps et Cloud ?
-? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
-? Quels sont vos projets phares (DoctorIQ, Brackets Genie, Ledgeroo, VIF) ?
-? Quels sont vos centres d'intérêt et passions en dehors du travail ?`;
-  }
-
-  // 2. DEVOPS & INFRASTRUCTURE CLOUD
+  // 1. DEVOPS & INFRASTRUCTURE CLOUD (HIGH PRIORITY: matches before simple greeting)
   if (
     /\b(devops|ci[\s/-]?cd|docker|conteneur(isation)?|aws|gcp|cloud|infrastructure|reverse proxy|nginx|apache|deploiement|dora|sonarqube)\b/i.test(q)
   ) {
@@ -63,6 +37,32 @@ J'ai une solide expérience de production en ingénierie DevOps pour concevoir d
 ? Parlez-moi de l'architecture cloud et Celery de DoctorIQ.
 ? Quelle est votre stack technique backend et bases de données ?
 ? Quels types de contrats et disponibilités avez-vous sur Paris ?`;
+  }
+
+  // 2. GREETINGS & CASUAL HELLOS
+  if (
+    /^(bonjour|salut|coucou|hello|hi|hey|bonsoir|bienvenue|salutations|yo)\b/i.test(q) ||
+    q === 'bonjour' ||
+    q === 'salut' ||
+    q === 'coucou'
+  ) {
+    return `Bonjour ! Ravi d'échanger avec vous.
+
+Je suis le double numérique IA de **Muhammad Abdul Moiz**. Vous pouvez explorer :
+- **DevOps & Software Factory Cloud** : Automatisation CI/CD, conteneurisation Docker, déploiements AWS/GCP, SonarQube & métriques DORA
+- **Pourquoi recruter Moiz** : Microservices haute disponibilité, pipelines GenAI, agents intelligents & leadership pédagogique
+- **Passions & Hobbies** : Cuisine, voyages, poésie, photographie, fitness & échecs
+- **Formation Académique** : MSc en Technologies de l'Information à l'**EPITECH Paris** & BSCS à **FAST-NUCES**
+- **Expérience** : Assistant Pédagogique à l'**EPITECH Paris** & Ingénieur Logiciel chez **Brackets**
+- **Projets Phares** : *DoctorIQ*, *Brackets Genie*, *VIF*, *Ledgeroo*, *Trinity*, et *Zoidberg 2.0*
+- **Stack Technique** : Python (FastAPI/Django), TypeScript, React 18, Vue 3, Elixir, Docker, AWS, GCP, PyTorch
+- **Opportunité Ciblée** : Recherche active d'une **Alternance de 12 mois (dès Septembre 2026)** ou CDI/CDD à Paris ou en télétravail
+
+### Suggestions de questions :
+? Quelles sont vos compétences et vos services en DevOps et Cloud ?
+? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
+? Quels sont vos projets phares (DoctorIQ, Brackets Genie, Ledgeroo, VIF) ?
+? Quels sont vos centres d'intérêt et passions en dehors du travail ?`;
   }
 
   // 3. ALTERNANCE & RECHERCHE DE CONTRAT
