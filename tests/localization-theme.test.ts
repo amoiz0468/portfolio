@@ -2,6 +2,8 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { translations } from '../src/data/translations';
 import { detectDomainTopic } from '../src/lib/chatbot/domains';
+import { generateHumanFallbackReply } from '../src/lib/chatbot/fallback';
+import { buildSystemPrompt } from '../src/lib/chatbot/prompt';
 import { THEME_STORAGE_KEY } from '../src/context/ThemeContext';
 import { LANG_STORAGE_KEY } from '../src/context/LanguageContext';
 
@@ -108,6 +110,34 @@ describe('Localization & Theme: French Domain Classification', () => {
   test('detects PM and education domains from French queries', () => {
     assert.equal(detectDomainTopic([{ role: 'user', content: 'Quel est votre rôle de chef de projet sur VIF ?' }]), 'pm');
     assert.equal(detectDomainTopic([{ role: 'user', content: 'Parlez-moi de votre école EPITECH Paris et de votre rôle pédagogique' }]), 'education');
+  });
+
+  test('adapts fallback responses to French when lang === "fr" or French query used', () => {
+    const replyHelloFr = generateHumanFallbackReply([{ role: 'user', content: 'Bonjour' }], 'fr');
+    assert.match(replyHelloFr, /Bonjour ! Ravi d'échanger avec vous/);
+    assert.match(replyHelloFr, /double numérique IA/);
+    assert.equal(EMOJI_REGEX.test(replyHelloFr), false);
+
+    const replyDevopsFr = generateHumanFallbackReply([{ role: 'user', content: 'Quelles sont vos compétences DevOps ?' }], 'fr');
+    assert.match(replyDevopsFr, /Compétences DevOps & Infrastructure Cloud/);
+    assert.match(replyDevopsFr, /Conteneurisation & Orchestration Docker/);
+    assert.equal(EMOJI_REGEX.test(replyDevopsFr), false);
+
+    const replyAlternanceFr = generateHumanFallbackReply([{ role: 'user', content: 'Recherchez-vous une alternance ?' }], 'fr');
+    assert.match(replyAlternanceFr, /Disponibilité & Recherche d'Alternance \(Septembre 2026\)/);
+    assert.equal(EMOJI_REGEX.test(replyAlternanceFr), false);
+
+    const replyContactFr = generateHumanFallbackReply([{ role: 'user', content: 'Comment vous contacter ?' }], 'fr');
+    assert.match(replyContactFr, /Coordonnées & Prise de Contact Directe/);
+    assert.equal(EMOJI_REGEX.test(replyContactFr), false);
+  });
+
+  test('buildSystemPrompt injects strict language directives for both EN and FR', () => {
+    const promptFr = buildSystemPrompt([], 'fr');
+    assert.match(promptFr, /STRICT LANGUAGE DIRECTIVE: FRENCH/);
+
+    const promptEn = buildSystemPrompt([], 'en');
+    assert.match(promptEn, /STRICT LANGUAGE DIRECTIVE: ENGLISH/);
   });
 });
 

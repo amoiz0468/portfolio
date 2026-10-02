@@ -26,12 +26,12 @@ export default function Navbar() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
-  const navItems = [
+  type NavItem = { href: string; label: string; highlight?: boolean };
+  const navItems: NavItem[] = [
     { href: '/#overview', label: t.nav.overview },
     { href: '/#projects', label: t.nav.projects },
     { href: '/#experience', label: t.nav.experience },
     { href: '/#skills', label: t.nav.skills },
-    { href: '/#chat', label: t.nav.chat, highlight: true },
     { href: '/about', label: t.nav.about },
     { href: '/contact', label: t.nav.contact },
   ];

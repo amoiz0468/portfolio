@@ -380,7 +380,7 @@ export default function PortfolioChat() {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: nextMessages }),
+        body: JSON.stringify({ messages: nextMessages, lang }),
       });
 
       const data = await response.json();
@@ -416,10 +416,10 @@ export default function PortfolioChat() {
 
   return (
     <>
-      {/* Floating Chat Bubble Launcher */}
+      {/* Floating Chat Bubble Launcher: Shown on desktop; on mobile, MobileBottomNav dock handles AI interaction */}
       <AnimatePresence>
         {!isOpen && (
-          <div id="chat" className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-3">
+          <div id="chat" className="hidden md:flex fixed bottom-6 right-6 z-50 items-center gap-3">
             {/* Floating Invitation Teaser Pill */}
             <motion.button
               initial={{ opacity: 0, x: 20, scale: 0.95 }}

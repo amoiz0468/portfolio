@@ -85,7 +85,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'Invalid payload: JSON object expected.' });
   }
 
-  const { messages } = req.body;
+  const { messages, lang } = req.body;
+  const activeLang: 'en' | 'fr' = lang === 'fr' ? 'fr' : 'en';
 
   if (!Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: 'Invalid payload: messages array is required.' });
@@ -110,7 +111,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // 4. Check available AI API providers (Domain-adaptive, token-optimized context)
-  const systemPrompt = buildSystemPrompt(validMessages);
+  const systemPrompt = buildSystemPrompt(validMessages, activeLang);
   const geminiKey = process.env.GEMINI_API_KEY;
   const groqKey = process.env.GROQ_API_KEY;
   const openaiKey = process.env.OPENAI_API_KEY;
@@ -190,7 +191,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   // 5. Intelligent, zero-dependency Human Fallback Engine
   try {
-    const fallbackReply = generateHumanFallbackReply(validMessages);
+    const fallbackReply = generateHumanFallbackReply(validMessages, activeLang);
     return res.status(200).json({ reply: fallbackReply, provider: 'intelligent-engine' });
   } catch (fallbackErr: any) {
     console.error('Fallback generation error:', fallbackErr);

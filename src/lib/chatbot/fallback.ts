@@ -1,17 +1,30 @@
 import { profile } from '../../data/portfolio';
 import { ChatMessage } from './types';
+import { generateFrenchFallbackReply } from './fallback-fr';
 
-export function generateHumanFallbackReply(messages: ChatMessage[]): string {
+function isFrenchQuery(q: string): boolean {
+  // If the query contains English question starters, keep in English unless lang === 'fr'
+  if (/\b(are\s+you|what\s+is|tell\s+me|why\s+should|do\s+you|how\s+can|can\s+you|who\s+are)\b/i.test(q)) {
+    return false;
+  }
+  return /\b(bonjour|salut|coucou|parle[rz]?|quelles?|comment|pourquoi|competences?|centres?\s*d'int[eé]r[eê]t|disponibilit[eé]|recherchez-vous|qui\s*es-tu|pr[eé]sente[rz]?)\b/i.test(q);
+}
+
+export function generateHumanFallbackReply(messages: ChatMessage[], lang: 'en' | 'fr' = 'en'): string {
   const lastUserMsg = [...messages].reverse().find((m) => m.role === 'user')?.content || '';
   const q = lastUserMsg.trim().toLowerCase();
 
+  // If page language is French, or user wrote in French, delegate to dedicated French engine
+  if (lang === 'fr' || isFrenchQuery(q)) {
+    return generateFrenchFallbackReply(q);
+  }
+
   // 1. GREETINGS & CASUAL HELLOS
   if (
-    /^(hi|hello|hey|bonjour|salut|coucou|salam|hola|good morning|good afternoon|good evening|yo|wassup|greetings|howdy)\b/i.test(q) ||
+    /^(hi|hello|hey|salam|hola|good morning|good afternoon|good evening|yo|wassup|greetings|howdy)\b/i.test(q) ||
     q === 'hi' ||
     q === 'hello' ||
-    q === 'hey' ||
-    q === 'bonjour'
+    q === 'hey'
   ) {
     return `Hello! Great to connect with you.
 
