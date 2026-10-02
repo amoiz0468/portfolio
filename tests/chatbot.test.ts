@@ -485,7 +485,7 @@ test('Architecture & Modularity: Chatbot Sub-Module Exports Verification', async
 });
 
 test('Chatbot Engine: Age, Birth Queries & Dynamic Response Variation', async (t) => {
-  await t.test('answers English age and birthdate inquiries with 2001 and 24 years old', () => {
+  await t.test('answers English age and birthdate inquiries with 2002 and 23 years old', () => {
     const queries = [
       'when was moiz born',
       'his age',
@@ -498,8 +498,8 @@ test('Chatbot Engine: Age, Birth Queries & Dynamic Response Variation', async (t
 
     for (const q of queries) {
       const reply = generateHumanFallbackReply([{ role: 'user', content: q }]);
-      assert.match(reply, /2001/, `Query "${q}" should mention birth year 2001`);
-      assert.match(reply, /24\s+years\s+old/, `Query "${q}" should mention 24 years old`);
+      assert.match(reply, /2002/, `Query "${q}" should mention birth year 2002`);
+      assert.match(reply, /23\s+years\s+old/, `Query "${q}" should mention 23 years old`);
       assert.match(reply, /FAST-NUCES|EPITECH Paris/);
       assert.equal(EMOJI_REGEX.test(reply), false, 'Must contain zero emojis');
 
@@ -510,7 +510,7 @@ test('Chatbot Engine: Age, Birth Queries & Dynamic Response Variation', async (t
     }
   });
 
-  await t.test('answers French age and birthdate inquiries with 2001 and 24 ans', () => {
+  await t.test('answers French age and birthdate inquiries with 2002 and 23 ans', () => {
     const queries = [
       'quel âge a moiz',
       'quand est-il né',
@@ -522,8 +522,8 @@ test('Chatbot Engine: Age, Birth Queries & Dynamic Response Variation', async (t
 
     for (const q of queries) {
       const reply = generateHumanFallbackReply([{ role: 'user', content: q }], 'fr');
-      assert.match(reply, /2001/, `French query "${q}" should mention 2001`);
-      assert.match(reply, /24\s+ans/, `French query "${q}" should mention 24 ans`);
+      assert.match(reply, /2002/, `French query "${q}" should mention 2002`);
+      assert.match(reply, /23\s+ans/, `French query "${q}" should mention 23 ans`);
       assert.equal(EMOJI_REGEX.test(reply), false, 'French reply must contain zero emojis');
 
       // Verify mixed inquiries in French
@@ -548,8 +548,8 @@ test('Chatbot Engine: Age, Birth Queries & Dynamic Response Variation', async (t
 
     // The two responses must be distinctly phrased so the bot feels human, not repetitive
     assert.notEqual(reply1, reply2, 'Turn 2 response must be different from Turn 1 response');
-    assert.match(reply1, /2001/);
-    assert.match(reply2, /2001/);
+    assert.match(reply1, /2002/);
+    assert.match(reply2, /2002/);
   });
 
   await t.test('dynamically varies default fallback responses on consecutive turns', () => {

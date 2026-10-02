@@ -56,48 +56,44 @@ J'ai une solide expérience de production en ingénierie DevOps pour concevoir d
 ? Quels types de contrats et disponibilités avez-vous sur Paris ?`;
   }
 
-  // 2. AGE, DATE DE NAISSANCE & ANNIVERSAIRE (Moiz est né en 2001, 24 ans)
+  // 2. AGE, DATE DE NAISSANCE & ANNIVERSAIRE (Moiz est né le 16 octobre 2002, 23 ans)
   if (
     /\b(quel\s+[aâ]ge|quand\s+est[\s-]il\s+n[eé]|quand\s+es[\s-]tu\s+n[eé]|date\s+de\s+naissance|ann[eé]e\s+de\s+naissance|anniversaire|(son|ton|votre|quel)\s+[aâ]ge|[aâ]ge\s+de\s+moiz|n[eé]\s+en|date\s+d['’]anniversaire)\b/i.test(q)
   ) {
     const ageVariants = [
-      `Muhammad Abdul Moiz est né en **2001**, il a donc **24 ans**.
+      `Muhammad Abdul Moiz est né le **16 octobre 2002**, il a donc **23 ans**.
 
-Voici un aperçu de son parcours :
-- **Formation Fondamentale** : Diplômé d'un Bachelor of Science in Computer Science (BSCS) à **FAST-NUCES** (2020–2024), centré sur l'algorithmique avancée, les systèmes distribués et le génie logiciel.
-- **Expérience Industrielle** : Ingénieur Logiciel chez **Brackets Private Limited** (2024–2025), concevant des microservices Python, des architectures asynchrones Celery/Redis et des pipelines OCR-to-LLM (*DoctorIQ*).
-- **Paris & Double Cursus** : Actuellement en Master of Science in Information Technology à l'**EPITECH Paris** (2025–2027), où il officie également en tant qu'**Assistant Pédagogique** pour encadrer les promotions d'ingénieurs sur Linux et Docker.
-- **Objectif Professionnel** : Recherche active d'une **Alternance de 12 mois dès Septembre 2026** (ou CDI/CDD) en Île-de-France ou en télétravail.
+En résumé :
+- **Formation** : Diplômé d'un BSCS à **FAST-NUCES** (2020–2024) et actuellement en MSc IT à l'**EPITECH Paris** (2025–2027).
+- **Expérience** : Assistant Pédagogique à EPITECH Paris et ancien ingénieur logiciel chez Brackets Private Limited.
+- **Objectif** : Recherche active d'une **Alternance de 12 mois dès Septembre 2026** à Paris ou en télétravail.
 
 ### Suggestions de questions :
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
-~ Né en 2001 (24 ans), basé à Paris avec autorisation complète de travail
+~ Né le 16 octobre 2002 (23 ans), basé à Paris
 ? Quels sont vos projets phares (DoctorIQ, Brackets Genie, Ledgeroo, VIF) ?
 ~ Master of Science à l'EPITECH Paris & BSCS à FAST-NUCES`,
 
-      `Moiz est né en **2001** (il a **24 ans**) et vit actuellement à **Paris, France**.
+      `Moiz est né le **16 octobre 2002** (il a **23 ans**) et vit actuellement à **Paris, France**.
 
-Malgré son jeune parcours, il allie une solide pratique de production logicielle et un sens pédagogique affirmé :
-- **Double Rôle à l'EPITECH Paris** : Étudiant en MSc IT (2025–2027) et Assistant Pédagogique (depuis 2024), transmettant les bonnes pratiques logicielles et l'administration système Linux.
-- **Expertise Technique** : Conception d'APIs résilientes en Python (FastAPI/Django), conteneurisation Docker, pipelines CI/CD DevSecOps et orchestration d'agents IA (LangGraph).
-- **Prochaine Étape** : Disponible pour une **Alternance de 12 mois à partir de Septembre 2026** en Île-de-France ou à distance.
+Il poursuit son Master of Science à l'**EPITECH Paris** tout en formant les étudiants en tant qu'Assistant Pédagogique. Il cumule 2+ années d'expérience en backends Python (FastAPI/Django), conteneurisation Docker et agents IA.
 
 ### Suggestions de questions :
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?
-~ 24 ans, bilingue anglais C1 et français professionnel B1.1
+~ 23 ans, bilingue anglais C1 et français professionnel B1.1
 ? Parlez-moi de votre rôle d'assistant pédagogique à EPITECH Paris.
 ~ Recherche active d'une alternance de 12 mois dès Septembre 2026`,
 
-      `J'ai **24 ans**, étant né en **2001**.
+      `J'ai **23 ans**, étant né le **16 octobre 2002**.
 
-À 24 ans, mon profil combine :
-- **Rigueur Académique** : Diplômé de FAST-NUCES (BSCS) et poursuite en MSc IT à l'EPITECH Paris.
-- **Impact en Production** : Réduction de 70% de la latence de traitement sur *DoctorIQ*, architectures asynchrones Celery/Redis et streaming temps réel avec WebSockets.
-- **Mobilité & Statut** : Résidant à Paris, bilingue en anglais (C1), français professionnel (B1.1) et immédiatement opérationnel.
+Mon profil combine :
+- **Fondations Solides** : Diplômé FAST-NUCES et étudiant en MSc IT à l'EPITECH Paris.
+- **Expérience Concrète** : Microservices Python, architectures Docker CI/CD et agents LangGraph.
+- **Disponibilité** : Prêt pour une **Alternance de 12 mois** à partir de Septembre 2026 à Paris ou à distance.
 
 ### Suggestions de questions :
 ? Pourquoi recruter Moiz pour une équipe d'ingénierie ?
-~ Diplômé FAST-NUCES (2024) et étudiant MSc IT à EPITECH Paris (2025-2027)
+~ Né le 16 octobre 2002 (23 ans), basé à Paris
 ? Quelles sont vos disponibilités pour une alternance ?
 ~ Spécialisé en Python, FastAPI, Docker, CI/CD et agents LangGraph`,
     ];
@@ -115,32 +111,27 @@ Malgré son jeune parcours, il allie une solide pratique de production logiciell
       `Bonjour ! Ravi d'échanger avec vous.
 
 Je suis le double numérique IA de **Muhammad Abdul Moiz**. Vous pouvez explorer :
-- **DevOps & Software Factory Cloud** : Automatisation CI/CD, conteneurisation Docker, déploiements AWS/GCP, SonarQube & métriques DORA
-- **Pourquoi recruter Moiz** : Microservices haute disponibilité, pipelines GenAI, agents intelligents & leadership pédagogique
-- **Passions & Hobbies** : Cuisine, voyages, poésie, photographie, fitness & échecs
-- **Formation Académique** : MSc en Technologies de l'Information à l'**EPITECH Paris** & BSCS à **FAST-NUCES**
-- **Expérience** : Assistant Pédagogique à l'**EPITECH Paris** & Ingénieur Logiciel chez **Brackets**
-- **Projets Phares** : *DoctorIQ*, *Brackets Genie*, *VIF*, *Ledgeroo*, *Trinity*, et *Zoidberg 2.0*
-- **Stack Technique** : Python (FastAPI/Django), TypeScript, React 18, Vue 3, Elixir, Docker, AWS, GCP, PyTorch
-- **Opportunité Ciblée** : Recherche active d'une **Alternance de 12 mois (dès Septembre 2026)** ou CDI/CDD à Paris ou en télétravail
+- **DevOps & Cloud** : Automatisation CI/CD, conteneurisation Docker, AWS/GCP, SonarQube & DORA
+- **Pourquoi recruter Moiz** : Microservices haute disponibilité, pipelines GenAI & mentorat
+- **Formation & Rôles** : MSc à l'**EPITECH Paris** (Assistant Pédagogique) & BSCS à **FAST-NUCES**
+- **Alternance Ciblée** : Recherche d'une **Alternance de 12 mois (dès Septembre 2026)** à Paris/Remote
 
 ### Suggestions de questions :
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?
-~ Né en 2001 (24 ans), basé à Paris et ouvert à l'alternance en septembre 2026
+~ Né le 16 octobre 2002 (23 ans), basé à Paris
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
-~ Double compétence en ingénierie de production et enseignement à EPITECH Paris`,
+~ Équipe pédagogique EPITECH Paris & ex-ingénieur chez Brackets`,
 
       `Bonjour ! Bienvenue sur le portfolio interactif de Muhammad Abdul Moiz.
 
-En tant que son représentant IA, je peux vous renseigner sur tous les aspects de son profil d'ingénieur logiciel et machine learning :
-- **Production & Systèmes** : Architectures distribuées, microservices FastAPI/Django, conteneurs Docker et orchestration cloud.
-- **Enseignement & Mentorat** : Assistant Pédagogique à l'EPITECH Paris, encadrant les étudiants sur les systèmes Unix, Docker et le code propre.
-- **IA Appliquée** : Systèmes multi-agents LangGraph, streaming WebSocket et pipelines d'extraction multimodale.
-- **Statut** : 24 ans, basé à Paris, en quête d'une alternance de 12 mois dès Septembre 2026.
+En tant que son représentant IA, je peux vous renseigner de façon concise :
+- **Systèmes & Cloud** : Microservices Python (FastAPI/Django), conteneurs Docker et déploiements cloud.
+- **Formation** : Né le 16 octobre 2002 (23 ans), étudiant MSc IT et Assistant Pédagogique à EPITECH Paris.
+- **Alternance** : Recherche active d'une alternance de 12 mois dès Septembre 2026.
 
 ### Suggestions de questions :
 ? Quels sont vos projets phares (DoctorIQ, Brackets Genie, Ledgeroo, VIF) ?
-~ Disponible pour un contrat d'alternance de 12 mois dès la rentrée 2026
+~ Disponible pour une alternance de 12 mois dès Septembre 2026
 ? Quel âge avez-vous et quel est votre parcours académique ?
 ~ Contact direct : ${profile.email}`,
 
@@ -150,11 +141,11 @@ N'hésitez pas à me poser vos questions sur :
 - Ses réalisations techniques (*DoctorIQ*, *Brackets Genie*, *Trinity Suite*)
 - Ses compétences DevOps (GitLab CI, GitHub Actions, DORA metrics, Nginx)
 - Son parcours académique (MSc IT à l'EPITECH Paris et BSCS à FAST-NUCES)
-- Ses disponibilités pour une opportunité d'alternance à Paris à partir de Septembre 2026
+- Sa disponibilité pour une alternance à Paris à partir de Septembre 2026
 
 ### Suggestions de questions :
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
-~ Profil complet : DevOps, Backend Python/TypeScript et Agents IA
+~ 23 ans, né le 16 octobre 2002, basé à Paris
 ? Quels sont vos centres d'intérêt et passions en dehors du travail ?
 ~ Autorisation de travail valide en France`,
     ];
@@ -328,31 +319,28 @@ Voici ce que j'apporte concrètement à une équipe d'ingénierie de haut niveau
 ~ Contact direct : ${profile.email}`;
   }
 
-  // 10. DEFAULT FRENCH FALLBACK (3 Dynamic Variations, human & non-repetitive)
+  // 10. DEFAULT FRENCH FALLBACK (3 Dynamic Variations, concise & non-repetitive)
   const defaultVariants = [
     `Je suis à votre disposition en tant que double numérique IA de **Muhammad Abdul Moiz**. Vous pouvez explorer :
 
-- **DevOps & Software Factory** : GitLab CI, GitHub Actions, Docker, AWS & GCP, SonarQube, métriques DORA
-- **Formation & Écoles** : MSc Technologies de l'Information à l'**EPITECH Paris** & BSCS à **FAST-NUCES**
-- **Expérience en Entreprise** : Enseignement à l'**EPITECH Paris** & développement backend chez **Brackets**
-- **Projets Phares** : *DoctorIQ* (santé & OCR/LLM), *Brackets Genie* (WebSockets & LangGraph), *VIF* (logistique solidaire), *Ledgeroo* (FinTech Stripe), et *Trinity Suite*
-- **Stack Technique** : Python (FastAPI, Django), TypeScript, React 18, Vue 3, Elixir, Docker, AWS, GCP, PyTorch
-- **Opportunité Ciblée** : Recherche d'une **Alternance de 12 mois (dès Septembre 2026)** à Paris ou en télétravail
+- **DevOps & Cloud** : GitLab CI, GitHub Actions, Docker, AWS & GCP, SonarQube et métriques DORA
+- **Formation & Expérience** : MSc à l'**EPITECH Paris** (Assistant Pédagogique) & BSCS à **FAST-NUCES**
+- **Projets Phares** : *DoctorIQ* (santé OCR/LLM), *Brackets Genie* (WebSockets) et *Ledgeroo*
+- **Alternance Ciblée** : Recherche active d'une **Alternance de 12 mois (dès Septembre 2026)** à Paris ou télétravail
 - **Contact Direct** : [${profile.email}](mailto:${profile.email})
 
 ### Suggestions de questions :
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?
-~ Né en 2001 (24 ans), basé à Paris et disponible dès Septembre 2026
+~ Né le 16 octobre 2002 (23 ans), basé à Paris
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
 ~ Équipe pédagogique EPITECH Paris & ex-ingénieur chez Brackets`,
 
-    `Bienvenue ! Je suis le représentant interactif de Muhammad Abdul Moiz, ingénieur logiciel et IA à Paris.
+    `Bienvenue ! Je suis le représentant interactif de Muhammad Abdul Moiz, ingénieur logiciel et IA à Paris (né le 16 octobre 2002, 23 ans).
 
 De quoi aimeriez-vous discuter ?
-- **Architecture & Code** : Conception de backends asynchrones en Python (FastAPI, Django REST) et interfaces réactives (React 18, Vue 3).
-- **Livraison Continue & Cloud** : Conteneurs Docker multi-étapes, reverse proxies Nginx et pipelines de déploiement continu.
+- **Architecture & Code** : Backends Python (FastAPI/Django) et conteneurs Docker.
 - **Systèmes IA en Production** : Extraction documentaire multimodal (*DoctorIQ*) et agents conversationnels (*Brackets Genie*).
-- **Profil & Parcours** : Né en 2001 (24 ans), diplômé de FAST-NUCES et étudiant en Master à EPITECH Paris.
+- **Parcours** : 23 ans, diplômé FAST-NUCES et étudiant en Master à EPITECH Paris.
 
 ### Suggestions de questions :
 ? Parlez-moi de vos projets phares (DoctorIQ, Brackets Genie, Ledgeroo, VIF) ?
@@ -363,9 +351,9 @@ De quoi aimeriez-vous discuter ?
     `Je réponds à vos questions sur le parcours, les réalisations et les compétences techniques de Muhammad Abdul Moiz.
 
 Voici quelques angles à explorer :
-- **Enseignement & Rigueur** : Son rôle d'Assistant Pédagogique à EPITECH Paris, encadrant les étudiants sur les systèmes et le code de qualité.
+- **Enseignement & Rigueur** : Son rôle d'Assistant Pédagogique à EPITECH Paris, encadrant les étudiants sur les systèmes et le code propre.
 - **Réalisations Concrètes** : 8 projets documentés couvrant le cloud, le DevOps, la FinTech et l'intelligence artificielle.
-- **Recherche d'Alternance** : Disponible pour un contrat de 12 mois à partir de Septembre 2026 (CDI/CDD également envisageables).
+- **Recherche d'Alternance** : Disponible pour un contrat de 12 mois dès Septembre 2026 en Île-de-France ou à distance.
 
 ### Suggestions de questions :
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
