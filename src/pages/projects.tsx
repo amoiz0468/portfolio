@@ -26,7 +26,7 @@ export default function ProjectsPage() {
         />
       </Head>
 
-      <section className="mx-auto max-w-6xl px-4 py-28 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-6xl px-4 py-8 sm:py-12 md:py-14 sm:px-6 lg:px-8">
         <Reveal>
           <SectionTitle
             eyebrow={t.projectsSection.eyebrow}
@@ -36,7 +36,7 @@ export default function ProjectsPage() {
           />
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3 items-stretch">
+        <div className="mt-8 sm:mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3 items-stretch">
           {projectsList.map((project, index) => (
             <AppleProjectCard
               key={project.title}

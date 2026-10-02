@@ -16,7 +16,7 @@ export default function About() {
         <meta name="description" content={aboutPage.headDesc} />
       </Head>
 
-      <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-5xl px-4 py-8 sm:py-12 md:py-14 sm:px-6 lg:px-8">
         <Reveal>
           <SectionTitle
             eyebrow={aboutPage.eyebrow}
@@ -27,17 +27,17 @@ export default function About() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-12 rounded-[2.5rem] border border-slate-200/90 bg-white/85 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] backdrop-blur-md transform-gpu sm:p-10 dark:border-white/10 dark:bg-gradient-to-b dark:from-white/[0.08] dark:via-white/[0.02] dark:to-transparent dark:shadow-2xl">
+          <div className="mt-8 sm:mt-10 rounded-[2.5rem] border border-slate-200/90 bg-white/85 p-6 sm:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-gradient-to-b dark:from-white/[0.08] dark:via-white/[0.02] dark:to-transparent dark:shadow-2xl">
             <p className="text-lg leading-relaxed text-slate-900 dark:text-slate-200 sm:text-xl font-medium">
               {aboutPage.summary}
             </p>
-            <p className="mt-6 text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
+            <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
               {aboutPage.p2}
             </p>
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+        <div className="mt-8 sm:mt-10 grid gap-6 lg:grid-cols-2">
           <Reveal>
             <div className="flex h-full flex-col justify-between rounded-[2.5rem] border border-slate-200/90 bg-white/85 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] backdrop-blur-md transform-gpu dark:border-white/10 dark:bg-gradient-to-b dark:from-white/[0.07] dark:to-white/[0.02] dark:shadow-xl">
               <div>
@@ -101,7 +101,7 @@ export default function About() {
         </div>
 
         {/* Passions, Hobbies & Life Beyond Code */}
-        <div className="mt-20">
+        <div className="mt-12 sm:mt-16">
           <Reveal>
             <SectionTitle
               eyebrow={aboutPage.passionsEyebrow}

@@ -124,14 +124,14 @@ export default function Home() {
         <AppleStickyStory />
 
         {/* 4. LIVE SYSTEM TELEMETRY */}
-        <section className="content-auto mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
+        <section className="content-auto mx-auto max-w-5xl px-4 py-10 sm:py-16 sm:px-6 lg:px-8">
           <Reveal>
             <InteractiveTerminal />
           </Reveal>
         </section>
 
         {/* 5. SELECTED PROJECTS */}
-        <section id="projects" className="content-auto mx-auto max-w-6xl px-4 py-28 sm:px-6 lg:px-8">
+        <section id="projects" className="content-auto mx-auto max-w-6xl px-4 py-12 sm:py-20 sm:px-6 lg:px-8">
           <Reveal>
             <SectionTitle
               align="center"
@@ -186,7 +186,7 @@ export default function Home() {
         {/* 7. CAREER TIMELINE */}
         <section
           id="experience"
-          className="content-auto border-y border-slate-200/90 bg-white/70 py-28 text-slate-900 backdrop-blur-md dark:border-white/[0.08] dark:bg-[linear-gradient(180deg,rgba(15,23,42,0.6),rgba(3,7,18,0.9))] dark:text-white transition-colors duration-200"
+          className="content-auto border-y border-slate-200/90 bg-white/70 py-14 sm:py-20 text-slate-900 backdrop-blur-md dark:border-white/[0.08] dark:bg-[linear-gradient(180deg,rgba(15,23,42,0.6),rgba(3,7,18,0.9))] dark:text-white transition-colors duration-200"
         >
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <Reveal>
@@ -237,7 +237,7 @@ export default function Home() {
         </section>
 
         {/* 8. EDUCATION & HIGHLIGHTS */}
-        <section className="content-auto mx-auto max-w-6xl px-4 py-28 sm:px-6 lg:px-8">
+        <section className="content-auto mx-auto max-w-6xl px-4 py-14 sm:py-20 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
             <Reveal>
               <SpotlightCard className="flex h-full flex-col justify-between">
@@ -296,7 +296,7 @@ export default function Home() {
         </section>
 
         {/* 9. PASSIONS & LIFE BEYOND CODE */}
-        <section id="passions" className="content-auto border-t border-slate-200/90 bg-white/70 py-24 backdrop-blur-md dark:border-white/[0.08] dark:bg-black/40 transition-colors duration-200">
+        <section id="passions" className="content-auto border-t border-slate-200/90 bg-white/70 py-14 sm:py-20 backdrop-blur-md dark:border-white/[0.08] dark:bg-black/40 transition-colors duration-200">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <Reveal>
               <SectionTitle

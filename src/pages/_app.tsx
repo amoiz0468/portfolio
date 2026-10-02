@@ -102,9 +102,9 @@ export default function App({ Component, pageProps, router }: AppProps & { route
           <meta name="mobile-web-app-capable" content="yes" />
           <link rel="manifest" href="/manifest.webmanifest" />
         </Head>
-        <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-indigo-500/25 selection:text-indigo-900 dark:bg-[#030712] dark:text-slate-100 dark:selection:bg-indigo-500/30 dark:selection:text-white pb-16 md:pb-0 transition-colors duration-200">
+        <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900 selection:bg-indigo-500/25 selection:text-indigo-900 dark:bg-[#030712] dark:text-slate-100 dark:selection:bg-indigo-500/30 dark:selection:text-white pb-16 md:pb-0 transition-colors duration-200">
           <Navbar />
-          <main className="flex-1">
+          <main className="flex-1 flex flex-col">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={router.route}
@@ -112,6 +112,7 @@ export default function App({ Component, pageProps, router }: AppProps & { route
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="flex-1 flex flex-col"
               >
                 <Component {...pageProps} />
               </motion.div>

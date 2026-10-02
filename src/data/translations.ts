@@ -182,6 +182,11 @@ export interface Translations {
     formSubmitting: string;
     formSuccess: string;
     formError: string;
+    copyEmail: string;
+    emailCopied: string;
+    openMailApp: string;
+    directFallbackNote: string;
+    charactersRemaining: string;
     linkedinLabel: string;
     githubLabel: string;
   };
@@ -647,6 +652,11 @@ export const translations: Record<Language, Translations> = {
       formSubmitting: 'Sending Message...',
       formSuccess: 'Thank you! Your message has been sent successfully. I will get back to you shortly.',
       formError: 'An error occurred while sending your message. Please try again or reach out directly by email.',
+      copyEmail: 'Copy Email',
+      emailCopied: 'Email Copied',
+      openMailApp: 'Open Mail App',
+      directFallbackNote: 'Instant Direct Channel',
+      charactersRemaining: 'characters',
       linkedinLabel: 'LinkedIn Profile',
       githubLabel: 'GitHub Profile',
     },
@@ -1125,6 +1135,11 @@ Ask me anything about my production engineering background, DevOps Software Fact
       formSubmitting: 'Envoi en cours...',
       formSuccess: 'Merci ! Votre message a bien ete envoye. Je vous repondrai dans les plus brefs delais.',
       formError: "Une erreur s'est produite lors de l'envoi de votre message. Veuillez reessayer ou me contacter par email.",
+      copyEmail: "Copier l'Email",
+      emailCopied: 'Email Copie',
+      openMailApp: "Ouvrir l'application Mail",
+      directFallbackNote: 'Canal Direct Alternatif',
+      charactersRemaining: 'caracteres',
       linkedinLabel: 'Profil LinkedIn',
       githubLabel: 'Profil GitHub',
     },

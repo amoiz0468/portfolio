@@ -72,6 +72,10 @@ describe('Localization & Theme: Translation Parity and Integrity', () => {
     assert.ok(translations.fr.contactPage.formSuccess.length > 10);
     assert.ok(translations.en.contactPage.formError.length > 10);
     assert.ok(translations.fr.contactPage.formError.length > 10);
+    assert.equal(translations.en.contactPage.copyEmail, 'Copy Email');
+    assert.equal(translations.fr.contactPage.copyEmail, "Copier l'Email");
+    assert.equal(translations.en.contactPage.openMailApp, 'Open Mail App');
+    assert.equal(translations.fr.contactPage.openMailApp, "Ouvrir l'application Mail");
   });
 
   test('strictly ZERO emojis in both English and French translation dictionaries', () => {
