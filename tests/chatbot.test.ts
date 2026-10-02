@@ -484,3 +484,96 @@ test('Architecture & Modularity: Chatbot Sub-Module Exports Verification', async
   });
 });
 
+test('Chatbot Engine: Age, Birth Queries & Dynamic Response Variation', async (t) => {
+  await t.test('answers English age and birthdate inquiries with 2001 and 24 years old', () => {
+    const queries = [
+      'when was moiz born',
+      'his age',
+      'how old are you',
+      'what is his age',
+      'what is your date of birth',
+      'when were you born',
+      'when is your birthday',
+    ];
+
+    for (const q of queries) {
+      const reply = generateHumanFallbackReply([{ role: 'user', content: q }]);
+      assert.match(reply, /2001/, `Query "${q}" should mention birth year 2001`);
+      assert.match(reply, /24\s+years\s+old/, `Query "${q}" should mention 24 years old`);
+      assert.match(reply, /FAST-NUCES|EPITECH Paris/);
+      assert.equal(EMOJI_REGEX.test(reply), false, 'Must contain zero emojis');
+
+      // Verify mixed inquiries (contains both clickable '?' and non-clickable '~')
+      assert.match(reply, /### Suggested Inquiries:/);
+      assert.match(reply, /\?\s+/);
+      assert.match(reply, /~\s+/);
+    }
+  });
+
+  await t.test('answers French age and birthdate inquiries with 2001 and 24 ans', () => {
+    const queries = [
+      'quel âge a moiz',
+      'quand est-il né',
+      'sa date de naissance',
+      'quel âge as-tu',
+      'son âge',
+      'date de naissance',
+    ];
+
+    for (const q of queries) {
+      const reply = generateHumanFallbackReply([{ role: 'user', content: q }], 'fr');
+      assert.match(reply, /2001/, `French query "${q}" should mention 2001`);
+      assert.match(reply, /24\s+ans/, `French query "${q}" should mention 24 ans`);
+      assert.equal(EMOJI_REGEX.test(reply), false, 'French reply must contain zero emojis');
+
+      // Verify mixed inquiries in French
+      assert.match(reply, /### Suggestions de questions :/);
+      assert.match(reply, /\?\s+/);
+      assert.match(reply, /~\s+/);
+    }
+  });
+
+  await t.test('dynamically varies responses when the same question is asked 2 times in a row', () => {
+    // Turn 1: initial question
+    const reply1 = generateHumanFallbackReply([
+      { role: 'user', content: 'when was moiz born' },
+    ]);
+
+    // Turn 2: same question asked consecutively
+    const reply2 = generateHumanFallbackReply([
+      { role: 'user', content: 'when was moiz born' },
+      { role: 'assistant', content: reply1 },
+      { role: 'user', content: 'when was moiz born' },
+    ]);
+
+    // The two responses must be distinctly phrased so the bot feels human, not repetitive
+    assert.notEqual(reply1, reply2, 'Turn 2 response must be different from Turn 1 response');
+    assert.match(reply1, /2001/);
+    assert.match(reply2, /2001/);
+  });
+
+  await t.test('dynamically varies default fallback responses on consecutive turns', () => {
+    const reply1 = generateHumanFallbackReply([
+      { role: 'user', content: 'can you give me general advice' },
+    ]);
+
+    const reply2 = generateHumanFallbackReply([
+      { role: 'user', content: 'can you give me general advice' },
+      { role: 'assistant', content: reply1 },
+      { role: 'user', content: 'can you give me general advice' },
+    ]);
+
+    assert.notEqual(reply1, reply2, 'Consecutive fallback responses must be varied');
+  });
+
+  await t.test('suggested inquiries contain a thoughtful mix of clickable and non-clickable cards', () => {
+    const replyGreeting = generateHumanFallbackReply([{ role: 'user', content: 'hello' }]);
+    const lines = replyGreeting.split('\n').map((l) => l.trim()).filter(Boolean);
+    const hasClickable = lines.some((l) => l.startsWith('? '));
+    const hasInformational = lines.some((l) => l.startsWith('~ '));
+
+    assert.equal(hasClickable, true, 'Must have at least one clickable inquiry');
+    assert.equal(hasInformational, true, 'Must have at least one non-clickable informational suggestion');
+  });
+});
+

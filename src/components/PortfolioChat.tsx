@@ -174,31 +174,24 @@ function FormattedText({
       {rawParagraphs.map((para, pIdx) => {
         const lines = para.split('\n').map((l) => l.trim()).filter(Boolean);
 
-        // Clickable interactive question cards
-        const isQuestionPromptBlock =
+        // Interactive inquiries block: intelligently mixes clickable questions (?) and non-clickable suggestions (~)
+        const isInquiryBlock =
           lines.length > 0 &&
-          lines.every((l) => l.startsWith('? ') || /^[-*]\s+\?\s+/.test(l));
-        if (isQuestionPromptBlock) {
-          return (
-            <div key={pIdx} className="my-1.5 space-y-1.5">
-              {lines.map((line, lIdx) => {
-                const text = line.replace(/^(?:[-*]\s+)?\?\s+/, '').trim();
-                return renderQuestionCard(text, lIdx, onPromptClick);
-              })}
-            </div>
+          lines.every(
+            (l) =>
+              l.startsWith('? ') ||
+              l.startsWith('~ ') ||
+              /^[-*]\s+[?~]\s+/.test(l)
           );
-        }
-
-        // Non-clickable suggestion cards
-        const isSuggestionBlock =
-          lines.length > 0 &&
-          lines.every((l) => l.startsWith('~ ') || /^[-*]\s+~\s+/.test(l));
-        if (isSuggestionBlock) {
+        if (isInquiryBlock) {
           return (
             <div key={pIdx} className="my-1.5 space-y-1.5">
               {lines.map((line, lIdx) => {
-                const text = line.replace(/^(?:[-*]\s+)?~\s+/, '').trim();
-                return renderSuggestionCard(text, lIdx);
+                const isClickable = line.startsWith('? ') || /^[-*]\s+\?\s+/.test(line);
+                const text = line.replace(/^(?:[-*]\s+)?[?~]\s+/, '').trim();
+                return isClickable
+                  ? renderQuestionCard(text, lIdx, onPromptClick)
+                  : renderSuggestionCard(text, lIdx);
               })}
             </div>
           );

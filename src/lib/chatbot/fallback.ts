@@ -10,23 +10,38 @@ function isFrenchQuery(q: string): boolean {
   return /\b(bonjour|salut|coucou|parle[rz]?|quelles?|comment|pourquoi|competences?|centres?\s*d'int[eé]r[eê]t|disponibilit[eé]|recherchez-vous|qui\s*es-tu|pr[eé]sente[rz]?)\b/i.test(q);
 }
 
+/**
+ * Computes a variation index based on conversation turns.
+ * Turn 1 (initial user question) uses the primary response (index 0).
+ * Turn 2, Turn 3, etc. automatically cycle through distinct, natural phrasing variants
+ * so asking questions repeatedly feels human and conversational rather than like an algorithm.
+ */
+function getVariationIndex(messages: ChatMessage[], variantsCount: number): number {
+  if (variantsCount <= 1) return 0;
+  const userMessages = messages.filter((m) => m.role === 'user');
+  if (userMessages.length <= 1) return 0;
+  return (userMessages.length - 1) % variantsCount;
+}
+
 export function generateHumanFallbackReply(messages: ChatMessage[], lang: 'en' | 'fr' = 'en'): string {
   const lastUserMsg = [...messages].reverse().find((m) => m.role === 'user')?.content || '';
   const q = lastUserMsg.trim().toLowerCase();
+  const varIdx = getVariationIndex(messages, 3);
 
   // If page language is French, or user wrote in French, delegate to dedicated French engine
   if (lang === 'fr' || isFrenchQuery(q)) {
-    return generateFrenchFallbackReply(q);
+    return generateFrenchFallbackReply(q, messages);
   }
 
   // 1. GREETINGS & CASUAL HELLOS
   if (
-    /^(hi|hello|hey|salam|hola|good morning|good afternoon|good evening|yo|wassup|greetings|howdy)\b/i.test(q) ||
+    /^(hi|hello|hey|salam|hola|good morning|good afternoon|good evening|greetings|howdy)\b/i.test(q) ||
     q === 'hi' ||
     q === 'hello' ||
     q === 'hey'
   ) {
-    return `Hello! Great to connect with you.
+    const greetingVariants = [
+      `Hello! Great to connect with you.
 
 I'm **Muhammad Abdul Moiz**'s AI twin. You can explore:
 - **DevOps & Cloud Software Factory**: CI/CD automation, Docker containerization, AWS/GCP deployments, SonarQube gates & DORA metrics
@@ -40,12 +55,92 @@ I'm **Muhammad Abdul Moiz**'s AI twin. You can explore:
 
 ### Suggested Inquiries:
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
+~ Available for a 12-Month Alternance in Paris starting September 2026
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
+~ Master of Science at EPITECH Paris & BSCS from FAST-NUCES`,
+
+      `Hello! Welcome to Muhammad Abdul Moiz's interactive portfolio.
+
+I'm his AI representative, ready to walk you through his technical projects and engineering background:
+- **Production Systems**: High-concurrency backends, microservices with Python (FastAPI/Django), and real-time streaming architectures.
+- **DevOps & Infrastructure**: Automated CI/CD pipelines, Docker containerization, AWS/GCP deployments, and DORA metrics tracking.
+- **Applied GenAI**: Multi-step agents with LangGraph, Anthropic Claude API, and multimodal document OCR extraction.
+- **Personal Background**: Born in 2001 (24 years old), based in Paris, and actively mentoring students at EPITECH Paris.
+
+### Suggested Inquiries:
+? Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).
+~ Seeking a 12-Month Alternance from September 2026 in Paris or Remote
+? How old are you and what is your academic background?
+~ English C1 fluent, French B1 working, native Urdu`,
+
+      `Hi there! Great to meet you.
+
+Feel free to ask me anything about Moiz's engineering career, tech stack, or availability:
+- **Core Engineering**: Scalable APIs, Dockerized workflows, and automated release gates.
+- **Academic Track**: MSc in Information Technology at EPITECH Paris & BSCS at FAST-NUCES.
+- **Pedagogical Impact**: Guiding student cohorts in Linux internals, Docker, and clean code.
+- **Availability**: Ready for a 12-Month Alternance starting September 2026 in Paris or remote.
+
+### Suggested Inquiries:
+? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
+~ 24 years old, based in Paris with full working rights in France
 ? What are your passions and hobbies outside of work?
-? Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).`;
+~ Specialized in Python, FastAPI, Docker, and LangGraph agent pipelines`,
+    ];
+    return greetingVariants[varIdx];
   }
 
-  // 2. DEVOPS EXPERIENCE & DEVOPS SERVICES (HIGH PRIORITY: Matched before generic experience)
+  // 2. AGE, BIRTHDATE & BIRTH YEAR (Born in 2001, 24 years old)
+  if (
+    /\b(age|how\s+old|birthday|birth\s*date|date\s+of\s+birth|birth\s*year|year\s+of\s+birth|born)\b/i.test(q) ||
+    /\b(moiz('s)?\s+age|his\s+age|your\s+age)\b/i.test(q)
+  ) {
+    const ageVariants = [
+      `I was born in **2001**, which makes me **24 years old**.
+
+Here is a quick snapshot of my trajectory:
+- **Academic Foundation**: Completed my Bachelor of Science in Computer Science (BSCS) at **FAST-NUCES** (2020–2024), diving deep into algorithms, operating systems, and distributed systems.
+- **Industry Engineering**: Worked as an Associate Software Engineer at **Brackets Private Limited** (2024–2025), architecting high-throughput microservices, Docker infrastructure, and OCR-to-LLM pipelines (*DoctorIQ*).
+- **Paris & Master's Degree**: Currently completing my Master of Science in IT at **EPITECH Paris** (2025–2027) while simultaneously serving as a **Pedagogical Assistant**, mentoring engineering student cohorts in systems programming, Linux, and Docker.
+- **Target**: Actively seeking a **12-Month Alternance (starting September 2026)** or CDI/CDD in Paris/Remote.
+
+### Suggested Inquiries:
+? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
+~ Master of Science at EPITECH Paris & BSCS from FAST-NUCES
+? Tell me about your featured projects (DoctorIQ, Brackets Genie, VIF).
+~ Full working authorization in France with fluent English and working French`,
+
+      `Muhammad Abdul Moiz was born in **2001** and is currently **24 years old**, living in **Paris, France**.
+
+At 24, he combines academic foundations with hands-on production engineering:
+- **2020 – 2024**: Earned his Bachelor of Science in Computer Science from **FAST-NUCES**, building rigorous mathematical and algorithmic foundations.
+- **2024 – 2025**: Delivered enterprise systems at **Brackets Private Limited**, including the *DoctorIQ* healthcare platform (cutting document turnaround by 70%) and *Brackets Genie* real-time agentic WebSockets.
+- **2024 – Present**: Teaching and mentoring engineering cohorts at **EPITECH Paris** as a Pedagogical Assistant.
+- **2025 – 2027**: Pursuing his Master of Science in Information Technology in Paris.
+
+### Suggested Inquiries:
+? Tell me about your role as Pedagogical Assistant at EPITECH Paris.
+~ Born in 2001 with 2+ years of production microservices & DevOps experience
+? Do you have experiences of DevOps and what services do you offer as DevOps?
+~ Seeking a 12-Month Alternance starting September 2026 in Paris or Remote`,
+
+      `Moiz was born in **2001** (he is **24 years old**), based in **Paris, France**.
+
+Despite his young career, he brings solid production experience:
+- **Education**: BSCS graduate from **FAST-NUCES** (2024) and currently in the MSc in Information Technology program at **EPITECH Paris** (2025–2027).
+- **Engineering & Mentorship**: Dual track as Pedagogical Assistant at EPITECH Paris and former Associate Software Engineer at Brackets, specializing in Python (FastAPI/Django), Docker CI/CD, and GenAI agent systems.
+- **Next Milestone**: Ready for a **12-Month Alternance** starting September 2026 in Paris or remote.
+
+### Suggested Inquiries:
+? What is your full backend and database tech stack?
+~ 24 years old, based in Paris, France
+? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
+~ Available for full-time Alternance from September 2026`,
+    ];
+    return ageVariants[varIdx];
+  }
+
+  // 3. DEVOPS EXPERIENCE & DEVOPS SERVICES (HIGH PRIORITY: Matched before generic experience)
   if (
     /\b(devops|ci[\s/-]?cd|docker|container(ization)?|aws|gcp|cloud infrastructure|reverse proxy|nginx|apache reverse|kubernetes)\b/i.test(q)
   ) {
@@ -76,6 +171,7 @@ I have hands-on production DevOps experience building reliable infrastructure, c
 
 ### Suggested Inquiries:
 ? Tell me about DoctorIQ's cloud & Celery architecture.
+~ Proven DORA metrics, SonarQube quality gates, and multi-stage Docker builds
 ? What is your full backend and database tech stack?
 ? What roles and contracts are you available for in Paris?`;
   }
@@ -617,8 +713,9 @@ Currently, I'm pursuing my **MSc in Information Technology at EPITECH Paris** wh
 ? Do you have experiences of DevOps and what services do you offer as DevOps?`;
   }
 
-  // 23. INTELLIGENT COMPREHENSIVE DEFAULT (Friendly & Helpful, never rigid)
-  return `I'm here to help as Muhammad Abdul Moiz's AI twin. You can explore:
+  // 23. INTELLIGENT COMPREHENSIVE DEFAULT (3 Dynamic Variants, never rigid or repetitive)
+  const defaultVariants = [
+    `I'm here to help as Muhammad Abdul Moiz's AI twin. You can explore:
 
 - **DevOps & Software Factory**: GitLab CI, GitHub Actions, Docker, AWS & GCP deployments, SonarQube quality gates, DORA metrics
 - **Schools & Studies**: MSc in Information Technology at **EPITECH Paris** & BSCS at **FAST-NUCES**
@@ -630,9 +727,40 @@ Currently, I'm pursuing my **MSc in Information Technology at EPITECH Paris** wh
 
 ### Suggested Inquiries:
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
+~ Available for a 12-Month Alternance in Paris starting September 2026
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
+~ Master of Science at EPITECH Paris & BSCS from FAST-NUCES`,
+
+    `Happy to help! I represent Muhammad Abdul Moiz, a Software & Machine Learning Engineer based in Paris.
+
+Feel free to dive into any of these areas:
+- **Key Production Projects**: *DoctorIQ* (asynchronous Celery/Redis clinical extraction), *Brackets Genie* (sub-50ms streaming with LangGraph & Claude), and *Trinity Suite* (DevOps Software Factory).
+- **Core Technical Stack**: Python (FastAPI, Django), TypeScript, React 18, Vue 3, Elixir, Docker, PostgreSQL, and PyTorch.
+- **Personal Background**: Born in 2001 (24 years old), BSCS from FAST-NUCES, currently pursuing MSc IT at EPITECH Paris while mentoring engineering cohorts.
+- **Direct Contact**: Reach Moiz directly at \`${profile.email}\`.
+
+### Suggested Inquiries:
 ? Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).
-? What are your passions and hobbies outside of work?`;
+~ Specializing in Python backends, Docker automation, and agentic workflows
+? How old are you and what is your academic background?
+~ Direct contact: ${profile.email}`,
+
+    `I'm here as Moiz's AI representative to give you a genuine view of his work, engineering philosophy, and experience.
+
+What would you like to explore next?
+- **Engineering Leadership**: Mentoring engineering cohorts at EPITECH Paris, running architecture workshops, and tracking DORA metrics.
+- **Cloud & DevOps**: Standardizing production environments with multi-stage Docker builds, Nginx reverse proxies, and automated CI/CD pipelines.
+- **Life Beyond Code**: Culinary arts, photography, European travel, chess strategy, and fitness conditioning.
+- **Opportunity**: Seeking a **12-Month Alternance in Paris from September 2026** with full working rights in France.
+
+### Suggested Inquiries:
+? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
+~ English C1 fluent, French B1 working, native Urdu
+? What are your passions and hobbies outside of work?
+~ Seeking 12-Month Alternance starting September 2026`,
+  ];
+
+  return defaultVariants[varIdx];
 }
 
 /**

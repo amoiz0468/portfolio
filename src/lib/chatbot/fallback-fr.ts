@@ -1,10 +1,26 @@
 import { profile } from '../../data/portfolio';
+import { ChatMessage } from './types';
+
+/**
+ * Computes a variation index based on conversation turns.
+ * Turn 1 (initial user question) uses the primary response (index 0).
+ * Turn 2, Turn 3, etc. automatically cycle through distinct, natural phrasing variants
+ * so asking questions repeatedly feels human and conversational rather than like an algorithm.
+ */
+function getVariationIndex(messages: ChatMessage[], variantsCount: number): number {
+  if (variantsCount <= 1) return 0;
+  const userMessages = messages.filter((m) => m.role === 'user');
+  if (userMessages.length <= 1) return 0;
+  return (userMessages.length - 1) % variantsCount;
+}
 
 /**
  * Intelligent French Fallback Engine for Moiz's Portfolio AI Twin
  * Strictly ZERO emojis.
  */
-export function generateFrenchFallbackReply(q: string): string {
+export function generateFrenchFallbackReply(q: string, messages: ChatMessage[] = []): string {
+  const varIdx = getVariationIndex(messages, 3);
+
   // 1. DEVOPS & INFRASTRUCTURE CLOUD (HIGH PRIORITY: matches before simple greeting)
   if (
     /\b(devops|ci[\s/-]?cd|docker|conteneur(isation)?|aws|gcp|cloud|infrastructure|reverse proxy|nginx|apache|deploiement|dora|sonarqube)\b/i.test(q)
@@ -35,18 +51,68 @@ J'ai une solide expérience de production en ingénierie DevOps pour concevoir d
 
 ### Suggestions de questions :
 ? Parlez-moi de l'architecture cloud et Celery de DoctorIQ.
+~ Mesures DORA en continu, règles gitStream et builds Docker multi-étapes
 ? Quelle est votre stack technique backend et bases de données ?
 ? Quels types de contrats et disponibilités avez-vous sur Paris ?`;
   }
 
-  // 2. GREETINGS & CASUAL HELLOS
+  // 2. AGE, DATE DE NAISSANCE & ANNIVERSAIRE (Moiz est né en 2001, 24 ans)
+  if (
+    /\b(quel\s+[aâ]ge|quand\s+est[\s-]il\s+n[eé]|quand\s+es[\s-]tu\s+n[eé]|date\s+de\s+naissance|ann[eé]e\s+de\s+naissance|anniversaire|(son|ton|votre|quel)\s+[aâ]ge|[aâ]ge\s+de\s+moiz|n[eé]\s+en|date\s+d['’]anniversaire)\b/i.test(q)
+  ) {
+    const ageVariants = [
+      `Muhammad Abdul Moiz est né en **2001**, il a donc **24 ans**.
+
+Voici un aperçu de son parcours :
+- **Formation Fondamentale** : Diplômé d'un Bachelor of Science in Computer Science (BSCS) à **FAST-NUCES** (2020–2024), centré sur l'algorithmique avancée, les systèmes distribués et le génie logiciel.
+- **Expérience Industrielle** : Ingénieur Logiciel chez **Brackets Private Limited** (2024–2025), concevant des microservices Python, des architectures asynchrones Celery/Redis et des pipelines OCR-to-LLM (*DoctorIQ*).
+- **Paris & Double Cursus** : Actuellement en Master of Science in Information Technology à l'**EPITECH Paris** (2025–2027), où il officie également en tant qu'**Assistant Pédagogique** pour encadrer les promotions d'ingénieurs sur Linux et Docker.
+- **Objectif Professionnel** : Recherche active d'une **Alternance de 12 mois dès Septembre 2026** (ou CDI/CDD) en Île-de-France ou en télétravail.
+
+### Suggestions de questions :
+? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
+~ Né en 2001 (24 ans), basé à Paris avec autorisation complète de travail
+? Quels sont vos projets phares (DoctorIQ, Brackets Genie, Ledgeroo, VIF) ?
+~ Master of Science à l'EPITECH Paris & BSCS à FAST-NUCES`,
+
+      `Moiz est né en **2001** (il a **24 ans**) et vit actuellement à **Paris, France**.
+
+Malgré son jeune parcours, il allie une solide pratique de production logicielle et un sens pédagogique affirmé :
+- **Double Rôle à l'EPITECH Paris** : Étudiant en MSc IT (2025–2027) et Assistant Pédagogique (depuis 2024), transmettant les bonnes pratiques logicielles et l'administration système Linux.
+- **Expertise Technique** : Conception d'APIs résilientes en Python (FastAPI/Django), conteneurisation Docker, pipelines CI/CD DevSecOps et orchestration d'agents IA (LangGraph).
+- **Prochaine Étape** : Disponible pour une **Alternance de 12 mois à partir de Septembre 2026** en Île-de-France ou à distance.
+
+### Suggestions de questions :
+? Quelles sont vos compétences et vos services en DevOps et Cloud ?
+~ 24 ans, bilingue anglais C1 et français professionnel B1.1
+? Parlez-moi de votre rôle d'assistant pédagogique à EPITECH Paris.
+~ Recherche active d'une alternance de 12 mois dès Septembre 2026`,
+
+      `J'ai **24 ans**, étant né en **2001**.
+
+À 24 ans, mon profil combine :
+- **Rigueur Académique** : Diplômé de FAST-NUCES (BSCS) et poursuite en MSc IT à l'EPITECH Paris.
+- **Impact en Production** : Réduction de 70% de la latence de traitement sur *DoctorIQ*, architectures asynchrones Celery/Redis et streaming temps réel avec WebSockets.
+- **Mobilité & Statut** : Résidant à Paris, bilingue en anglais (C1), français professionnel (B1.1) et immédiatement opérationnel.
+
+### Suggestions de questions :
+? Pourquoi recruter Moiz pour une équipe d'ingénierie ?
+~ Diplômé FAST-NUCES (2024) et étudiant MSc IT à EPITECH Paris (2025-2027)
+? Quelles sont vos disponibilités pour une alternance ?
+~ Spécialisé en Python, FastAPI, Docker, CI/CD et agents LangGraph`,
+    ];
+    return ageVariants[varIdx];
+  }
+
+  // 3. GREETINGS & CASUAL HELLOS
   if (
     /^(bonjour|salut|coucou|hello|hi|hey|bonsoir|bienvenue|salutations|yo)\b/i.test(q) ||
     q === 'bonjour' ||
     q === 'salut' ||
     q === 'coucou'
   ) {
-    return `Bonjour ! Ravi d'échanger avec vous.
+    const greetingVariants = [
+      `Bonjour ! Ravi d'échanger avec vous.
 
 Je suis le double numérique IA de **Muhammad Abdul Moiz**. Vous pouvez explorer :
 - **DevOps & Software Factory Cloud** : Automatisation CI/CD, conteneurisation Docker, déploiements AWS/GCP, SonarQube & métriques DORA
@@ -60,12 +126,42 @@ Je suis le double numérique IA de **Muhammad Abdul Moiz**. Vous pouvez explorer
 
 ### Suggestions de questions :
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?
+~ Né en 2001 (24 ans), basé à Paris et ouvert à l'alternance en septembre 2026
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
+~ Double compétence en ingénierie de production et enseignement à EPITECH Paris`,
+
+      `Bonjour ! Bienvenue sur le portfolio interactif de Muhammad Abdul Moiz.
+
+En tant que son représentant IA, je peux vous renseigner sur tous les aspects de son profil d'ingénieur logiciel et machine learning :
+- **Production & Systèmes** : Architectures distribuées, microservices FastAPI/Django, conteneurs Docker et orchestration cloud.
+- **Enseignement & Mentorat** : Assistant Pédagogique à l'EPITECH Paris, encadrant les étudiants sur les systèmes Unix, Docker et le code propre.
+- **IA Appliquée** : Systèmes multi-agents LangGraph, streaming WebSocket et pipelines d'extraction multimodale.
+- **Statut** : 24 ans, basé à Paris, en quête d'une alternance de 12 mois dès Septembre 2026.
+
+### Suggestions de questions :
 ? Quels sont vos projets phares (DoctorIQ, Brackets Genie, Ledgeroo, VIF) ?
-? Quels sont vos centres d'intérêt et passions en dehors du travail ?`;
+~ Disponible pour un contrat d'alternance de 12 mois dès la rentrée 2026
+? Quel âge avez-vous et quel est votre parcours académique ?
+~ Contact direct : ${profile.email}`,
+
+      `Ravi de vous accueillir ! Je suis l'assistant IA de Muhammad Abdul Moiz.
+
+N'hésitez pas à me poser vos questions sur :
+- Ses réalisations techniques (*DoctorIQ*, *Brackets Genie*, *Trinity Suite*)
+- Ses compétences DevOps (GitLab CI, GitHub Actions, DORA metrics, Nginx)
+- Son parcours académique (MSc IT à l'EPITECH Paris et BSCS à FAST-NUCES)
+- Ses disponibilités pour une opportunité d'alternance à Paris à partir de Septembre 2026
+
+### Suggestions de questions :
+? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
+~ Profil complet : DevOps, Backend Python/TypeScript et Agents IA
+? Quels sont vos centres d'intérêt et passions en dehors du travail ?
+~ Autorisation de travail valide en France`,
+    ];
+    return greetingVariants[varIdx];
   }
 
-  // 3. ALTERNANCE & RECHERCHE DE CONTRAT
+  // 4. ALTERNANCE & RECHERCHE DE CONTRAT
   if (/\b(alternance|contrat|stage|emploi|recrutement|disponibilit(e|é)|rythme|septembre|embauche|cdd|cdi)\b/i.test(q)) {
     return `### Disponibilité & Recherche d'Alternance (Septembre 2026)
 
@@ -82,12 +178,13 @@ Je recherche activement une **Alternance de 12 mois** à compter de **Septembre 
 
 ### Suggestions de questions :
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?
+~ Alternance 12 mois dès Septembre 2026 en Île-de-France ou télétravail
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
-? Quels projets en intelligence artificielle avez-vous réalisés ?`;
+~ Anglais courant C1, Français professionnel B1.1 et Urdu natif`;
   }
 
-  // 4. PROJETS SPECIFIQUES
-  // 4a. DoctorIQ
+  // 5. PROJETS SPECIFIQUES
+  // 5a. DoctorIQ
   if (/doctoriq|doctor\s*iq|medical|sante|santé|clinique/i.test(q)) {
     return `### DoctorIQ — Plateforme IA d'Extraction Médicale
 
@@ -99,11 +196,12 @@ Je recherche activement une **Alternance de 12 mois** à compter de **Septembre 
 
 ### Suggestions de questions :
 ? Parlez-moi de Brackets Genie et de son architecture temps réel.
+~ Architecture AWS avec workers Celery et Redis distribués
 ? Quelles sont vos compétences en DevOps et Cloud ?
 ? Pourquoi recruter Moiz pour une équipe d'ingénierie ?`;
   }
 
-  // 4b. Brackets Genie
+  // 5b. Brackets Genie
   if (/genie|brackets\s*genie|copilot|assistant\s*ia/i.test(q)) {
     return `### Brackets Genie — Copilote IA Temps Réel d'Entreprise
 
@@ -115,10 +213,11 @@ Je recherche activement une **Alternance de 12 mois** à compter de **Septembre 
 
 ### Suggestions de questions :
 ? Parlez-moi du projet VIF et de la solidarité alimentaire.
+~ Moins de 50ms de latence de streaming sur WebSockets
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?`;
   }
 
-  // 4c. VIF
+  // 5c. VIF
   if (/vif|solidaire|solidarit(e|é)|alimentaire|bordeaux/i.test(q)) {
     return `### VIF (Vers Une Infinité De Femmes) — Plateforme Solidaire
 
@@ -130,10 +229,11 @@ Projet mené en tant que **Chef de Projet** et architecte technique pour optimis
 
 ### Suggestions de questions :
 ? Parlez-moi du projet FinTech Ledgeroo.
+~ Pilotage de projet en méthodologie agile et suivi DORA
 ? Quels sont vos projets phares en DevOps et Cloud ?`;
   }
 
-  // 4d. Ledgeroo
+  // 5d. Ledgeroo
   if (/ledgeroo|comptabilit(e|é)|stripe|fintech|facturation/i.test(q)) {
     return `### Ledgeroo — Solution SaaS FinTech & Facturation
 
@@ -145,10 +245,11 @@ Plateforme de gestion financière pour les PME et indépendants :
 
 ### Suggestions de questions :
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?
+~ Intégration Stripe API, webhooks et verrouillage transactionnel strict
 ? Parlez-moi de votre rôle à l'EPITECH Paris.`;
   }
 
-  // 5. FORMATION ACADEMIQUE & EPITECH PARIS
+  // 6. FORMATION ACADEMIQUE & EPITECH PARIS
   if (/\b(ecole|ecoles|etudes|formation|epitech|fast|diplome|universit(e|é)|scolarit(e|é))\b/i.test(q)) {
     return `### Formation Académique d'Excellence
 
@@ -165,11 +266,12 @@ Mon parcours combine une rigueur théorique en informatique fondamentale et une 
 
 ### Suggestions de questions :
 ? Parlez-moi de votre rôle d'assistant pédagogique à EPITECH Paris.
+~ Double cursus théorique FAST-NUCES et appliqué EPITECH Paris
 ? Quels sont vos projets phares en DevOps et Cloud ?
 ? Quelles sont vos disponibilités pour une alternance ?`;
   }
 
-  // 6. CONTACT & COORDONNEES
+  // 7. CONTACT & COORDONNEES
   if (/\b(contact(er)?|email|mail|telephone|téléphone|coordonn[eé]es|joindre|ecrire|écrire|linkedin|github)\b/i.test(q)) {
     return `### Coordonnées & Prise de Contact Directe
 
@@ -184,10 +286,11 @@ Vous pouvez me joindre directement via les canaux suivants :
 
 ### Suggestions de questions :
 ? Quelle est votre disponibilité pour une alternance à partir de septembre 2026 ?
+~ Réponse généralement sous 24h ouvrées
 ? Quelles sont vos compétences principales en ingénierie logicielle ?`;
   }
 
-  // 7. PASSIONS & CENTRES D'INTERET
+  // 8. PASSIONS & CENTRES D'INTERET
   if (/\b(passion|passions|loisir|loisirs|interet|interets|sport|cuisine|voyage|echecs|poesie|photographie)\b/i.test(q)) {
     return `### Passions & Centres d'Intérêt au-delà du Code
 
@@ -202,10 +305,11 @@ En dehors de l'ingénierie, je cultive des disciplines qui nourrissent la créat
 
 ### Suggestions de questions :
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
+~ Équilibre entre discipline intellectuelle et créativité quotidienne
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?`;
   }
 
-  // 8. POURQUOI RECRUTER MOIZ
+  // 9. POURQUOI RECRUTER MOIZ
   if (/\b(pourquoi|recruter|embaucher|atouts|points forts|valeur|difference)\b/i.test(q)) {
     return `### Pourquoi recruter Muhammad Abdul Moiz ?
 
@@ -219,12 +323,14 @@ Voici ce que j'apporte concrètement à une équipe d'ingénierie de haut niveau
 
 ### Suggestions de questions :
 ? Quelles sont vos disponibilités pour une alternance à partir de septembre 2026 ?
+~ Expérience prouvée sur AWS, Docker, FastAPI et Django
 ? Parlez-moi de vos projets phares (DoctorIQ, Brackets Genie, VIF).
-? Comment vous contacter directement ?`;
+~ Contact direct : ${profile.email}`;
   }
 
-  // 9. DEFAULT FRENCH FALLBACK (Friendly & Comprehensive)
-  return `Je suis à votre disposition en tant que double numérique IA de **Muhammad Abdul Moiz**. Vous pouvez explorer :
+  // 10. DEFAULT FRENCH FALLBACK (3 Dynamic Variations, human & non-repetitive)
+  const defaultVariants = [
+    `Je suis à votre disposition en tant que double numérique IA de **Muhammad Abdul Moiz**. Vous pouvez explorer :
 
 - **DevOps & Software Factory** : GitLab CI, GitHub Actions, Docker, AWS & GCP, SonarQube, métriques DORA
 - **Formation & Écoles** : MSc Technologies de l'Information à l'**EPITECH Paris** & BSCS à **FAST-NUCES**
@@ -236,7 +342,37 @@ Voici ce que j'apporte concrètement à une équipe d'ingénierie de haut niveau
 
 ### Suggestions de questions :
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?
+~ Né en 2001 (24 ans), basé à Paris et disponible dès Septembre 2026
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
+~ Équipe pédagogique EPITECH Paris & ex-ingénieur chez Brackets`,
+
+    `Bienvenue ! Je suis le représentant interactif de Muhammad Abdul Moiz, ingénieur logiciel et IA à Paris.
+
+De quoi aimeriez-vous discuter ?
+- **Architecture & Code** : Conception de backends asynchrones en Python (FastAPI, Django REST) et interfaces réactives (React 18, Vue 3).
+- **Livraison Continue & Cloud** : Conteneurs Docker multi-étapes, reverse proxies Nginx et pipelines de déploiement continu.
+- **Systèmes IA en Production** : Extraction documentaire multimodal (*DoctorIQ*) et agents conversationnels (*Brackets Genie*).
+- **Profil & Parcours** : Né en 2001 (24 ans), diplômé de FAST-NUCES et étudiant en Master à EPITECH Paris.
+
+### Suggestions de questions :
 ? Parlez-moi de vos projets phares (DoctorIQ, Brackets Genie, Ledgeroo, VIF) ?
-? Quelles sont vos disponibilités pour une alternance en septembre 2026 ?`;
+~ Master of Science EPITECH Paris & BSCS FAST-NUCES
+? Quel âge avez-vous et quel est votre parcours académique ?
+~ Contact direct : ${profile.email}`,
+
+    `Je réponds à vos questions sur le parcours, les réalisations et les compétences techniques de Muhammad Abdul Moiz.
+
+Voici quelques angles à explorer :
+- **Enseignement & Rigueur** : Son rôle d'Assistant Pédagogique à EPITECH Paris, encadrant les étudiants sur les systèmes et le code de qualité.
+- **Réalisations Concrètes** : 8 projets documentés couvrant le cloud, le DevOps, la FinTech et l'intelligence artificielle.
+- **Recherche d'Alternance** : Disponible pour un contrat de 12 mois à partir de Septembre 2026 (CDI/CDD également envisageables).
+
+### Suggestions de questions :
+? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
+~ Anglais C1 bilingue, Français B1.1 professionnel et Urdu natif
+? Quelles sont vos disponibilités pour une alternance en septembre 2026 ?
+~ Localisation : Paris, Île-de-France (sur site, hybride ou télétravail)`,
+  ];
+
+  return defaultVariants[varIdx];
 }
