@@ -10,16 +10,12 @@ import {
   FiMenu,
   FiX,
   FiMessageSquare,
-  FiSun,
-  FiMoon,
   FiGlobe,
 } from 'react-icons/fi';
-import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Navbar() {
   const router = useRouter();
-  const { theme, toggleTheme } = useTheme();
   const { lang, toggleLang, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -149,21 +145,6 @@ export default function Navbar() {
               <span className="uppercase tracking-wider">{lang === 'en' ? 'FR' : 'EN'}</span>
             </motion.button>
 
-            {/* Theme Toggle Button */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              aria-label={t.nav.toggleThemeAria}
-              title={t.nav.toggleThemeAria}
-              className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200/90 bg-white/80 text-slate-700 shadow-sm transition hover:border-indigo-400/40 hover:bg-indigo-50 hover:text-indigo-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:bg-white/10 dark:hover:text-white"
-            >
-              {theme === 'dark' ? (
-                <FiSun size={15} className="text-amber-400" />
-              ) : (
-                <FiMoon size={15} className="text-indigo-600" />
-              )}
-            </motion.button>
 
             <motion.a
               whileHover={{ y: -2, scale: 1.05 }}
@@ -224,14 +205,6 @@ export default function Navbar() {
               <span>{lang === 'en' ? 'FR' : 'EN'}</span>
             </button>
 
-            {/* Mobile Theme Button */}
-            <button
-              onClick={toggleTheme}
-              aria-label={t.nav.toggleThemeAria}
-              className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white/90 text-slate-700 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
-            >
-              {theme === 'dark' ? <FiSun size={13} className="text-amber-400" /> : <FiMoon size={13} className="text-indigo-600" />}
-            </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
