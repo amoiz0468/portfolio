@@ -15,7 +15,7 @@ export default function ProjectsPage() {
   return (
     <>
       <Head>
-        <title>{lang === 'fr' ? 'Projets' : 'Projects'} | Muhammad Abdul Moiz</title>
+        <title>{`${lang === 'fr' ? 'Projets' : 'Projects'} | Muhammad Abdul Moiz`}</title>
         <meta
           name="description"
           content={

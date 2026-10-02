@@ -70,7 +70,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{profile.name} | {lang === 'fr' ? 'Ingénieur Logiciel & Machine Learning' : 'Software & Machine Learning Engineer'}</title>
+        <title>{`${profile.name} | ${lang === 'fr' ? 'Ingénieur Logiciel & Machine Learning' : 'Software & Machine Learning Engineer'}`}</title>
         <meta
           name="description"
           content={
