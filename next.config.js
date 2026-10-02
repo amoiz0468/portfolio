@@ -62,6 +62,37 @@ const nextConfig = {
         ],
       },
       {
+        source: '/icons/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/(avatar\\.png|avatar\\.svg|logo\\.png|og-image\\.png|favicon\\.ico|favicon\\.png|favicon-16x16\\.png|favicon-32x32\\.png|apple-touch-icon\\.png)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/manifest.webmanifest',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/manifest+json; charset=utf-8',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=3600',
+          },
+        ],
+      },
+      {
         source: '/api/:path*',
         headers: [
           {

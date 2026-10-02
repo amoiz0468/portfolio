@@ -73,13 +73,34 @@ export function validateContact(
     return { valid: false, isBotOrTrollSilent: true };
   }
 
-  // 2. Velocity check: Humans take at least 1.8 seconds to fill out name, email, and message
-  if (elapsedMs > 0 && elapsedMs < 1800) {
+  // 2. Velocity & Autofill check
+  // Sub-500ms is impossible for humans even with autofill (automated scripts) -> silent trap
+  if (elapsedMs > 0 && elapsedMs < 500) {
     return { valid: false, isBotOrTrollSilent: true };
   }
 
+  // Fast submissions (500ms - 1800ms) can occur via browser autofill
+  // If the user has valid name, email format, and genuine message, accept as legitimate autofill;
+  // otherwise, silently trap suspicious rapid payloads.
+  const cleanEmailPrelim = sanitizeSingleLine(email, 254);
+  const cleanNamePrelim = sanitizeSingleLine(name, 100);
+  const cleanMessagePrelim = sanitizeInput(message, 4000);
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (elapsedMs > 0 && elapsedMs < 1800) {
+    const isAutofillLegitimate =
+      cleanNamePrelim.length >= 2 &&
+      emailRegex.test(cleanEmailPrelim) &&
+      cleanMessagePrelim.length >= 10 &&
+      !isCharacterMash(cleanMessagePrelim);
+
+    if (!isAutofillLegitimate) {
+      return { valid: false, isBotOrTrollSilent: true };
+    }
+  }
+
   // 3. Name validation
-  const cleanName = sanitizeSingleLine(name, 100);
+  const cleanName = cleanNamePrelim;
   if (!cleanName || cleanName.length < 2) {
     return {
       valid: false,
@@ -90,8 +111,7 @@ export function validateContact(
   }
 
   // 4. Email validation
-  const cleanEmail = sanitizeSingleLine(email, 254);
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const cleanEmail = cleanEmailPrelim;
   if (!emailRegex.test(cleanEmail)) {
     return {
       valid: false,
@@ -102,7 +122,7 @@ export function validateContact(
   }
 
   // 5. Message validation
-  const cleanMessage = sanitizeInput(message, 4000);
+  const cleanMessage = cleanMessagePrelim;
   if (!cleanMessage || cleanMessage.length < 10) {
     return {
       valid: false,
@@ -122,14 +142,14 @@ export function validateContact(
     };
   }
 
-  // 7. Excessive URL link spam (more than 3 URLs)
+  // 7. Excessive URL link spam (more than 10 URLs)
   const urlCount = (cleanMessage.match(/https?:\/\//gi) || []).length;
-  if (urlCount > 3) {
+  if (urlCount > 10) {
     return {
       valid: false,
       errorReason: isFrench
-        ? 'Trop de liens detectes. Veuillez limiter les adresses web.'
-        : 'Too many links detected. Please limit web links in your message.',
+        ? 'Trop de liens detectes. Veuillez limiter a un maximum de 10 adresses web.'
+        : 'Too many links detected. Please limit to a maximum of 10 web links.',
     };
   }
 
@@ -150,6 +170,7 @@ export function validateContact(
 
 // Client rate-limiting helper using localStorage
 const STORAGE_KEY = 'moiz_contact_cooldown';
+const SUBMISSION_COOLDOWN_MS = 30000; // 30 seconds cooldown between submissions
 
 export function checkClientRateLimit(isFrench: boolean = false): { allowed: boolean; message?: string } {
   if (typeof window === 'undefined') return { allowed: true };
@@ -161,9 +182,9 @@ export function checkClientRateLimit(isFrench: boolean = false): { allowed: bool
     if (raw) {
       const data: { lastSent: number; count: number; hourStart: number } = JSON.parse(raw);
 
-      // Cooldown between individual submissions (10 seconds)
-      if (now - data.lastSent < 10000) {
-        const remainingSec = Math.ceil((10000 - (now - data.lastSent)) / 1000);
+      // Cooldown between individual submissions (30 seconds)
+      if (now - data.lastSent < SUBMISSION_COOLDOWN_MS) {
+        const remainingSec = Math.ceil((SUBMISSION_COOLDOWN_MS - (now - data.lastSent)) / 1000);
         return {
           allowed: false,
           message: isFrench

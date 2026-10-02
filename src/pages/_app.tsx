@@ -84,23 +84,6 @@ export default function App({ Component, pageProps, router }: AppProps & { route
       <LanguageProvider>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
-          <meta name="theme-color" content="#4f46e5" />
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-          <link rel="icon" type="image/png" sizes="512x512" href="/logo.png" />
-          <link rel="shortcut icon" href="/favicon.ico" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel="image_src" href="/logo.png" />
-          <meta property="og:image" content="/og-image.png" />
-          <meta property="og:logo" content="/logo.png" />
-          <meta name="twitter:image" content="/og-image.png" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-          <meta name="apple-mobile-web-app-title" content="Moiz" />
-          <meta name="application-name" content="Moiz" />
-          <meta name="mobile-web-app-capable" content="yes" />
-          <link rel="manifest" href="/manifest.webmanifest" />
         </Head>
         <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900 selection:bg-indigo-500/25 selection:text-indigo-900 dark:bg-[#030712] dark:text-slate-100 dark:selection:bg-indigo-500/30 dark:selection:text-white pb-16 md:pb-0 transition-colors duration-200">
           <Navbar />

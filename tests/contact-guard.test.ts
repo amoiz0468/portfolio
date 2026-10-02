@@ -46,7 +46,7 @@ describe('Contact Guard Security: Anti-Troll & Spam Defense', () => {
     assert.equal(res.isBotOrTrollSilent, true);
   });
 
-  test('silently traps sub-second speed bots', () => {
+  test('silently traps sub-500ms speed bots', () => {
     const res = validateContact({
       name: 'Speedy Bot',
       email: 'bot@speedy.com',
@@ -56,6 +56,18 @@ describe('Contact Guard Security: Anti-Troll & Spam Defense', () => {
 
     assert.equal(res.valid, false);
     assert.equal(res.isBotOrTrollSilent, true);
+  });
+
+  test('allows fast submissions (500ms-1800ms) when browser autofill is used with valid inputs', () => {
+    const res = validateContact({
+      name: 'Sarah Connor',
+      email: 'sarah@skynet-research.org',
+      message: 'Quick inquiry regarding the AI engineer position posted on your portfolio.',
+      elapsedMs: 850,
+    });
+
+    assert.equal(res.valid, true);
+    assert.equal(res.errorReason, undefined);
   });
 
   test('detects keysmash and repeating characters', () => {
@@ -75,11 +87,24 @@ describe('Contact Guard Security: Anti-Troll & Spam Defense', () => {
     assert.equal(EMOJI_REGEX.test(res.errorReason || ''), false);
   });
 
-  test('intercepts excessive link spam (> 3 URLs)', () => {
+  test('accepts up to 10 links in message', () => {
+    const links10 = Array.from({ length: 10 }, (_, i) => `https://example${i}.com`).join(' ');
+    const res = validateContact({
+      name: 'Reference Reviewer',
+      email: 'reviewer@peer.org',
+      message: `Here are 10 research references: ${links10}`,
+      elapsedMs: 5000,
+    });
+
+    assert.equal(res.valid, true);
+  });
+
+  test('intercepts excessive link spam (> 10 URLs)', () => {
+    const links11 = Array.from({ length: 11 }, (_, i) => `https://link${i}.com`).join(' ');
     const res = validateContact({
       name: 'Link Spammer',
       email: 'spam@links.com',
-      message: 'Check out https://a.com and https://b.com and https://c.com and https://d.com',
+      message: `Check out our links: ${links11}`,
       elapsedMs: 5000,
     });
 

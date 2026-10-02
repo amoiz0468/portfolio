@@ -34,7 +34,16 @@ export default function Document() {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="image_src" href="/logo.png" />
 
-        {/* URL Page Open Graph & Social Preview Metadata */}
+        {/* Progressive Web App (PWA) & Mobile Meta */}
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <meta name="application-name" content="Muhammad Abdul Moiz" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Moiz Portfolio" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#030712" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Muhammad Abdul Moiz" />
         <meta property="og:title" content="Muhammad Abdul Moiz — AI & Software Engineer" />
