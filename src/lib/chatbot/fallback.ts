@@ -420,20 +420,38 @@ Beyond software engineering and deep learning, I invest my energy in creative, e
   if (
     /why hire|why should we hire|recruiter|notice period|when can you start|visa|work permit|sponsorship|contract type|why moiz|candidate/i.test(q)
   ) {
-    return `### Why Hire Muhammad Abdul Moiz?
+    const whyHireVariants = [
+      `### Why Hire Muhammad Abdul Moiz?
 
-Here is what I bring to high-performing engineering organizations:
+Here are the top 4 value drivers I bring to engineering teams:
 
-- **Dual Engineering Depth**: Real-world production experience building asynchronous microservices (Python, FastAPI, Django, Celery, Docker, AWS) combined with empirical ML research and GenAI agent systems.
-- **Proven Pedagogical Leadership**: As Pedagogical Assistant at EPITECH Paris, I train engineering student cohorts daily, proving exceptional technical vulgarization, empathy, and mentoring skills.
-- **End-to-End Ownership**: From system architecture, database optimization, and Docker standardization to CI/CD release gates and reverse proxies.
-- **International & Cross-Functional**: Fluent English (C1) and working French (B1) with hands-on Agile/Scrum delivery experience in international teams.
-- **Immediate Value in Paris & Remote**: Flexible for full-time CDI, CDD, or contract roles with student working rights / talent passport eligibility.
+1. **Dual Engineering Depth**: Real production experience across asynchronous microservices (Python, FastAPI, Django, Celery, Docker, AWS) paired with applied GenAI agent systems (LangGraph).
+2. **Pedagogical Mentorship & Leadership**: As Pedagogical Assistant at **EPITECH Paris**, I mentor engineering cohorts daily. Proven cross-functional delivery leadership on *VIF*.
+3. **End-to-End Ownership**: From schema design, database optimization, and Dockerization to CI/CD release gates (SonarQube, DORA metrics) and reverse proxies.
+4. **Immediate Fit in Paris**: Fluent English (C1 - client-facing) and working French (B1.1). Seeking a **12-Month Alternance (September 2026)** with full French working rights.
 
 ### Suggested Inquiries:
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
+~ Full working authorization in France | English C1 & French B1.1
 ? Tell me about your featured projects (DoctorIQ, Brackets Genie, Zoidberg 2.0).
-? What is your current availability, working status, and location preference in Paris?`;
+? What is your current availability, working status, and location preference in Paris?`,
+
+      `### Key Strengths & Technical Profile
+
+If you are looking for an engineer who delivers business value from day one:
+
+- **Production-Ready & Reliable**: Built *DoctorIQ* cutting clinical turnaround by 70%, engineered real-time WebSockets with sub-50ms latency in *Brackets Genie*, and maintained 90%+ test coverage on *Trinity*.
+- **Versatile Across 5 Roles**: DevOps/Cloud Engineer, Backend Engineer, AI/GenAI Specialist, Full-Stack Developer, or Junior Web Project Manager.
+- **Academic Rigor**: Bachelor in Computer Science from FAST-NUCES (2024) + Master of Science in IT at EPITECH Paris (2025–2027).
+- **Status & Next Step**: Available for a **12-Month Alternance starting September 2026** (or CDI/CDD) in Paris or remote.
+
+### Suggested Inquiries:
+? What roles and contracts are you available for in Paris?
+~ Born October 16, 2002 (23 years old) with 2+ years of production experience
+? Tell me about your role as Pedagogical Assistant at EPITECH Paris.
+? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?`,
+    ];
+    return whyHireVariants[varIdx % whyHireVariants.length];
   }
 
   // 5. SPECIFIC: WHAT IS EPITECH?
@@ -616,8 +634,9 @@ Which project would you like to explore in detail?
 
 ### Suggested Inquiries:
 ? What is your current availability, working status, and location preference in Paris?
+~ Fluent English C1, working French B1.1, native Urdu
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-? Tell me about your academic background at EPITECH Paris.`;
+~ Available for a 12-Month Alternance from September 2026`;
   }
 
   // 21. LOCATION / PARIS
@@ -628,33 +647,52 @@ I study and mentor at EPITECH Paris and am available for opportunities in Paris/
 
 ### Suggested Inquiries:
 ? What is your current availability, working status, and location preference in Paris?
+~ Based in Paris, France with full working rights
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-? Do you have experiences of DevOps and what services do you offer as DevOps?`;
+~ Seeking a 12-Month Alternance starting September 2026`;
   }
 
   // 22. AVAILABILITY, ALTERNANCE & TARGET OPPORTUNITY
   if (/hire|available|availability|opportunity|job|contract|internship|roles|work together|alternan|apprenti|work[\s-]*study|contrat de pro|september 2026|septembre 2026/i.test(q)) {
-    return `### Availability & Target Opportunity (September 2026)
+    const alternanceVariants = [
+      `### Availability & Target Opportunity (September 2026)
 
-**Current Status**: Actively seeking a **12-Month Alternance / Apprenticeship / Work-Study** starting from **September 2026** (or CDI, CDD, or internship leading to alternance)!
+**Current Status**: Actively seeking a **12-Month Alternance / Apprenticeship / Work-Study** starting from **September 2026** (or CDI/CDD) based in **Paris, France** or remote.
 
 **Target Roles**:
 - **Software Engineer (Backend / Full-Stack)**: Python (FastAPI, Django), TypeScript, React 18, Vue 3, Node.js
 - **DevOps & Cloud Engineer / DevSecOps**: CI/CD pipelines, Docker, AWS/GCP, SonarQube, DORA metrics, Nginx
 - **AI & Data Engineer / GenAI Specialist**: LangGraph, LangChain, Claude API, OpenAI, RAG, PyTorch
-- **Junior Web Project Manager**: Agile/Scrum sprint coordination (Jira, ClickUp), functional specifications, delivery ownership
+- **Junior Web Project Manager**: Agile/Scrum sprint coordination, specifications, delivery ownership
 
 **Key Details**:
-- **Location**: Paris, France (Available for on-site, hybrid, remote, or relocation)
-- **Work Authorization**: Full working rights in France (student working rights / talent passport eligible)
-- **Languages**: Fluent English (C1 - Client-Facing/Technical), Working French (B1.1), Native Urdu
+- **Location**: Paris, France (on-site, hybrid, or remote)
+- **Work Authorization**: Full working rights in France
+- **Languages**: English C1 (fluent), French B1.1 (working), Urdu (native)
 
-Connect directly with me at **${profile.email}** or on [LinkedIn](${profile.linkedin})!
+Reach Moiz directly at **${profile.email}** or on [LinkedIn](${profile.linkedin}).
 
 ### Suggested Inquiries:
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
+~ Available for a 12-Month Alternance in Paris starting September 2026
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
-? What is your full backend and database tech stack?`;
+~ Full working authorization in France with C1 English & B1.1 French`,
+
+      `### Recruitment & Opportunity Summary (September 2026)
+
+Moiz is actively preparing for a **12-Month Alternance starting September 2026** in Paris or remote, aligned with his MSc IT at **EPITECH Paris**.
+
+- **Focus Areas**: Backend Engineering (Python/FastAPI/Django), Cloud Infrastructure (Docker/AWS/GCP), and Agentic AI (LangGraph).
+- **Work Rights**: Valid authorization to work in France.
+- **Direct Reach**: [${profile.email}](mailto:${profile.email}) or [${profile.phone}](tel:${profile.phone.replace(/\\s+/g, '')}).
+
+### Suggested Inquiries:
+? Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).
+~ 12-Month Alternance starting September 2026 in Paris
+? What is your full backend and database tech stack?
+~ Contact directly: ${profile.email}`,
+    ];
+    return alternanceVariants[varIdx % alternanceVariants.length];
   }
 
   // 18. CONTACT DETAILS
@@ -669,20 +707,35 @@ Connect directly with me at **${profile.email}** or on [LinkedIn](${profile.link
 
 ### Suggested Inquiries:
 ? What roles and contract types are you open to?
+~ Response typically within 24 business hours
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-? Tell me about your featured projects (DoctorIQ, Brackets Genie, Zoidberg 2.0).`;
+~ Direct reach: ${profile.email}`;
   }
 
   // 19. WHO ARE YOU / BIO
   if (/(who are you|about you|tell me about yourself|introduce yourself|bio|summary)/i.test(q)) {
-    return `I'm **Muhammad Abdul Moiz**, a Software & Machine Learning Engineer based in Paris.
+    const bioVariants = [
+      `I'm **Muhammad Abdul Moiz**, a Software & Machine Learning Engineer based in Paris (born October 16, 2002, 23 years old).
 
-Currently, I'm pursuing my **MSc in Information Technology at EPITECH Paris** while working as a **Pedagogical Assistant** mentoring engineering student cohorts. Previously, I was an **Associate Software Engineer at Brackets**, building high-throughput microservices, containerized infrastructure, and multimodal OCR-to-LLM pipelines.
+Currently pursuing an **MSc in IT at EPITECH Paris** while mentoring student cohorts as a **Pedagogical Assistant**. Previously, I was an **Associate Software Engineer at Brackets**, building high-throughput microservices, Dockerized pipelines, and multimodal OCR-to-LLM systems (*DoctorIQ*).
 
 ### Suggested Inquiries:
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
+~ Born October 16, 2002 (23 years old), based in Paris
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
-? What are your passions and hobbies outside of work?`;
+~ Full working authorization in France with fluent English and working French`,
+
+      `I represent Muhammad Abdul Moiz, a Paris-based Software & ML Engineer (born October 16, 2002, 23 years old).
+
+He combines theoretical depth (BSCS from FAST-NUCES) with hands-on systems architecture at EPITECH Paris and industry experience at Brackets. He specializes in Python backends (FastAPI/Django), automated CI/CD, and agentic workflows.
+
+### Suggested Inquiries:
+? Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).
+~ Available for a 12-Month Alternance starting September 2026
+? What is your full backend and database tech stack?
+~ Contact directly: ${profile.email}`,
+    ];
+    return bioVariants[varIdx % bioVariants.length];
   }
 
   // 20. THANKS & HUMOR
@@ -691,8 +744,9 @@ Currently, I'm pursuing my **MSc in Information Technology at EPITECH Paris** wh
 
 ### Suggested Inquiries:
 ? Tell me about your featured projects (DoctorIQ, Brackets Genie, Zoidberg 2.0).
+~ Always happy to help recruiters and engineering leads
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-? Do you have experiences of DevOps and what services do you offer as DevOps?`;
+~ Fast contact: ${profile.email}`;
   }
 
   // 23. INTELLIGENT COMPREHENSIVE DEFAULT (3 Dynamic Variants, never rigid or repetitive)
