@@ -3,7 +3,7 @@ import { FiTerminal } from 'react-icons/fi';
 import Reveal from './Reveal';
 import SectionTitle from './SectionTitle';
 import SpotlightCard from './SpotlightCard';
-import { skillGroups, languages, values } from '../data/portfolio';
+import { useLanguage } from '../context/LanguageContext';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,14 +28,17 @@ const itemVariants = {
 };
 
 export default function AppleSkillsSection() {
+  const { t } = useLanguage();
+  const { eyebrow, title, subtitle, domainLabel, productionVetted, spokenLanguagesTitle, engineeringValuesTitle, skillGroups, languages, values } = t.skillsSection;
+
   return (
     <section id="skills" className="mx-auto max-w-6xl px-4 py-28 sm:px-6 lg:px-8">
       <Reveal>
         <SectionTitle
-          eyebrow="Skill Ecosystem"
+          eyebrow={eyebrow}
           eyebrowIcon={<FiTerminal />}
-          title="Modern technologies, proven in production"
-          subtitle="Specialized in asynchronous Python APIs, deep learning, containerized workflows, and cloud deployments."
+          title={title}
+          subtitle={subtitle}
         />
       </Reveal>
 
@@ -46,12 +49,12 @@ export default function AppleSkillsSection() {
             <SpotlightCard className="group flex h-full flex-col justify-between transition-all duration-300 hover:-translate-y-1.5">
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300">
-                    Domain {groupIdx + 1}
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-300">
+                    {domainLabel} {groupIdx + 1}
                   </span>
-                  <span className="h-2 w-2 rounded-full bg-indigo-400 transition group-hover:scale-125" />
+                  <span className="h-2 w-2 rounded-full bg-indigo-500 dark:bg-indigo-400 transition group-hover:scale-125" />
                 </div>
-                <h3 className="mt-3 text-xl font-bold text-white">{group.title}</h3>
+                <h3 className="mt-3 text-xl font-bold text-slate-900 dark:text-white">{group.title}</h3>
 
                 {/* Staggered Pills */}
                 <motion.div
@@ -65,7 +68,7 @@ export default function AppleSkillsSection() {
                     <motion.span
                       key={item}
                       variants={itemVariants}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors duration-200 hover:border-indigo-400/40 hover:bg-indigo-500/15 hover:text-white"
+                      className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 transition-colors duration-200 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-indigo-400/40 dark:hover:bg-indigo-500/15 dark:hover:text-white"
                     >
                       {item}
                     </motion.span>
@@ -73,8 +76,8 @@ export default function AppleSkillsSection() {
                 </motion.div>
               </div>
 
-              <div className="mt-6 border-t border-white/10 pt-4 text-[11px] font-medium text-slate-400">
-                Production vetted
+              <div className="mt-6 border-t border-slate-200/80 dark:border-white/10 pt-4 text-[11px] font-medium text-slate-500 dark:text-slate-400">
+                {productionVetted}
               </div>
             </SpotlightCard>
           </Reveal>
@@ -85,18 +88,18 @@ export default function AppleSkillsSection() {
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <Reveal delay={0.1}>
           <SpotlightCard>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300">
-              Spoken Languages
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-300">
+              {spokenLanguagesTitle}
             </span>
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {languages.map((l) => (
                 <div
                   key={l.language}
-                  className="rounded-2xl border border-white/10 bg-black/40 p-4 text-center transition hover:border-indigo-400/30"
+                  className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-center transition hover:border-indigo-400 dark:border-white/10 dark:bg-black/40 dark:hover:border-indigo-400/30"
                 >
-                  <p className="text-base font-bold text-white">{l.language}</p>
-                  <p className="mt-1 text-xs font-semibold text-indigo-300">{l.level}</p>
-                  <p className="mt-1 text-[11px] text-slate-400">{l.proficiency}</p>
+                  <p className="text-base font-bold text-slate-900 dark:text-white">{l.language}</p>
+                  <p className="mt-1 text-xs font-semibold text-indigo-600 dark:text-indigo-300">{l.level}</p>
+                  <p className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{l.proficiency}</p>
                 </div>
               ))}
             </div>
@@ -105,14 +108,14 @@ export default function AppleSkillsSection() {
 
         <Reveal delay={0.16}>
           <SpotlightCard>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300">
-              Engineering Values
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-300">
+              {engineeringValuesTitle}
             </span>
             <div className="mt-5 flex flex-wrap gap-2">
               {values.map((v) => (
                 <span
                   key={v}
-                  className="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-slate-200 transition-colors duration-200 hover:border-indigo-400/30"
+                  className="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-medium text-slate-700 transition-colors duration-200 hover:border-indigo-400 hover:text-indigo-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-indigo-400/30 dark:hover:text-white"
                 >
                   {v}
                 </span>

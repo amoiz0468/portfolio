@@ -5,33 +5,39 @@ import ProjectModal from '../components/ProjectModal';
 import Reveal from '../components/Reveal';
 import SectionTitle from '../components/SectionTitle';
 import AppleProjectCard from '../components/AppleProjectCard';
-import { projects } from '../data/portfolio';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ProjectsPage() {
+  const { lang, t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const projectsList = t.projectsSection.projects;
 
   return (
     <>
       <Head>
-        <title>Projects | Muhammad Abdul Moiz</title>
+        <title>{lang === 'fr' ? 'Projets' : 'Projects'} | Muhammad Abdul Moiz</title>
         <meta
           name="description"
-          content="Selected work by Muhammad Abdul Moiz spanning AI systems, full-stack products, and cloud-native software engineering."
+          content={
+            lang === 'fr'
+              ? "Projets majeurs de Muhammad Abdul Moiz couvrant l'intelligence artificielle, les systèmes distribués et le cloud."
+              : "Selected work by Muhammad Abdul Moiz spanning AI systems, full-stack products, and cloud-native software engineering."
+          }
         />
       </Head>
 
       <section className="mx-auto max-w-6xl px-4 py-28 sm:px-6 lg:px-8">
         <Reveal>
           <SectionTitle
-            eyebrow="Portfolio Gallery"
+            eyebrow={t.projectsSection.eyebrow}
             eyebrowIcon={<FiLayers />}
-            title="Selected software and AI projects"
-            subtitle="Explore end-to-end architectures across Generative AI, cloud deployments, and scalable backend platforms."
+            title={t.projectsSection.title}
+            subtitle={t.projectsSection.subtitle}
           />
         </Reveal>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project, index) => (
+          {projectsList.map((project, index) => (
             <AppleProjectCard
               key={project.title}
               project={project}
@@ -42,12 +48,12 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {selectedProject !== null ? (
+      {selectedProject !== null && projectsList[selectedProject] ? (
         <ProjectModal
           open={selectedProject !== null}
-          title={projects[selectedProject].title}
-          description={projects[selectedProject].description}
-          stack={projects[selectedProject].stack}
+          title={projectsList[selectedProject].title}
+          description={projectsList[selectedProject].description}
+          stack={projectsList[selectedProject].stack}
           onClose={() => setSelectedProject(null)}
         />
       ) : null}

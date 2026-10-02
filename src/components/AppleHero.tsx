@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fi';
 import SpotlightCard from './SpotlightCard';
 import { profile } from '../data/portfolio';
+import { useLanguage } from '../context/LanguageContext';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -21,6 +22,7 @@ export default function AppleHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -53,13 +55,13 @@ export default function AppleHero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: APPLE_EASE }}
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-300 shadow-inner backdrop-blur-xl"
+              className="inline-flex items-center gap-2.5 rounded-full border border-slate-200/90 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300"
             >
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
-              <span>Available for Web &bull; AI &bull; DevOps Roles</span>
+              <span>{t.hero.availableBadge}</span>
             </motion.div>
 
             {/* Main Fluid Tight Headline (Apple style) */}
@@ -67,13 +69,13 @@ export default function AppleHero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: APPLE_EASE }}
-              className="mt-8 text-[clamp(2.75rem,6.5vw+1rem,5.6rem)] font-black leading-[0.95] tracking-[-0.04em] text-white"
+              className="mt-8 text-[clamp(2.75rem,6.5vw+1rem,5.6rem)] font-black leading-[0.95] tracking-[-0.04em] text-slate-900 dark:text-white"
             >
-              Engineering
-              <span className="block bg-gradient-to-r from-indigo-300 via-purple-300 to-amber-200 bg-clip-text text-transparent">
-                Intelligence.
+              {t.hero.headlinePart1}{' '}
+              <span className="block bg-gradient-to-r from-indigo-600 via-purple-600 to-amber-500 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-amber-200">
+                {t.hero.headlinePart2}
               </span>
-              <span className="block text-slate-400">Architecting Scale.</span>
+              <span className="block text-slate-500 dark:text-slate-400">{t.hero.headlinePart3}</span>
             </motion.h1>
 
             {/* Subtitle / Pitch */}
@@ -81,9 +83,9 @@ export default function AppleHero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2, ease: APPLE_EASE }}
-              className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg"
+              className="mt-6 max-w-xl text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg"
             >
-              {profile.summary}
+              {t.hero.summary}
             </motion.p>
 
             {/* Action Buttons */}
@@ -98,9 +100,9 @@ export default function AppleHero() {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="group flex items-center gap-2.5 rounded-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-violet-600 px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_45px_rgba(99,102,241,0.6)] active:scale-95"
+                  className="group flex items-center gap-2.5 rounded-full bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-700 px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_0_25px_rgba(79,70,229,0.35)] hover:shadow-[0_0_40px_rgba(79,70,229,0.55)] active:scale-95"
                 >
-                  <span>Get in Touch</span>
+                  <span>{t.hero.getInTouch}</span>
                   <FiArrowRight className="transition group-hover:translate-x-1" />
                 </motion.button>
               </Link>
@@ -110,9 +112,9 @@ export default function AppleHero() {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold text-slate-200 backdrop-blur-xl hover:border-white/25 hover:bg-white/[0.08] hover:text-white active:scale-95"
+                  className="flex items-center gap-2 rounded-full border border-slate-300/80 bg-white/90 px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold text-slate-800 shadow-sm backdrop-blur-xl hover:border-slate-400 hover:bg-slate-100 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:border-white/25 dark:hover:bg-white/[0.08] dark:hover:text-white active:scale-95"
                 >
-                  View Inventions
+                  {t.hero.viewInventions}
                 </motion.button>
               </a>
 
@@ -126,9 +128,9 @@ export default function AppleHero() {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-3 sm:px-5 sm:py-3.5 text-xs sm:text-sm font-semibold text-indigo-300 backdrop-blur-xl hover:bg-indigo-500/20 hover:text-white active:scale-95"
+                  className="flex items-center gap-2 rounded-full border border-indigo-400/40 bg-indigo-50/80 px-4 py-3 sm:px-5 sm:py-3.5 text-xs sm:text-sm font-semibold text-indigo-700 shadow-sm backdrop-blur-xl hover:bg-indigo-100 hover:text-indigo-900 dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:text-indigo-300 dark:hover:bg-indigo-500/20 dark:hover:text-white active:scale-95"
                 >
-                  <FiMessageSquare /> Ask My AI
+                  <FiMessageSquare /> {t.hero.askAi}
                 </motion.div>
               </button>
             </motion.div>
@@ -138,22 +140,22 @@ export default function AppleHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.4, ease: APPLE_EASE }}
-              className="mt-6 sm:mt-8 flex flex-wrap items-center gap-2 sm:gap-4 text-xs font-medium text-slate-400"
+              className="mt-6 sm:mt-8 flex flex-wrap items-center gap-2 sm:gap-4 text-xs font-medium text-slate-600 dark:text-slate-400"
             >
-              <span className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/5 bg-white/[0.02] px-3 py-1 sm:px-3.5 sm:py-1.5">
-                <FiMapPin className="text-indigo-400" /> {profile.location}
+              <span className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 sm:px-3.5 sm:py-1.5 shadow-sm dark:border-white/5 dark:bg-white/[0.02]">
+                <FiMapPin className="text-indigo-500 dark:text-indigo-400" /> {profile.location}
               </span>
               <a
                 href={`mailto:${profile.email}`}
-                className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/5 bg-white/[0.02] px-3 py-1 sm:px-3.5 sm:py-1.5 transition hover:text-white"
+                className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 sm:px-3.5 sm:py-1.5 shadow-sm transition hover:text-indigo-600 dark:border-white/5 dark:bg-white/[0.02] dark:hover:text-white"
               >
-                <FiMail className="text-indigo-400" /> {profile.email}
+                <FiMail className="text-indigo-500 dark:text-indigo-400" /> {profile.email}
               </a>
               <a
                 href={`tel:${profile.phone.replace(/\s+/g, '')}`}
-                className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/5 bg-white/[0.02] px-3 py-1 sm:px-3.5 sm:py-1.5 transition hover:text-white"
+                className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 sm:px-3.5 sm:py-1.5 shadow-sm transition hover:text-indigo-600 dark:border-white/5 dark:bg-white/[0.02] dark:hover:text-white"
               >
-                <FiPhone className="text-indigo-400" /> {profile.phone}
+                <FiPhone className="text-indigo-500 dark:text-indigo-400" /> {profile.phone}
               </a>
             </motion.div>
           </div>
@@ -166,14 +168,14 @@ export default function AppleHero() {
           >
             <SpotlightCard className="mx-auto w-full max-w-[500px] p-4 sm:p-7">
               {/* Top Bar Indicators */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4">
+              <div className="flex items-center justify-between border-b border-slate-200/80 dark:border-white/10 pb-3 sm:pb-4">
                 <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-red-500/60" />
-                  <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-500/60" />
-                  <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-500/60" />
+                  <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-red-500/70" />
+                  <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-500/70" />
+                  <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-500/70" />
                 </div>
-                <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-300">
-                  EPITECH Paris MSc IT
+                <span className="rounded-full border border-slate-200/80 bg-slate-100/80 px-2.5 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
+                  {t.hero.specsTag}
                 </span>
               </div>
 
@@ -181,7 +183,7 @@ export default function AppleHero() {
               <div className="mt-4 sm:mt-6 flex flex-row items-center gap-4 sm:grid sm:grid-cols-[160px_1fr] sm:gap-6">
                 <motion.div
                   whileHover={{ scale: 1.03 }}
-                  className="relative h-20 w-20 sm:h-auto sm:w-full sm:aspect-[4/5] sm:max-w-[160px] shrink-0 overflow-hidden rounded-2xl sm:rounded-[1.8rem] border border-white/20 bg-slate-900 shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
+                  className="relative h-20 w-20 sm:h-auto sm:w-full sm:aspect-[4/5] sm:max-w-[160px] shrink-0 overflow-hidden rounded-2xl sm:rounded-[1.8rem] border border-slate-200 dark:border-white/20 bg-slate-100 dark:bg-slate-900 shadow-md dark:shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
                 >
                   <Image
                     src="https://portfolio-image-moiz.s3.eu-north-1.amazonaws.com/WhatsApp+Image+2025-09-25+at+5.49.35+PM.jpeg"
@@ -195,52 +197,52 @@ export default function AppleHero() {
 
                 <div className="space-y-1.5 sm:space-y-3 min-w-0">
                   <div>
-                    <h3 className="text-lg sm:text-2xl font-black tracking-tight text-white truncate">
+                    <h3 className="text-lg sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white truncate">
                       Muhammad Abdul Moiz
                     </h3>
-                    <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-indigo-300">
+                    <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-300">
                       ML &bull; GenAI &bull; DevOps
                     </p>
                   </div>
 
-                  <p className="text-xs leading-relaxed text-slate-300 hidden sm:block">
-                    Bridging high-performance machine learning models, modern web microservices, and automated cloud operations.
+                  <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 hidden sm:block">
+                    {t.hero.summary.slice(0, 115)}...
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 pt-0.5 sm:pt-1">
-                    <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-slate-200">
+                    <span className="rounded-full border border-slate-200 bg-slate-100 px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
                       Paris, France
                     </span>
-                    <span className="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-emerald-300">
-                      Open to Work
+                    <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                      {t.hero.openToWork}
                     </span>
                   </div>
                 </div>
               </div>
 
               {/* Specs Breakdown */}
-              <div className="mt-6 space-y-2.5 rounded-2xl border border-white/10 bg-black/40 p-4 text-xs">
-                <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                  <span className="text-slate-400">Core Focus</span>
-                  <span className="font-semibold text-white">GenAI Pipelines & SaaS Systems</span>
+              <div className="mt-6 space-y-2.5 rounded-2xl border border-slate-200/80 bg-slate-50/80 dark:border-white/10 dark:bg-black/40 p-4 text-xs">
+                <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-white/10 pb-2">
+                  <span className="text-slate-500 dark:text-slate-400">{t.hero.coreFocus}</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">{t.hero.coreFocusValue}</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                  <span className="text-slate-400">Primary Stack</span>
-                  <span className="font-semibold text-white">Python / FastAPI / Docker / AWS</span>
+                <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-white/10 pb-2">
+                  <span className="text-slate-500 dark:text-slate-400">{t.hero.primaryStack}</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">{t.hero.primaryStackValue}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Current Role</span>
-                  <span className="font-semibold text-white">EPITECH Paris (Pedagogical Asst.)</span>
+                  <span className="text-slate-500 dark:text-slate-400">{t.hero.currentRole}</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">{t.hero.currentRoleValue}</span>
                 </div>
               </div>
 
               {/* Social Quick Bar */}
-              <div className="mt-5 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
+              <div className="mt-5 flex items-center justify-between gap-3 border-t border-slate-200/80 dark:border-white/10 pt-4">
                 <a
                   href={profile.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 py-2 text-xs font-medium text-slate-200 transition hover:bg-white/10 hover:text-white"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/80 dark:border-white/10 dark:bg-white/5 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 transition hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-white/10 dark:hover:text-white"
                 >
                   <FiLinkedin /> LinkedIn
                 </a>
@@ -248,7 +250,7 @@ export default function AppleHero() {
                   href={profile.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 py-2 text-xs font-medium text-slate-200 transition hover:bg-white/10 hover:text-white"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/80 dark:border-white/10 dark:bg-white/5 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 transition hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-white/10 dark:hover:text-white"
                 >
                   <FiGithub /> GitHub
                 </a>
@@ -262,9 +264,9 @@ export default function AppleHero() {
           <a
             href="#stats"
             aria-label="Scroll down to explore"
-            className="flex flex-col items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 transition hover:text-white"
+            className="flex flex-col items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition"
           >
-            <span>Explore</span>
+            <span>{t.hero.explore}</span>
             <motion.div
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}

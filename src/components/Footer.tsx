@@ -1,21 +1,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiGithub, FiLinkedin, FiMail, FiPhone, FiArrowUp } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiPhone, FiArrowUp, FiSun, FiMoon, FiGlobe } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Footer() {
+  const { lang, toggleLang, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="mt-28 border-t border-white/[0.08] bg-black/60 backdrop-blur-2xl">
+    <footer className="mt-28 border-t border-slate-200/90 bg-white/85 text-slate-800 backdrop-blur-2xl dark:border-white/[0.08] dark:bg-black/60 dark:text-slate-100 transition-colors duration-200">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_0.8fr_1fr]">
           {/* Brand & Summary */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full ring-2 ring-indigo-400/40 shadow-[0_0_15px_rgba(99,102,241,0.4)]">
+              <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full ring-2 ring-indigo-400/40 shadow-[0_0_15px_rgba(99,102,241,0.35)]">
                 <Image
                   src="https://portfolio-image-moiz.s3.eu-north-1.amazonaws.com/WhatsApp+Image+2025-09-25+at+5.49.35+PM.jpeg"
                   alt="Muhammad Abdul Moiz"
@@ -24,23 +29,52 @@ export default function Footer() {
                   className="object-cover"
                 />
               </div>
-              <span className="text-base font-bold text-white">Muhammad Abdul Moiz</span>
+              <span className="text-base font-bold text-slate-900 dark:text-white">Muhammad Abdul Moiz</span>
             </div>
-            <p className="max-w-sm text-sm leading-relaxed text-slate-400">
-              Software & Machine Learning Engineer based in Paris. Focused on production GenAI pipelines, high-throughput backend services, and automated DevOps infrastructure.
+            <p className="max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              {t.footer.brandBio}
             </p>
+
+            {/* Language & Theme Controls */}
+            <div className="flex items-center gap-2 pt-2">
+              <button
+                onClick={toggleLang}
+                className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                <FiGlobe size={13} className="text-indigo-500" />
+                <span>{lang === 'en' ? 'Version Française' : 'English Version'}</span>
+              </button>
+
+              <button
+                onClick={toggleTheme}
+                aria-label={t.nav.toggleThemeAria}
+                className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                {theme === 'dark' ? (
+                  <>
+                    <FiSun size={13} className="text-amber-400" />
+                    <span>{t.nav.themeLight}</span>
+                  </>
+                ) : (
+                  <>
+                    <FiMoon size={13} className="text-indigo-600" />
+                    <span>{t.nav.themeDark}</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Navigation Links */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-              Navigation
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+              {t.footer.navHeading}
             </p>
-            <div className="mt-4 flex flex-col gap-2.5 text-sm text-slate-300">
-              <Link href="/#overview" className="transition hover:text-white">Overview</Link>
-              <Link href="/#projects" className="transition hover:text-white">Selected Projects</Link>
-              <Link href="/#experience" className="transition hover:text-white">Experience Timeline</Link>
-              <Link href="/#skills" className="transition hover:text-white">Technical Ecosystem</Link>
+            <div className="mt-4 flex flex-col gap-2.5 text-sm text-slate-600 dark:text-slate-300">
+              <Link href="/#overview" className="transition hover:text-indigo-600 dark:hover:text-white">{t.footer.overview}</Link>
+              <Link href="/#projects" className="transition hover:text-indigo-600 dark:hover:text-white">{t.footer.selectedProjects}</Link>
+              <Link href="/#experience" className="transition hover:text-indigo-600 dark:hover:text-white">{t.footer.experienceTimeline}</Link>
+              <Link href="/#skills" className="transition hover:text-indigo-600 dark:hover:text-white">{t.footer.technicalEcosystem}</Link>
               <Link
                 href="/#chat"
                 onClick={() => {
@@ -48,48 +82,48 @@ export default function Footer() {
                     window.dispatchEvent(new CustomEvent('open-chat'));
                   }
                 }}
-                className="text-indigo-400 transition hover:text-indigo-300"
+                className="text-indigo-600 font-semibold transition hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
               >
-                AI Assistant
+                {t.footer.aiAssistant}
               </Link>
-              <Link href="/about" className="transition hover:text-white">About Moiz</Link>
-              <Link href="/contact" className="transition hover:text-white">Contact</Link>
+              <Link href="/about" className="transition hover:text-indigo-600 dark:hover:text-white">{t.footer.aboutMoiz}</Link>
+              <Link href="/contact" className="transition hover:text-indigo-600 dark:hover:text-white">{t.footer.contact}</Link>
             </div>
           </div>
 
           {/* Contact Details */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-              Direct Contact
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+              {t.footer.contactHeading}
             </p>
-            <div className="mt-4 space-y-3 text-sm text-slate-300">
+            <div className="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-300">
               <a
                 href="mailto:amoiz0468@gmail.com"
-                className="flex items-center gap-2.5 transition hover:text-white"
+                className="flex items-center gap-2.5 transition hover:text-indigo-600 dark:hover:text-white"
               >
-                <FiMail className="text-indigo-400" size={15} /> amoiz0468@gmail.com
+                <FiMail className="text-indigo-500 dark:text-indigo-400" size={15} /> amoiz0468@gmail.com
               </a>
               <a
                 href="tel:+33759247911"
-                className="flex items-center gap-2.5 transition hover:text-white"
+                className="flex items-center gap-2.5 transition hover:text-indigo-600 dark:hover:text-white"
               >
-                <FiPhone className="text-indigo-400" size={15} /> +33 7 59 24 79 11
+                <FiPhone className="text-indigo-500 dark:text-indigo-400" size={15} /> +33 7 59 24 79 11
               </a>
               <a
                 href="https://linkedin.com/in/moizghauri"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 transition hover:text-white"
+                className="flex items-center gap-2.5 transition hover:text-indigo-600 dark:hover:text-white"
               >
-                <FiLinkedin className="text-indigo-400" size={15} /> linkedin.com/in/moizghauri
+                <FiLinkedin className="text-indigo-500 dark:text-indigo-400" size={15} /> linkedin.com/in/moizghauri
               </a>
               <a
                 href="https://github.com/amoiz0468"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 transition hover:text-white"
+                className="flex items-center gap-2.5 transition hover:text-indigo-600 dark:hover:text-white"
               >
-                <FiGithub className="text-indigo-400" size={15} /> github.com/amoiz0468
+                <FiGithub className="text-indigo-500 dark:text-indigo-400" size={15} /> github.com/amoiz0468
               </a>
             </div>
 
@@ -99,9 +133,9 @@ export default function Footer() {
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={scrollToTop}
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:bg-slate-200 hover:text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
               >
-                <FiArrowUp size={13} /> Back to top
+                <FiArrowUp size={13} /> {t.footer.backToTop}
               </motion.button>
             </div>
           </div>

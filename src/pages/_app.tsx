@@ -8,6 +8,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PortfolioChat from '../components/PortfolioChat';
 import MobileBottomNav from '../components/MobileBottomNav';
+import { ThemeProvider } from '../context/ThemeContext';
+import { LanguageProvider } from '../context/LanguageContext';
 
 export default function App({ Component, pageProps, router }: AppProps & { router: { route: string } }) {
   useEffect(() => {
@@ -78,43 +80,45 @@ export default function App({ Component, pageProps, router }: AppProps & { route
   }, []);
 
   return (
-    <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
-        <meta name="theme-color" content="#030712" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Moiz" />
-        <meta name="application-name" content="Moiz" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <link rel="manifest" href="/manifest.webmanifest" />
-      </Head>
-      <div className="min-h-screen bg-[#030712] text-slate-100 selection:bg-indigo-500/30 selection:text-white pb-16 md:pb-0">
-        <Navbar />
-        <main className="flex-1">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={router.route}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Component {...pageProps} />
-            </motion.div>
-          </AnimatePresence>
-        </main>
-        <Footer />
-        {/* Native Mobile Bottom Navigation Bar */}
-        <MobileBottomNav />
-        {/* Global Floating Chat Bubble */}
-        <PortfolioChat />
-      </div>
-    </>
+    <ThemeProvider>
+      <LanguageProvider>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+          <meta name="theme-color" content="#4f46e5" />
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta name="apple-mobile-web-app-title" content="Moiz" />
+          <meta name="application-name" content="Moiz" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <link rel="manifest" href="/manifest.webmanifest" />
+        </Head>
+        <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-indigo-500/25 selection:text-indigo-900 dark:bg-[#030712] dark:text-slate-100 dark:selection:bg-indigo-500/30 dark:selection:text-white pb-16 md:pb-0 transition-colors duration-200">
+          <Navbar />
+          <main className="flex-1">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={router.route}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Component {...pageProps} />
+              </motion.div>
+            </AnimatePresence>
+          </main>
+          <Footer />
+          {/* Native Mobile Bottom Navigation Bar */}
+          <MobileBottomNav />
+          {/* Global Floating Chat Bubble */}
+          <PortfolioChat />
+        </div>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
