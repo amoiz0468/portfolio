@@ -63,6 +63,17 @@ describe('Localization & Theme: Translation Parity and Integrity', () => {
     }
   });
 
+  test('contactPage has valid Web3Forms status labels and placeholders in EN and FR', () => {
+    assert.equal(translations.en.contactPage.formSubmit, 'Send Message');
+    assert.equal(translations.fr.contactPage.formSubmit, 'Envoyer le Message');
+    assert.equal(translations.en.contactPage.formSubmitting, 'Sending Message...');
+    assert.equal(translations.fr.contactPage.formSubmitting, 'Envoi en cours...');
+    assert.ok(translations.en.contactPage.formSuccess.length > 10);
+    assert.ok(translations.fr.contactPage.formSuccess.length > 10);
+    assert.ok(translations.en.contactPage.formError.length > 10);
+    assert.ok(translations.fr.contactPage.formError.length > 10);
+  });
+
   test('strictly ZERO emojis in both English and French translation dictionaries', () => {
     const jsonEn = JSON.stringify(translations.en);
     const jsonFr = JSON.stringify(translations.fr);

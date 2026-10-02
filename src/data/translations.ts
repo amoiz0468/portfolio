@@ -179,6 +179,9 @@ export interface Translations {
     formMessage: string;
     formMessagePlaceholder: string;
     formSubmit: string;
+    formSubmitting: string;
+    formSuccess: string;
+    formError: string;
     linkedinLabel: string;
     githubLabel: string;
   };
@@ -641,6 +644,9 @@ export const translations: Record<Language, Translations> = {
       formMessage: 'Project or Opportunity Details',
       formMessagePlaceholder: "Tell me about your team, tech stack, and what you're building...",
       formSubmit: 'Send Message',
+      formSubmitting: 'Sending Message...',
+      formSuccess: 'Thank you! Your message has been sent successfully. I will get back to you shortly.',
+      formError: 'An error occurred while sending your message. Please try again or reach out directly by email.',
       linkedinLabel: 'LinkedIn Profile',
       githubLabel: 'GitHub Profile',
     },
@@ -1116,6 +1122,9 @@ Ask me anything about my production engineering background, DevOps Software Fact
       formMessage: 'Détails du Projet ou Opportunité',
       formMessagePlaceholder: 'Présentez votre équipe, vos technologies et vos objectifs...',
       formSubmit: 'Envoyer le Message',
+      formSubmitting: 'Envoi en cours...',
+      formSuccess: 'Merci ! Votre message a bien ete envoye. Je vous repondrai dans les plus brefs delais.',
+      formError: "Une erreur s'est produite lors de l'envoi de votre message. Veuillez reessayer ou me contacter par email.",
       linkedinLabel: 'Profil LinkedIn',
       githubLabel: 'Profil GitHub',
     },
