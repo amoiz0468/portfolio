@@ -139,7 +139,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         model: groqModel,
         messages: [{ role: 'system', content: systemPrompt }, ...validMessages],
         maxTokens: 450,
-        temperature: 0.7,
+        temperature: 0.3,
       });
       if (reply) {
         return res.status(200).json({ reply: cleanReplyText(reply), provider: 'groq' });

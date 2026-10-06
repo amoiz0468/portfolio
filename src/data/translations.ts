@@ -739,7 +739,7 @@ Feel free to ask me anything about my background, engineering work at [Brackets 
       coreFocus: 'Spécialisation',
       coreFocusValue: 'Pipelines GenAI & Systèmes SaaS',
       primaryStack: 'Stack Principale',
-      primaryStackValue: 'Python / Django/ FastAPI / Docker / AWS',
+      primaryStackValue: 'Python / Django / FastAPI / Docker / AWS',
       currentRole: 'Poste Actuel',
       currentRoleValue: 'EPITECH Paris (Assistant Pédagogique)',
       openToWork: 'Disponible',

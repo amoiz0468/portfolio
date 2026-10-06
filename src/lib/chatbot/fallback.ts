@@ -749,6 +749,17 @@ He combines theoretical depth (BSCS from FAST-NUCES) with hands-on systems archi
 ~ Fast contact: ${profile.email}`;
   }
 
+  // 21. OFF-TOPIC & UNRELATED QUERIES GUARD
+  if (
+    /^(what is the (capital|weather|meaning of life|president)|who is (elon|donald|joe|obama|messi|ronaldo|bill gates)|solve|calculate|\d+\s*[\+\-\*\/]\s*\d+|how to (cook|bake|make|fix|build a house)|tell me a (joke|riddle|story)|write (me )?(a )?(poem|song|story|essay|script|code for|program for|function to))\b/i.test(q)
+  ) {
+    return `I am exclusively dedicated to representing **Muhammad Abdul Moiz**.
+
+I only answer questions regarding Moiz's professional engineering background, projects, technical skills (DevOps, Cloud, AI, Full-Stack), education, and work availability.
+
+Please feel free to ask about his featured projects (DoctorIQ, Brackets Genie), his experience at [Brackets Private Limited](https://www.bracketsltd.com/) and [EPITECH Paris](https://www.epitech.eu/en/), or his technical stack!`;
+  }
+
   // 23. INTELLIGENT COMPREHENSIVE DEFAULT (3 Dynamic Variants, never rigid or repetitive)
   const defaultVariants = [
     `I'm here to help as Muhammad Abdul Moiz's AI twin. You can explore:

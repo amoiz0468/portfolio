@@ -319,6 +319,15 @@ Voici ce que j'apporte concrètement à une équipe d'ingénierie de haut niveau
 ~ Contact direct : ${profile.email}`;
   }
 
+  // 9b. GARDE-FOU HORS-SUJET / OFF-TOPIC
+  if (
+    /^(quelle est la (capitale|m[eé]t[eé]o)|qui est (le pr[eé]sident|elon|bill|steve|donald|joe|obama|macron)|r[eé]sous|calcule|\d+\s*[\+\-\*\/]\s*\d+|comment (cuisiner|faire un g[aâ]teau|r[eé]parer)|raconte(z)?-(moi )?une (blague|histoire)|[eé]cris-(moi )?(un |une )?(po[eè]me|chanson|histoire|dissertation|script|code pour|programme pour))\b/i.test(q)
+  ) {
+    return `En tant que double numérique de **Muhammad Abdul Moiz**, je réponds exclusivement aux questions concernant son profil professionnel, ses projets d'ingénierie, ses compétences techniques (DevOps, Cloud, IA, Full-Stack) ou ses disponibilités.
+
+N'hésitez pas à me poser une question sur ses réalisations concrètes (*DoctorIQ*, *Brackets Genie*), son expérience chez [Brackets Private Limited](https://www.bracketsltd.com/) et [EPITECH Paris](https://www.epitech.eu/en/), ou sa stack technique !`;
+  }
+
   // 10. DEFAULT FRENCH FALLBACK (3 Dynamic Variations, concise & non-repetitive)
   const defaultVariants = [
     `Je suis à votre disposition en tant que double numérique IA de **Muhammad Abdul Moiz**. Vous pouvez explorer :

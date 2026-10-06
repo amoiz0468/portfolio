@@ -125,8 +125,18 @@ test('Chatbot Engine: System Prompt Guidelines', async (t) => {
     assert.match(prompt, /CRITICAL RULE: NEVER USE EMOJIS/);
     assert.match(prompt, /DevOps & Infrastructure Focus/);
     assert.match(prompt, /CI\/CD Automation/);
-    assert.match(prompt, /Intelligent Clickable Follow-up Questions/);
+    assert.match(prompt, /STRICT SCOPE & TOPIC RESTRICTION/);
     assert.equal(EMOJI_REGEX.test(prompt), false);
+  });
+
+  await t.test('politely declines off-topic and unrelated inquiries in fallback mode', () => {
+    const replyEn = generateHumanFallbackReply([{ role: 'user', content: 'What is the capital of Australia?' }]);
+    assert.match(replyEn, /exclusively dedicated to representing/i);
+    assert.equal(EMOJI_REGEX.test(replyEn), false);
+
+    const replyFr = generateHumanFallbackReply([{ role: 'user', content: 'Quelle est la capitale de la France ?' }], 'fr');
+    assert.match(replyFr, /exclusivement aux questions concernant son profil/i);
+    assert.equal(EMOJI_REGEX.test(replyFr), false);
   });
 });
 
