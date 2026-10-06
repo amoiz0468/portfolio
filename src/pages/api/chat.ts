@@ -56,6 +56,18 @@ export function sanitizeText(str: string): string {
     .trim();
 }
 
+/**
+ * Strips any suggested inquiries, question lists, or trailing prompt chips
+ */
+export function cleanReplyText(text: string): string {
+  if (!text) return '';
+  return text
+    .replace(/\n*###\s*(?:Suggested Inquiries|Questions Recommand[ée]es|Suggestions de questions)[\s\S]*$/i, '')
+    .replace(/^[-*]?\s*[?~]\s+.*$/gm, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Defensive Security Headers
   res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -130,7 +142,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         temperature: 0.7,
       });
       if (reply) {
-        return res.status(200).json({ reply, provider: 'groq' });
+        return res.status(200).json({ reply: cleanReplyText(reply), provider: 'groq' });
       }
     } catch (err: any) {
       console.warn('Groq provider skipped:', err?.message || err);
@@ -148,7 +160,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const reply = await callGeminiApi(geminiKey, geminiModel, conversationText);
       if (reply) {
-        return res.status(200).json({ reply, provider: 'gemini' });
+        return res.status(200).json({ reply: cleanReplyText(reply), provider: 'gemini' });
       }
     } catch (err: any) {
       console.warn('Gemini provider skipped:', err?.message || err);
@@ -166,7 +178,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         messages: [{ role: 'system', content: systemPrompt }, ...validMessages],
       });
       if (reply) {
-        return res.status(200).json({ reply, provider: 'openai' });
+        return res.status(200).json({ reply: cleanReplyText(reply), provider: 'openai' });
       }
     } catch (err: any) {
       console.warn('OpenAI provider skipped:', err?.message || err);
@@ -184,7 +196,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         messages: [{ role: 'system', content: systemPrompt }, ...validMessages],
       });
       if (reply) {
-        return res.status(200).json({ reply, provider: 'together' });
+        return res.status(200).json({ reply: cleanReplyText(reply), provider: 'together' });
       }
     } catch (err: any) {
       console.warn('Together AI provider skipped:', err?.message || err);
@@ -194,7 +206,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // 5. Intelligent, zero-dependency Human Fallback Engine
   try {
     const fallbackReply = generateHumanFallbackReply(validMessages, activeLang);
-    return res.status(200).json({ reply: fallbackReply, provider: 'intelligent-engine' });
+    return res.status(200).json({ reply: cleanReplyText(fallbackReply), provider: 'intelligent-engine' });
   } catch (fallbackErr: any) {
     console.error('Fallback generation error:', fallbackErr);
     return res.status(200).json({

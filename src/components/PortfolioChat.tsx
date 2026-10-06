@@ -167,35 +167,25 @@ function FormattedText({
   content: string;
   onPromptClick?: (query: string) => void;
 }) {
-  const rawParagraphs = content.split(/\n{2,}/);
+  // Strip any suggested inquiries blocks from rendered messages
+  const cleanedContent = content
+    .replace(/\n*###\s*(?:Suggested Inquiries|Questions Recommand[ée]es|Suggestions de questions)[\s\S]*$/i, '')
+    .trim();
+
+  const rawParagraphs = cleanedContent
+    .split(/\n{2,}/)
+    .filter((para) => {
+      const trimmed = para.trim();
+      if (!trimmed) return false;
+      if (/^###\s*(?:Suggested|Questions Recommand|Suggestions)/i.test(trimmed)) return false;
+      const lines = trimmed.split('\n').map((l) => l.trim()).filter(Boolean);
+      return !lines.every((l) => l.startsWith('? ') || l.startsWith('~ ') || /^[-*]\s+[?~]\s+/.test(l));
+    });
 
   return (
     <div className="space-y-3 text-xs leading-relaxed text-slate-800 dark:text-slate-200">
       {rawParagraphs.map((para, pIdx) => {
         const lines = para.split('\n').map((l) => l.trim()).filter(Boolean);
-
-        // Interactive inquiries block: intelligently mixes clickable questions (?) and non-clickable suggestions (~)
-        const isInquiryBlock =
-          lines.length > 0 &&
-          lines.every(
-            (l) =>
-              l.startsWith('? ') ||
-              l.startsWith('~ ') ||
-              /^[-*]\s+[?~]\s+/.test(l)
-          );
-        if (isInquiryBlock) {
-          return (
-            <div key={pIdx} className="my-1.5 space-y-1.5">
-              {lines.map((line, lIdx) => {
-                const isClickable = line.startsWith('? ') || /^[-*]\s+\?\s+/.test(line);
-                const text = line.replace(/^(?:[-*]\s+)?[?~]\s+/, '').trim();
-                return isClickable
-                  ? renderQuestionCard(text, lIdx, onPromptClick)
-                  : renderSuggestionCard(text, lIdx);
-              })}
-            </div>
-          );
-        }
 
         const isBulletList = lines.length > 0 && lines.every((l) => l.startsWith('- ') || l.startsWith('* '));
         if (isBulletList) {
@@ -270,14 +260,31 @@ function renderInlineStyles(text: string): ReactNode {
     const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (linkMatch) {
       const href = linkMatch[2];
-      const isSafe = /^https?:\/\//i.test(href) || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('/');
+      const isSafe =
+        /^https?:\/\//i.test(href) ||
+        href.startsWith('mailto:') ||
+        href.startsWith('tel:') ||
+        href.startsWith('/') ||
+        href.startsWith('#');
       const safeHref = isSafe ? href : '#';
       const isExternal = /^https?:\/\//i.test(safeHref);
+      const isHash = safeHref.startsWith('#');
+
+      const handleLinkClick = isHash
+        ? (e: React.MouseEvent) => {
+            const targetEl = document.querySelector(safeHref);
+            if (targetEl) {
+              e.preventDefault();
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        : undefined;
 
       return (
         <a
           key={i}
           href={safeHref}
+          onClick={handleLinkClick}
           target={isExternal ? '_blank' : undefined}
           rel={isExternal ? 'noopener noreferrer' : undefined}
           className="font-semibold text-indigo-600 underline decoration-indigo-400/50 underline-offset-2 transition hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-200"

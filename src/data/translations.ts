@@ -667,13 +667,7 @@ export const translations: Record<Language, Translations> = {
       headerStatus: 'Online • Paris',
       initialMessage: `Hello! I'm **Muhammad Abdul Moiz**'s AI twin.
 
-Ask me anything about my production engineering background, DevOps Software Factory capabilities, or 8 featured inventions.
-
-### Suggested Inquiries:
-? Do you have experiences of DevOps and what services do you offer as DevOps?
-? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-? What are your passions and hobbies outside of work (cooking, travel, etc.)?
-? Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).`,
+Feel free to ask me anything about my background, engineering work at [Brackets Private Limited](#experience) & [EPITECH Paris](#experience), featured [projects](#projects), or technical skills.`,
       inputPlaceholder: 'Ask about DevOps, AI projects, stack, or Paris alternance...',
       sendButtonAria: 'Send message',
       clearChatAria: 'Clear conversation history',
@@ -1150,13 +1144,7 @@ Ask me anything about my production engineering background, DevOps Software Fact
       headerStatus: 'En ligne • Paris',
       initialMessage: `Bonjour ! Je suis le double numérique IA de **Muhammad Abdul Moiz**.
 
-Posez-moi vos questions sur mon parcours d'ingénierie, mes compétences en Software Factory DevOps, ou mes 8 projets phares.
-
-### Questions Recommandées :
-? Avez-vous de l'expérience en DevOps et quels services proposez-vous en DevOps ?
-? Pourquoi un recruteur devrait-il choisir Muhammad Abdul Moiz pour un poste d'ingénieur ?
-? Quels sont vos centres d'intérêt en dehors du travail (cuisine, voyages, etc.) ?
-? Présentez-moi vos projets majeurs (DoctorIQ, Brackets Genie, Ledgeroo, VIF).`,
+N'hésitez pas à me poser vos questions sur mon parcours, mon expérience chez [Brackets Private Limited](#experience) et [EPITECH Paris](#experience), mes [projets](#projects) ou mes compétences techniques.`,
       inputPlaceholder: "Posez votre question sur DevOps, projets IA, stack ou alternance à Paris...",
       sendButtonAria: 'Envoyer le message',
       clearChatAria: 'Effacer l historique de discussion',
