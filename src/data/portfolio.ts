@@ -2,6 +2,7 @@ export const profile = {
   name: 'Muhammad Abdul Moiz',
   title: 'Machine Learning Engineer • GenAI & MLOps Specialist • Full-Stack & DevOps Engineer',
   location: 'Paris, France',
+  origin: 'Pakistan (born and raised in Pakistan, currently living in Paris, France)',
   phone: '+33 7 59 24 79 11',
   email: 'amoiz0468@gmail.com',
   linkedin: 'https://linkedin.com/in/moizghauri',
@@ -70,7 +71,7 @@ export const education = [
   },
   {
     title: 'Bachelor of Science in Computer Science (BSCS)',
-    school: 'FAST-NUCES',
+    school: 'FAST-NUCES (Pakistan)',
     period: '2020 – 2024',
   },
 ];

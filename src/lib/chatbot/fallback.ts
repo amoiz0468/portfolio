@@ -46,12 +46,12 @@ export function generateHumanFallbackReply(messages: ChatMessage[], lang: 'en' |
 I'm **Muhammad Abdul Moiz**'s AI twin. You can explore:
 - **DevOps & Cloud Software Factory**: CI/CD automation, Docker containerization, AWS/GCP deployments, SonarQube & DORA metrics
 - **Why Hire Moiz**: High-throughput microservices, GenAI pipelines, multi-step agents & mentoring leadership
-- **Studies & Roles**: MSc at **EPITECH Paris** (Pedagogical Assistant) & BSCS at **FAST-NUCES**
-- **Target Opportunity**: Seeking a **12-Month Alternance (from Sept 2026)** or CDI/CDD in Paris/Remote
+- **Studies & Roles**: MSc at **EPITECH Paris** (Pedagogical Assistant) & BSCS at **FAST-NUCES** (Pakistan)
+- **Status & Opportunity**: Alternance at **EPITECH Paris** (Sept 2026 – Sept 2027), seeking future CDI/CDD in Paris/Remote
 
 ### Suggested Inquiries:
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
-~ Available for a 12-Month Alternance in Paris starting September 2026
+~ Alternance at EPITECH (Sept 2026 – Sept 2027) • Future CDI/CDD
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
 ~ Master of Science at EPITECH Paris & BSCS from FAST-NUCES`,
 
@@ -59,12 +59,12 @@ I'm **Muhammad Abdul Moiz**'s AI twin. You can explore:
 
 I'm his AI representative, ready to answer questions concisely:
 - **Production Systems**: Python (FastAPI/Django) backends, Docker CI/CD, and LangGraph agents.
-- **Background**: Born on **October 16, 2002** (23 years old), based in Paris, teaching at EPITECH.
-- **Next Step**: Seeking a 12-Month Alternance in Paris or remote from September 2026.
+- **Background**: Born October 16, 2002 (23 years old), born & raised in Pakistan, currently based in Paris.
+- **Next Step**: Completing alternance at EPITECH Paris (Sept 2026 – Sept 2027), open to future CDI/CDD roles.
 
 ### Suggested Inquiries:
 ? Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).
-~ Seeking a 12-Month Alternance from September 2026 in Paris or Remote
+~ Alternance at EPITECH Paris • Seeking future CDI/CDD
 ? How old are you and what is your academic background?
 ~ English C1 fluent, French B1 working, native Urdu`,
 
@@ -72,8 +72,8 @@ I'm his AI representative, ready to answer questions concisely:
 
 Feel free to ask me anything about Moiz's engineering career, tech stack, or availability:
 - **Core Engineering**: Scalable APIs, Dockerized workflows, and automated release gates.
-- **Academic Track**: MSc in Information Technology at EPITECH Paris & BSCS at FAST-NUCES.
-- **Status**: Born October 16, 2002 (23 years old), ready for an Alternance in Paris.
+- **Academic Track**: MSc in Information Technology at EPITECH Paris & BSCS at FAST-NUCES (Pakistan).
+- **Status**: Born October 16, 2002 (23 years old), born and raised in Pakistan, now living in Paris.
 
 ### Suggested Inquiries:
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
@@ -84,47 +84,49 @@ Feel free to ask me anything about Moiz's engineering career, tech stack, or ava
     return greetingVariants[varIdx];
   }
 
-  // 2. AGE, BIRTHDATE & BIRTH YEAR (Born October 16, 2002, 23 years old)
+  // 2. AGE, BIRTHDATE, HOMETOWN, ORIGIN & BIRTHPLACE (Born October 16, 2002, 23 years old, Pakistan -> Paris)
   if (
-    /\b(age|how\s+old|birthday|birth\s*date|date\s+of\s+birth|birth\s*year|year\s+of\s+birth|born)\b/i.test(q) ||
+    /\b(age|how\s+old|birthday|birth\s*date|date\s+of\s+birth|birth\s*year|year\s+of\s+birth|born|birth\s*place|hometown|home\s*town|where\s+(are\s+you|is\s+moiz)\s+from|from\s+where|nationality|country\s+of\s+origin|origin|where\s+did\s+(you|he)\s+grow\s+up|raised\s+in|raised)\b/i.test(q) ||
     /\b(moiz('s)?\s+age|his\s+age|your\s+age)\b/i.test(q)
   ) {
     const ageVariants = [
       `I was born on **October 16, 2002**, which makes me **23 years old**.
 
 Here is a quick snapshot:
-- **Academic Foundation**: Completed my Bachelor of Science in Computer Science (BSCS) at **FAST-NUCES** (2020–2024), now pursuing an MSc in IT at **EPITECH Paris** (2025–2027).
+- **Origin & Location**: Born and raised in **Pakistan** (hometown: Pakistan), and currently living in **Paris, France**.
+- **Academic Foundation**: Completed my Bachelor of Science in Computer Science (BSCS) at **FAST-NUCES** in Pakistan (2020–2024), now pursuing an MSc in IT at **EPITECH Paris** (2025–2027).
 - **Engineering & Mentorship**: Pedagogical Assistant at EPITECH Paris and former Software Engineer at Brackets, building high-throughput microservices and OCR-to-LLM pipelines (*DoctorIQ*).
-- **Target**: Actively seeking a **12-Month Alternance (starting September 2026)** or CDI/CDD in Paris/Remote.
+- **Target**: Currently completing an alternance at EPITECH Paris (Sept 2026 – Sept 2027), seeking future CDI/CDD opportunities after September 2027.
 
 ### Suggested Inquiries:
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-~ Born October 16, 2002 (23 years old), based in Paris
+~ Born and raised in Pakistan • Based in Paris (23 years old)
 ? Tell me about your featured projects (DoctorIQ, Brackets Genie, VIF).
 ~ Full working authorization in France with fluent English and working French`,
 
-      `Muhammad Abdul Moiz was born on **October 16, 2002** and is currently **23 years old**, living in **Paris, France**.
+      `Muhammad Abdul Moiz was born on **October 16, 2002** and is currently **23 years old**. He was **born and raised in Pakistan** and is currently living in **Paris, France**.
 
-He balances graduate studies at **EPITECH Paris** (MSc IT) with mentoring engineering cohorts as a Pedagogical Assistant. He holds a BSCS from **FAST-NUCES** and has 2+ years of production experience in Python backends, Docker, and GenAI agent systems.
+He balances graduate studies at **EPITECH Paris** (MSc IT) with mentoring engineering cohorts as a Pedagogical Assistant. He holds a BSCS from **FAST-NUCES** in Pakistan and has 2+ years of production experience in Python backends, Docker, and GenAI agent systems.
 
 ### Suggested Inquiries:
 ? Tell me about your role as Pedagogical Assistant at EPITECH Paris.
-~ Born October 16, 2002 with 2+ years of production microservices & DevOps experience
+~ Born and raised in Pakistan (23 years old), currently in Paris
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
-~ Seeking a 12-Month Alternance starting September 2026 in Paris or Remote`,
+~ Alternance at EPITECH (Sept 2026 – Sept 2027) • Future CDI/CDD`,
 
-      `Moiz was born on **October 16, 2002** (he is **23 years old**), based in **Paris, France**.
+      `Moiz was born on **October 16, 2002** (he is **23 years old**). He was **born and raised in Pakistan** and is currently based in **Paris, France**.
 
 He brings solid production engineering experience alongside academic foundations:
-- **Education**: BSCS from FAST-NUCES (2024) and MSc in IT at EPITECH Paris (2025–2027).
+- **Origin & Location**: Hometown is in Pakistan; currently residing and working in Paris, France.
+- **Education**: BSCS from FAST-NUCES in Pakistan (2020–2024) and MSc in IT at EPITECH Paris (2025–2027).
 - **Focus**: Python (FastAPI/Django), Docker CI/CD, Celery/Redis queues, and LangGraph agents.
-- **Next Milestone**: Ready for a **12-Month Alternance** starting September 2026 in Paris or remote.
+- **Current Milestone**: In alternance as Pedagogical Assistant at EPITECH Paris (Sept 2026 – Sept 2027), seeking future CDI/CDD roles after Sept 2027.
 
 ### Suggested Inquiries:
 ? What is your full backend and database tech stack?
-~ 23 years old, based in Paris, France
+~ Born and raised in Pakistan • Residing in Paris, France
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-~ Available for full-time Alternance from September 2026`,
+~ Looking for CDI/CDD opportunities after September 2027`,
     ];
     return ageVariants[varIdx];
   }
@@ -428,7 +430,7 @@ Here are the top 4 value drivers I bring to engineering teams:
 1. **Dual Engineering Depth**: Real production experience across asynchronous microservices (Python, FastAPI, Django, Celery, Docker, AWS) paired with applied GenAI agent systems (LangGraph).
 2. **Pedagogical Mentorship & Leadership**: As Pedagogical Assistant at **EPITECH Paris**, I mentor engineering cohorts daily. Proven cross-functional delivery leadership on *VIF*.
 3. **End-to-End Ownership**: From schema design, database optimization, and Dockerization to CI/CD release gates (SonarQube, DORA metrics) and reverse proxies.
-4. **Immediate Fit in Paris**: Fluent English (C1 - client-facing) and working French (B1.1). Seeking a **12-Month Alternance (September 2026)** with full French working rights.
+4. **Immediate Fit in Paris**: Fluent English (C1 - client-facing) and working French (B1.1). Currently in alternance at EPITECH Paris (Sept 2026 – Sept 2027), seeking future CDI/CDD opportunities with full French working rights.
 
 ### Suggested Inquiries:
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
@@ -442,8 +444,8 @@ If you are looking for an engineer who delivers business value from day one:
 
 - **Production-Ready & Reliable**: Built *DoctorIQ* cutting clinical turnaround by 70%, engineered real-time WebSockets with sub-50ms latency in *Brackets Genie*, and maintained 90%+ test coverage on *Trinity*.
 - **Versatile Across 5 Roles**: DevOps/Cloud Engineer, Backend Engineer, AI/GenAI Specialist, Full-Stack Developer, or Junior Web Project Manager.
-- **Academic Rigor**: Bachelor in Computer Science from FAST-NUCES (2024) + Master of Science in IT at EPITECH Paris (2025–2027).
-- **Status & Next Step**: Available for a **12-Month Alternance starting September 2026** (or CDI/CDD) in Paris or remote.
+- **Academic Rigor**: Bachelor in Computer Science from FAST-NUCES (Pakistan, 2024) + Master of Science in IT at EPITECH Paris (2025–2027).
+- **Status & Next Step**: Alternance at EPITECH Paris (Sept 2026 – Sept 2027), open to future CDI/CDD opportunities in Paris or remote.
 
 ### Suggested Inquiries:
 ? What roles and contracts are you available for in Paris?
@@ -636,20 +638,20 @@ Which project would you like to explore in detail?
 ? What is your current availability, working status, and location preference in Paris?
 ~ Fluent English C1, working French B1.1, native Urdu
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-~ Available for a 12-Month Alternance from September 2026`;
+~ Alternance at EPITECH (Sept 2026 – Sept 2027) • Open to future CDI/CDD`;
   }
 
-  // 21. LOCATION / PARIS
-  if (/location|paris|france|where (are you|do you live|based)/i.test(q)) {
-    return `I am currently based in **Paris, France**!
+  // 21. LOCATION / RESIDENCE
+  if (/location|paris|france|where (do you live|are you based|are you located)\b/i.test(q)) {
+    return `I am currently living and working in **Paris, France** (born and raised in Pakistan).
 
-I study and mentor at EPITECH Paris and am available for opportunities in Paris/Île-de-France (on-site or hybrid) as well as remote roles internationally.
+I study and mentor at EPITECH Paris and am available for opportunities in Paris/Île-de-France (on-site or hybrid) as well as remote roles.
 
 ### Suggested Inquiries:
 ? What is your current availability, working status, and location preference in Paris?
-~ Based in Paris, France with full working rights
+~ Born in Pakistan, currently living in Paris, France
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-~ Seeking a 12-Month Alternance starting September 2026`;
+~ Alternance at EPITECH Paris • Future CDI/CDD`;
   }
 
   // 22. AVAILABILITY, ALTERNANCE & TARGET OPPORTUNITY
@@ -716,23 +718,23 @@ Moiz started his alternance as **Pedagogical Assistant at EPITECH Paris** in **S
   // 19. WHO ARE YOU / BIO
   if (/(who are you|about you|tell me about yourself|introduce yourself|bio|summary)/i.test(q)) {
     const bioVariants = [
-      `I'm **Muhammad Abdul Moiz**, a Software & Machine Learning Engineer based in Paris (born October 16, 2002, 23 years old).
+      `I'm **Muhammad Abdul Moiz**, a Software & Machine Learning Engineer based in Paris (born October 16, 2002, 23 years old). I was **born and raised in Pakistan** and currently reside in **Paris, France**.
 
 Currently pursuing an **MSc in IT at EPITECH Paris** while mentoring student cohorts as a **Pedagogical Assistant**. Previously, I was an **Associate Software Engineer at Brackets**, building high-throughput microservices, Dockerized pipelines, and multimodal OCR-to-LLM systems (*DoctorIQ*).
 
 ### Suggested Inquiries:
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-~ Born October 16, 2002 (23 years old), based in Paris
+~ Born & raised in Pakistan (23 years old), based in Paris
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
 ~ Full working authorization in France with fluent English and working French`,
 
-      `I represent Muhammad Abdul Moiz, a Paris-based Software & ML Engineer (born October 16, 2002, 23 years old).
+      `I represent Muhammad Abdul Moiz, a Software & ML Engineer based in Paris (born October 16, 2002, 23 years old; born and raised in Pakistan).
 
-He combines theoretical depth (BSCS from FAST-NUCES) with hands-on systems architecture at EPITECH Paris and industry experience at Brackets. He specializes in Python backends (FastAPI/Django), automated CI/CD, and agentic workflows.
+He combines theoretical depth (BSCS from FAST-NUCES in Pakistan) with hands-on systems architecture at EPITECH Paris and industry experience at Brackets. He specializes in Python backends (FastAPI/Django), automated CI/CD, and agentic workflows.
 
 ### Suggested Inquiries:
 ? Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).
-~ Available for a 12-Month Alternance starting September 2026
+~ In alternance at EPITECH (Sept 2026 – Sept 2027) • Future CDI/CDD
 ? What is your full backend and database tech stack?
 ~ Contact directly: ${profile.email}`,
     ];
@@ -768,16 +770,16 @@ Please feel free to ask about his featured projects (DoctorIQ, Brackets Genie), 
 - **DevOps & Cloud**: GitLab CI, GitHub Actions, Docker, AWS & GCP deployments, SonarQube, and DORA metrics
 - **Experience**: Teaching at **EPITECH Paris** & backend engineering at **Brackets Private Limited**
 - **Featured Projects**: *DoctorIQ* (healthcare OCR), *Brackets Genie* (real-time WebSockets), and *Ledgeroo*
-- **Target Opportunity**: Seeking a **12-Month Alternance (September 2026)** or CDI/CDD in Paris/Remote
+- **Status & Opportunity**: In alternance at EPITECH Paris (Sept 2026 – Sept 2027), open to future CDI/CDD roles
 - **Direct Contact**: Reach me directly at \`${profile.email}\`
 
 ### Suggested Inquiries:
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
-~ Available for a 12-Month Alternance in Paris starting September 2026
+~ Alternance at EPITECH Paris • Future CDI/CDD
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-~ Master of Science at EPITECH Paris & BSCS from FAST-NUCES`,
+~ Master of Science at EPITECH Paris & BSCS from FAST-NUCES (Pakistan)`,
 
-    `I represent Muhammad Abdul Moiz, a Software & Machine Learning Engineer based in Paris (born October 16, 2002, 23 years old).
+    `I represent Muhammad Abdul Moiz, a Software & Machine Learning Engineer based in Paris (born October 16, 2002, 23 years old; born and raised in Pakistan).
 
 Feel free to ask me about:
 - **Core Engineering**: Python (FastAPI/Django) backends, Docker automation, and LangGraph agent pipelines.
@@ -795,13 +797,13 @@ Feel free to ask me about:
 Key areas you can explore:
 - **Cloud & DevOps**: Multi-stage Docker builds, automated CI/CD pipelines, and AWS/GCP deployments.
 - **Leadership & Teaching**: Mentoring engineering cohorts at EPITECH Paris and tracking DORA metrics.
-- **Opportunity**: Seeking a **12-Month Alternance in Paris from September 2026** with full working rights in France.
+- **Opportunity**: Alternance at EPITECH Paris (Sept 2026 – Sept 2027), seeking future CDI/CDD in Paris/Remote with full French work rights.
 
 ### Suggested Inquiries:
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
 ~ English C1 fluent, French B1 working, native Urdu
 ? What are your passions and hobbies outside of work?
-~ Seeking 12-Month Alternance starting September 2026`,
+~ Looking for future CDI/CDD opportunities after September 2027`,
   ];
 
   return defaultVariants[varIdx];

@@ -546,7 +546,7 @@ export const translations: Record<Language, Translations> = {
         },
         {
           title: 'Bachelor of Science in Computer Science (BSCS)',
-          school: 'FAST-NUCES',
+          school: 'FAST-NUCES (Pakistan)',
           period: '2020 – 2024',
           focus: 'Data structures, algorithms, machine learning, and operating systems.',
         },
@@ -1023,7 +1023,7 @@ Feel free to ask me anything about my background, engineering work at [Brackets 
         },
         {
           title: 'Bachelor of Science in Computer Science (BSCS)',
-          school: 'FAST-NUCES',
+          school: 'FAST-NUCES (Pakistan)',
           period: '2020 – 2024',
           focus: 'Structures de données, algorithmes, machine learning et systèmes d exploitation.',
         },

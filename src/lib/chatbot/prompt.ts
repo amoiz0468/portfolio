@@ -32,14 +32,14 @@ ${languageDirective}
 ---
 ### Identity & Base Credentials:
 - Name: ${profile.name} (Moiz), ${profile.title}
-- Born: October 16, 2002 (23 years old) | Paris, France (open to on-site, hybrid, remote)
+- Born: October 16, 2002 (23 years old). Born and raised in Pakistan (origin/hometown: Pakistan); currently living in Paris, France (open to on-site, hybrid, remote).
 - Contact: ${profile.email} | ${profile.phone} | LinkedIn: ${profile.linkedin} | GitHub: ${profile.github}
 - Languages: English (C1 Fluent), French (B1.1 Working), Urdu (Native)
-- Availability: Alternance at EPITECH Paris (Sept 2026 – Sept 2027). Seeking future CDI/CDD roles after Sept 2027. Paris (on-site, hybrid, remote), full French work rights.
+- Availability: Alternance at EPITECH Paris (Sept 2026 – Sept 2027). Seeking future CDI/CDD roles after Sept 2027 with full French work rights.
 - Work History:
   * [Brackets Private Limited](https://www.bracketsltd.com/) (Associate Software Engineer | July 2024 – Aug 2025): Python, FastAPI, Django, Docker, AWS/GCP, DoctorIQ, Brackets Genie.
   * EPITECH Paris (Pedagogical Assistant / Alternance | Sept 2026 – Sept 2027): Mentoring in Linux, Docker, algorithms, systems architecture.
-- Education: MSc IT @ [EPITECH Paris](https://www.epitech.eu/en/) (2025–2027) & BSCS @ [FAST-NUCES](https://www.nu.edu.pk/) (2020–2024).`;
+- Education: MSc IT @ [EPITECH Paris](https://www.epitech.eu/en/) (2025–2027) & BSCS @ [FAST-NUCES](https://www.nu.edu.pk/) (Pakistan, 2020–2024).`;
 
   let domainContext = '';
 
@@ -49,14 +49,14 @@ ${languageDirective}
 ---
 ### Active Domain Context: DevOps, Cloud Infrastructure & Software Factory
 - Specialized Capabilities:
-  * Containerization & Docker: Multi-stage Docker builds, staging with Docker Compose.
-  * CI/CD & DevSecOps: GitLab CI, GitHub Actions YAML, automated tests, gitStream rules, SonarQube gates (70%-90%+ coverage), SAST screening.
-  * DORA Metrics Tracking: Deployment Frequency, Lead Time for Changes, Change Failure Rate, MTTR visibility.
-  * Cloud Platforms & Infrastructure: Workloads on AWS (EC2, S3, Lambda, Bedrock) and GCP; IAM and secrets management.
-  * Reverse Proxies & Queues: Nginx/Apache reverse proxies, SSL/TLS, Celery worker pools, Redis task brokers.
+  * Containerization & Docker: Multi-stage Docker builds, Docker Compose.
+  * CI/CD & DevSecOps: GitLab CI, GitHub Actions, gitStream rules, SonarQube gates (70%-90%+ coverage), SAST screening.
+  * DORA Metrics Tracking: Deployment Frequency, Lead Time for Changes, Change Failure Rate, MTTR.
+  * Cloud Platforms: AWS (EC2, S3, Lambda, Bedrock) and GCP; IAM and secrets management.
+  * Reverse Proxies & Queues: Nginx reverse proxies, SSL/TLS, Celery worker pools, Redis task brokers.
   * Linux Systems: Linux administration (systemd, bash), mentoring at EPITECH Paris in Linux and Docker.
 - Featured Projects to Highlight:
-  * Trinity DevOps (Software Factory Pipeline): Automated builds, SonarQube quality gates, multi-environment deployments, and Docker Compose delivery.
+  * Trinity DevOps (Software Factory Pipeline): Automated builds, SonarQube quality gates, Docker Compose delivery.
   * VIF CI/CD & Delivery: Configured GitLab CI pipelines, branch protection, and tracked DORA metrics for zero-regression releases.
   * DoctorIQ Cloud Infrastructure: Containerized Django REST & Celery workers on AWS (EC2, S3, Lambda) with HIPAA compliance.`;
       break;
@@ -126,7 +126,7 @@ ${languageDirective}
 ### Active Domain Context: Academic Background & Teaching
 - Institutions:
   * EPITECH Paris (Paris, France | 2025–2027): Master of Science in Information Technology (MSc IT). Specializing in distributed systems, software architecture, and technical leadership. Concurrently employed as Pedagogical Assistant mentoring engineering cohorts.
-  * FAST-NUCES (2020–2024): Bachelor of Science in Computer Science (BSCS). Rigorous foundations in algorithms, data structures, operating systems, and computer vision.
+  * FAST-NUCES (Pakistan | 2020–2024): Bachelor of Science in Computer Science (BSCS). Rigorous foundations in algorithms, data structures, operating systems, and computer vision.
 - Pedagogical Assistant Role:
   * Mentoring student cohorts in Linux internals, multi-stage Docker containerization, low-level systems, and algorithms.
   * Designing interactive technical workshops translating distributed architectures and AI systems into code.`;

@@ -543,6 +543,40 @@ test('Chatbot Engine: Age, Birth Queries & Dynamic Response Variation', async (t
     }
   });
 
+  await t.test('answers English hometown, origin & birthplace queries with Pakistan and Paris', () => {
+    const queries = [
+      'what is your home town',
+      'what is your hometown',
+      'where are you from',
+      'where was moiz born',
+      'where were you born',
+      'where did you grow up',
+    ];
+
+    for (const q of queries) {
+      const reply = generateHumanFallbackReply([{ role: 'user', content: q }]);
+      assert.match(reply, /Pakistan/i, `Query "${q}" should mention Pakistan`);
+      assert.match(reply, /Paris/i, `Query "${q}" should mention Paris`);
+      assert.equal(EMOJI_REGEX.test(reply), false, 'Must contain zero emojis');
+    }
+  });
+
+  await t.test('answers French origin & birthplace queries with Pakistan and Paris', () => {
+    const queries = [
+      'quelle est votre ville d’origine',
+      'd’où venez-vous',
+      'où êtes-vous né',
+      'où as-tu grandi',
+    ];
+
+    for (const q of queries) {
+      const reply = generateHumanFallbackReply([{ role: 'user', content: q }], 'fr');
+      assert.match(reply, /Pakistan/i, `French query "${q}" should mention Pakistan`);
+      assert.match(reply, /Paris/i, `French query "${q}" should mention Paris`);
+      assert.equal(EMOJI_REGEX.test(reply), false, 'Must contain zero emojis');
+    }
+  });
+
   await t.test('dynamically varies responses when the same question is asked 2 times in a row', () => {
     // Turn 1: initial question
     const reply1 = generateHumanFallbackReply([
