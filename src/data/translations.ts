@@ -667,7 +667,7 @@ export const translations: Record<Language, Translations> = {
       headerStatus: 'Online • Paris',
       initialMessage: `Hello! I'm **Muhammad Abdul Moiz**'s AI twin.
 
-Feel free to ask me anything about my background, engineering work at [Brackets Private Limited](#experience) & [EPITECH Paris](#experience), featured [projects](#projects), or technical skills.`,
+Feel free to ask me anything about my background, engineering work at [Brackets Private Limited](https://www.bracketsltd.com/) & [EPITECH Paris](#experience), featured [projects](#projects), or technical skills.`,
       inputPlaceholder: 'Ask about DevOps, AI projects, stack, or Paris alternance...',
       sendButtonAria: 'Send message',
       clearChatAria: 'Clear conversation history',
@@ -1144,7 +1144,7 @@ Feel free to ask me anything about my background, engineering work at [Brackets 
       headerStatus: 'En ligne • Paris',
       initialMessage: `Bonjour ! Je suis le double numérique IA de **Muhammad Abdul Moiz**.
 
-N'hésitez pas à me poser vos questions sur mon parcours, mon expérience chez [Brackets Private Limited](#experience) et [EPITECH Paris](#experience), mes [projets](#projects) ou mes compétences techniques.`,
+N'hésitez pas à me poser vos questions sur mon parcours, mon expérience chez [Brackets Private Limited](https://www.bracketsltd.com/) et [EPITECH Paris](#experience), mes [projets](#projects) ou mes compétences techniques.`,
       inputPlaceholder: "Posez votre question sur DevOps, projets IA, stack ou alternance à Paris...",
       sendButtonAria: 'Envoyer le message',
       clearChatAria: 'Effacer l historique de discussion',

@@ -205,7 +205,19 @@ export default function Home() {
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                       <div>
                         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-300">
-                          {item.company}
+                          {item.company === 'Brackets Private Limited' ? (
+                            <a
+                              href="https://www.bracketsltd.com/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline inline-flex items-center gap-1 group/comp"
+                            >
+                              {item.company}
+                              <span className="text-[10px] opacity-70 group-hover/comp:opacity-100">&nearr;</span>
+                            </a>
+                          ) : (
+                            item.company
+                          )}
                         </span>
                         <h3 className="mt-1 text-2xl font-black text-slate-900 dark:text-white sm:text-3xl">
                           {item.role}
