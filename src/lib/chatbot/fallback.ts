@@ -544,7 +544,7 @@ At Brackets, I worked in cross-functional Agile/Scrum sprints delivering product
   }
 
   // 10. GENERAL EXPERIENCE / WORK HISTORY
-  if (/experience|career|work history|where have you worked|jobs|companies/i.test(q)) {
+  if (/experience|career|work history|where have you worked|jobs|compan(y|ies)|which company/i.test(q)) {
     return `### Professional Experience Overview
 
 1. **Pedagogical Assistant @ EPITECH Paris** *(Sept 2024 – Present | Paris, France)*
@@ -794,7 +794,3 @@ Key areas you can explore:
 
   return defaultVariants[varIdx];
 }
-
-/**
- * Call Google Gemini API
- */

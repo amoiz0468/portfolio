@@ -117,7 +117,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const openaiKey = process.env.OPENAI_API_KEY;
   const togetherKey = process.env.TOGETHER_API_KEY;
 
-  // Try Gemini API if configured
+  // 1. Try Groq API as primary provider (Ultra-fast, human-like responses)
+  if (groqKey) {
+    try {
+      const groqModel = process.env.GROQ_MODEL || 'openai/gpt-oss-120b';
+      const reply = await callOpenAICompatibleApi({
+        endpoint: 'https://api.groq.com/openai/v1/chat/completions',
+        apiKey: groqKey,
+        model: groqModel,
+        messages: [{ role: 'system', content: systemPrompt }, ...validMessages],
+        maxTokens: 450,
+        temperature: 0.7,
+      });
+      if (reply) {
+        return res.status(200).json({ reply, provider: 'groq' });
+      }
+    } catch (err: any) {
+      console.warn('Groq provider skipped:', err?.message || err);
+    }
+  }
+
+  // 2. Try Gemini API if configured
   if (geminiKey) {
     try {
       const geminiModel = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
@@ -132,24 +152,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
     } catch (err: any) {
       console.warn('Gemini provider skipped:', err?.message || err);
-    }
-  }
-
-  // Try Groq API if configured
-  if (groqKey) {
-    try {
-      const groqModel = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
-      const reply = await callOpenAICompatibleApi({
-        endpoint: 'https://api.groq.com/openai/v1/chat/completions',
-        apiKey: groqKey,
-        model: groqModel,
-        messages: [{ role: 'system', content: systemPrompt }, ...validMessages],
-      });
-      if (reply) {
-        return res.status(200).json({ reply, provider: 'groq' });
-      }
-    } catch (err: any) {
-      console.warn('Groq provider skipped:', err?.message || err);
     }
   }
 

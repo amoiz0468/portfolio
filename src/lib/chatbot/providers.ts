@@ -36,18 +36,22 @@ export async function callGeminiApi(apiKey: string, model: string, prompt: strin
 }
 
 /**
- * Call OpenAI compatible endpoints (OpenAI, Groq, Together)
+ * Call OpenAI compatible endpoints (Groq, OpenAI, Together)
  */
 export async function callOpenAICompatibleApi({
   endpoint,
   apiKey,
   model,
   messages,
+  maxTokens = 1024,
+  temperature = 0.7,
 }: {
   endpoint: string;
   apiKey: string;
   model: string;
   messages: ChatMessage[];
+  maxTokens?: number;
+  temperature?: number;
 }): Promise<string> {
   const res = await fetch(endpoint, {
     method: 'POST',
@@ -58,8 +62,8 @@ export async function callOpenAICompatibleApi({
     body: JSON.stringify({
       model,
       messages,
-      temperature: 0.7,
-      max_tokens: 450,
+      temperature,
+      max_tokens: maxTokens,
     }),
   });
 
@@ -70,6 +74,9 @@ export async function callOpenAICompatibleApi({
 
   const data = await res.json();
   const text = data?.choices?.[0]?.message?.content;
-  if (text) return text;
+  if (text) {
+    // Strip any raw <think> tags or reasoning artifacts from reasoning models
+    return text.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
+  }
   throw new Error(`No choices returned from ${endpoint}`);
 }
