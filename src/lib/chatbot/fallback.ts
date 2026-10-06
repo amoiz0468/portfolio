@@ -464,7 +464,7 @@ If you are looking for an engineer who delivers business value from day one:
 
 **My dual connection to EPITECH Paris:**
 - **Master of Science in Information Technology (2025–2027)**: I am actively pursuing my advanced graduate degree here, specializing in distributed systems, software architecture, and technical leadership.
-- **Pedagogical Assistant (September 2024 – Present)**: I am also employed by EPITECH Paris to train and mentor engineering student cohorts in Linux internals, Docker containerization, backend architectures, and algorithmic problem-solving.
+- **Pedagogical Assistant (September 2026 – September 2027)**: Employed by EPITECH Paris in an alternance to train and mentor engineering student cohorts in Linux internals, Docker containerization, backend architectures, and algorithmic problem-solving.
 
 ### Suggested Inquiries:
 ? Tell me about your role as Pedagogical Assistant at EPITECH Paris.
@@ -514,7 +514,7 @@ I have been part of two leading engineering institutions:
   // 8. PEDAGOGICAL ASSISTANT / TEACHING / MENTORING
   if (/pedagogical|assistant|mentor|teaching|teach|students|workshops|vulgarization/i.test(q)) {
     return `### Pedagogical Assistant @ EPITECH Paris
-*September 2024 – Present | Paris, France*
+*September 2026 – September 2027 (Alternance) | Paris, France*
 
 In my role as Pedagogical Assistant, I bridge advanced engineering theory with hands-on practice for engineering cohorts:
 - **Cohort Mentoring**: Guiding engineering students through Linux internals, multi-stage Docker containerization, low-level systems, and algorithmic problem-solving.
@@ -657,8 +657,8 @@ I study and mentor at EPITECH Paris and am available for opportunities in Paris/
     const alternanceVariants = [
       `### Current Status & Future Opportunities (CDI / CDD)
 
-**Current Status**: Currently completing an alternance as **Pedagogical Assistant at EPITECH Paris**.
-**Target Opportunity**: Looking for future full-time **CDI or CDD opportunities in the future after alternance**.
+**Current Status**: Alternance started in **September 2026** and ends in **September 2027** as **Pedagogical Assistant at EPITECH Paris**.
+**Target Opportunity**: Looking for full-time **CDI or CDD opportunities in the future after September 2027**.
 
 **Target Roles**:
 - **Software Engineer (Backend / Full-Stack)**: Python (FastAPI, Django), TypeScript, React 18, Vue 3, Node.js
@@ -675,13 +675,13 @@ Reach Moiz directly at **${profile.email}** or on [LinkedIn](${profile.linkedin}
 
 ### Suggested Inquiries:
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-~ Alternance at EPITECH Paris • Open to future CDI/CDD in Paris
+~ Alternance at EPITECH (Sept 2026 – Sept 2027) • Future CDI/CDD
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
 ~ Full working authorization in France with C1 English & B1.1 French`,
 
       `### Recruitment & Career Status
 
-Moiz is currently completing an alternance as **Pedagogical Assistant at EPITECH Paris** while pursuing his MSc in Information Technology, and is looking for **future CDI or CDD opportunities** after completing the alternance.
+Moiz started his alternance as **Pedagogical Assistant at EPITECH Paris** in **September 2026** (ending **September 2027**) while completing his MSc in Information Technology, and is looking for **future CDI or CDD opportunities** after September 2027.
 
 - **Focus Areas**: Backend Engineering (Python/FastAPI/Django), Cloud Infrastructure (Docker/AWS/GCP), and Agentic AI (LangGraph).
 - **Location & Work Rights**: Paris, France (on-site, hybrid, remote) with full French working authorization.

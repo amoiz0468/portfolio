@@ -508,9 +508,9 @@ export const translations: Record<Language, Translations> = {
       subtitle: 'Hands-on experience in production environments, pedagogical training, and software architecture.',
       experiences: [
         {
-          role: 'Pedagogical Assistant',
+          role: 'Pedagogical Assistant (Alternance)',
           company: 'EPITECH Paris',
-          period: 'September 2024 – Present',
+          period: 'September 2026 – September 2027',
           location: 'Paris, France',
           points: [
             'Designed and conducted interactive technical training modules, mentoring engineering student cohorts in systems, software architecture, and development best practices.',
@@ -985,9 +985,9 @@ Feel free to ask me anything about my background, engineering work at [Brackets 
       subtitle: "Expérience concrète en environnements de production, formation pédagogique et architecture logicielle.",
       experiences: [
         {
-          role: 'Assistant Pédagogique',
+          role: 'Assistant Pédagogique (Alternance)',
           company: 'EPITECH Paris',
-          period: 'Septembre 2024 – Présent',
+          period: 'Septembre 2026 – Septembre 2027',
           location: 'Paris, France',
           points: [
             "Conception et animation de modules techniques interactifs, accompagnant les promotions d'ingénieurs sur les systèmes, l'architecture logicielle et les bonnes pratiques.",

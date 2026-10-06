@@ -38,9 +38,9 @@ export const skillGroups = [
 
 export const experience = [
   {
-    role: 'Pedagogical Assistant',
+    role: 'Pedagogical Assistant (Alternance)',
     company: 'EPITECH Paris',
-    period: 'September 2024 – Present',
+    period: 'September 2026 – September 2027',
     location: 'Paris, France',
     points: [
       'Designed and conducted interactive technical training modules, mentoring engineering student cohorts in systems, software architecture, and development best practices.',
@@ -159,9 +159,9 @@ export const values = [
 ];
 
 export const availability = {
-  status: 'Alternance at EPITECH Paris • Seeking future CDI/CDD',
+  status: 'Alternance at EPITECH Paris (Sept 2026 – Sept 2027) • Seeking future CDI/CDD',
   details:
-    'Currently completing an alternance as Pedagogical Assistant at EPITECH Paris. Seeking future full-time CDI or CDD opportunities after completing the alternance. Full French working authorization, open to on-site, hybrid, remote, or relocation in Paris/France.',
+    'Started alternance as Pedagogical Assistant at EPITECH Paris in September 2026, ending in September 2027. Open to full-time CDI or CDD opportunities in the future after September 2027. Full French working authorization, open to on-site, hybrid, remote, or relocation in Paris/France.',
   roles: [
     'Software Engineer (Full-Stack / Backend)',
     'DevOps & Cloud Engineer / DevSecOps',

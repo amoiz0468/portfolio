@@ -156,8 +156,8 @@ N'hésitez pas à me poser vos questions sur :
   if (/\b(alternance|contrat|stage|emploi|recrutement|disponibilit(e|é)|rythme|septembre|embauche|cdd|cdi)\b/i.test(q)) {
     return `### Statut Professionnel & Opportunités Futures (CDI / CDD)
 
-**Statut Actuel** : Actuellement en alternance en tant qu'**Assistant Pédagogique à l'EPITECH Paris**.
-**Opportunités Ciblées** : À la recherche d'opportunités en **CDI ou CDD dans le futur après mon alternance**, à Paris ou en télétravail.
+**Statut Actuel** : Alternance débutée en **Septembre 2026** et se terminant en **Septembre 2027** en tant qu'**Assistant Pédagogique à l'EPITECH Paris**.
+**Opportunités Ciblées** : À la recherche d'opportunités en **CDI ou CDD dans le futur après Septembre 2027**, à Paris ou en télétravail.
 
 - **Statut Légal** : Autorisation complète et valide de travail en France.
 - **Postes Ciblés** :
