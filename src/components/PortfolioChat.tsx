@@ -251,14 +251,21 @@ function FormattedText({
 }
 
 function renderInlineStyles(text: string): ReactNode {
-  const tokenRegex = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|`[^`]+`)/g;
-  const parts = text.split(tokenRegex);
+  // Normalize malformed markdown links (multiline or bold-wrapped links)
+  const normalized = text
+    .replace(/\[([^\]]+)\]\s*\(([^)\s]+)\)/g, '[$1]($2)')
+    .replace(/\*\*\[([^\]]+)\]\(([^)]+)\)\*\*/g, '[$1]($2)')
+    .replace(/\*\*\[([^\]]+)\]\*\*\(([^)]+)\)/g, '[$1]($2)');
+
+  const tokenRegex = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|`[^`]+`|https?:\/\/[^\s<)]+)/g;
+  const parts = normalized.split(tokenRegex);
 
   return parts.map((part, i) => {
     if (!part) return null;
 
     const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (linkMatch) {
+      const label = linkMatch[1];
       const href = linkMatch[2];
       const isSafe =
         /^https?:\/\//i.test(href) ||
@@ -289,7 +296,21 @@ function renderInlineStyles(text: string): ReactNode {
           rel={isExternal ? 'noopener noreferrer' : undefined}
           className="font-semibold text-indigo-600 underline decoration-indigo-400/50 underline-offset-2 transition hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-200"
         >
-          {linkMatch[1]}
+          {label}
+        </a>
+      );
+    }
+
+    if (/^https?:\/\//i.test(part)) {
+      return (
+        <a
+          key={i}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-indigo-600 underline decoration-indigo-400/50 underline-offset-2 transition hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-200"
+        >
+          {part}
         </a>
       );
     }
