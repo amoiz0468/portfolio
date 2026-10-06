@@ -186,7 +186,7 @@ export default function Home() {
         {/* 7. CAREER TIMELINE */}
         <section
           id="experience"
-          className="content-auto border-y border-slate-200/90 bg-white/70 py-14 sm:py-20 text-slate-900 backdrop-blur-md dark:border-white/[0.08] dark:bg-[linear-gradient(180deg,rgba(15,23,42,0.5),rgba(9,13,22,0.85))] dark:text-white transition-colors duration-200"
+          className="content-auto border-y border-slate-200/80 bg-white/70 py-14 sm:py-20 text-slate-900 backdrop-blur-md dark:border-white/[0.06] dark:bg-[#070b14] dark:text-white transition-colors duration-200"
         >
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <Reveal>

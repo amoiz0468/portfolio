@@ -44,12 +44,12 @@ export default function AppleProjectCard({ project, index, onSelect }: AppleProj
           <div className="flex flex-1 flex-col">
             {/* Top Row: Category Pill + Polished Interactive Arrow */}
             <div className="flex min-h-[44px] items-start justify-between gap-3">
-              <div className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-200/80 bg-gradient-to-r from-indigo-50/90 to-violet-50/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-indigo-700 shadow-sm dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-200 leading-tight">
+              <div className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-200/90 bg-indigo-50/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-indigo-700 shadow-sm dark:border-indigo-400/30 dark:bg-indigo-950/80 dark:text-indigo-300 leading-tight">
                 <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-pulse" />
                 <span className="line-clamp-2">{project.category}</span>
               </div>
 
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-500 shadow-sm transition-all duration-300 group-hover:border-indigo-500 group-hover:bg-indigo-600 group-hover:text-white group-hover:shadow-[0_4px_14px_rgba(79,70,229,0.35)] group-hover:scale-110 dark:border-white/10 dark:bg-white/5 dark:text-slate-400 dark:group-hover:border-indigo-400 dark:group-hover:bg-indigo-500 dark:group-hover:text-white">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-slate-600 shadow-sm transition-all duration-300 group-hover:border-indigo-500 group-hover:bg-indigo-600 group-hover:text-white group-hover:shadow-[0_4px_14px_rgba(79,70,229,0.35)] group-hover:scale-110 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:group-hover:border-indigo-400 dark:group-hover:bg-indigo-500 dark:group-hover:text-white">
                 <FiArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
               </span>
             </div>
@@ -71,7 +71,7 @@ export default function AppleProjectCard({ project, index, onSelect }: AppleProj
               {project.stack.slice(0, 4).map((item) => (
                 <span
                   key={item}
-                  className="inline-flex items-center rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-700 transition group-hover:border-indigo-200 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:group-hover:border-indigo-500/30"
+                  className="inline-flex items-center rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-700 transition group-hover:border-indigo-200 dark:border-slate-800 dark:bg-slate-800/80 dark:text-slate-300 dark:group-hover:border-indigo-500/40"
                 >
                   {item}
                 </span>

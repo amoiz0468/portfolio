@@ -270,10 +270,10 @@ test('Chatbot Engine: CV Projects, Capabilities & Alternance', async (t) => {
     assert.equal(EMOJI_REGEX.test(reply), false);
   });
 
-  await t.test('answers Alternance September 2026 queries precisely', () => {
-    const reply = generateHumanFallbackReply([{ role: 'user', content: 'Are you looking for an alternance in September 2026?' }]);
-    assert.match(reply, /12-Month Alternance|Alternance/i);
-    assert.match(reply, /September 2026/i);
+  await t.test('answers Alternance status and future CDI/CDD queries precisely', () => {
+    const reply = generateHumanFallbackReply([{ role: 'user', content: 'What is your availability and alternance status?' }]);
+    assert.match(reply, /EPITECH Paris/i);
+    assert.match(reply, /CDI|CDD/i);
     assert.match(reply, /Paris/i);
     assert.match(reply, /### Suggested Inquiries:/);
     assert.equal(EMOJI_REGEX.test(reply), false);

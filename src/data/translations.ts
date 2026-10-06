@@ -668,7 +668,7 @@ export const translations: Record<Language, Translations> = {
       initialMessage: `Hello! I'm **Muhammad Abdul Moiz**'s AI twin.
 
 Feel free to ask me anything about my background, engineering work at [Brackets Private Limited](https://www.bracketsltd.com/) & [EPITECH Paris](#experience), featured [projects](#projects), or technical skills.`,
-      inputPlaceholder: 'Ask about DevOps, AI projects, stack, or Paris alternance...',
+      inputPlaceholder: 'Ask about DevOps, AI projects, stack, or future CDI/CDD roles...',
       sendButtonAria: 'Send message',
       clearChatAria: 'Clear conversation history',
       minimizeAria: 'Minimize chat dialog',
@@ -679,7 +679,7 @@ Feel free to ask me anything about my background, engineering work at [Brackets 
       suggestedTopics: [
         { label: 'DevOps & Services', query: 'Do you have experiences of DevOps and what services do you offer as DevOps?' },
         { label: 'Why Hire Moiz?', query: 'Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?' },
-        { label: 'Alternance & Hire', query: 'What is your current availability, alternance status, and location preference in Paris?' },
+        { label: 'CDI/CDD & Status', query: 'What is your current status at EPITECH and availability for future CDI/CDD roles in Paris?' },
         { label: 'Featured Projects', query: 'Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).' },
         { label: 'Passions & Hobbies', query: 'What are your passions and hobbies outside of work (cooking, travel, photography, etc.)?' },
         { label: 'Experience & Roles', query: 'Tell me about your work experience and roles at Brackets and EPITECH Paris.' },
@@ -1145,7 +1145,7 @@ Feel free to ask me anything about my background, engineering work at [Brackets 
       initialMessage: `Bonjour ! Je suis le double numérique IA de **Muhammad Abdul Moiz**.
 
 N'hésitez pas à me poser vos questions sur mon parcours, mon expérience chez [Brackets Private Limited](https://www.bracketsltd.com/) et [EPITECH Paris](#experience), mes [projets](#projects) ou mes compétences techniques.`,
-      inputPlaceholder: "Posez votre question sur DevOps, projets IA, stack ou alternance à Paris...",
+      inputPlaceholder: "Posez votre question sur DevOps, projets IA, stack ou opportunités CDI/CDD...",
       sendButtonAria: 'Envoyer le message',
       clearChatAria: 'Effacer l historique de discussion',
       minimizeAria: 'Réduire la fenêtre de dialogue',
@@ -1156,7 +1156,7 @@ N'hésitez pas à me poser vos questions sur mon parcours, mon expérience chez 
       suggestedTopics: [
         { label: 'DevOps & Services', query: "Avez-vous de l'expérience en DevOps et quels services proposez-vous en DevOps ?" },
         { label: 'Pourquoi Moiz ?', query: "Pourquoi un recruteur devrait-il choisir Muhammad Abdul Moiz pour un poste d'ingénieur ?" },
-        { label: 'Alternance & Recrutement', query: 'Quelle est votre disponibilité actuelle, statut d alternance et préférence géographique à Paris ?' },
+        { label: 'CDI/CDD & Statut', query: 'Quel est votre statut actuel à EPITECH et vos disponibilités pour de futures opportunités CDI/CDD à Paris ?' },
         { label: 'Projets Phares', query: 'Présentez-moi vos projets majeurs (DoctorIQ, Brackets Genie, Ledgeroo, VIF).' },
         { label: 'Passions & Loisirs', query: "Quels sont vos centres d'intérêt en dehors du travail (cuisine, voyages, photographie, etc.) ?" },
         { label: 'Parcours & Expériences', query: 'Présentez-moi votre expérience professionnelle chez Brackets et EPITECH Paris.' },

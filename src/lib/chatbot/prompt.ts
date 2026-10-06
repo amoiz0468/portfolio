@@ -35,7 +35,7 @@ ${languageDirective}
 - Born: October 16, 2002 (23 years old) | Paris, France (open to on-site, hybrid, remote)
 - Contact: ${profile.email} | ${profile.phone} | LinkedIn: ${profile.linkedin} | GitHub: ${profile.github}
 - Languages: English (C1 Fluent), French (B1.1 Working), Urdu (Native)
-- Availability: Seeking a 12-Month Alternance starting September 2026 (or CDI/CDD) in Paris/Remote with French work authorization.
+- Availability: Currently in alternance at EPITECH Paris (Pedagogical Assistant). Seeking future CDI/CDD roles after alternance. Paris (on-site, hybrid, remote) with French work authorization.
 - Work History:
   * [Brackets Private Limited](https://www.bracketsltd.com/) (Associate Software Engineer | July 2024 – Aug 2025): Python, FastAPI, Django, Docker, AWS/GCP, DoctorIQ, Brackets Genie.
   * EPITECH Paris (Pedagogical Assistant | Sept 2024 – Present): Mentoring in Linux, Docker, algorithms, systems architecture.

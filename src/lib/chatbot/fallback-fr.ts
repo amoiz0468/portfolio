@@ -152,24 +152,24 @@ N'hésitez pas à me poser vos questions sur :
     return greetingVariants[varIdx];
   }
 
-  // 4. ALTERNANCE & RECHERCHE DE CONTRAT
+  // 4. STATUT PROFESSIONNEL & OPPORTUNITES (CDI / CDD)
   if (/\b(alternance|contrat|stage|emploi|recrutement|disponibilit(e|é)|rythme|septembre|embauche|cdd|cdi)\b/i.test(q)) {
-    return `### Disponibilité & Recherche d'Alternance (Septembre 2026)
+    return `### Statut Professionnel & Opportunités Futures (CDI / CDD)
 
-Je recherche activement une **Alternance de 12 mois** à compter de **Septembre 2026** basée en Île-de-France (Paris) ou en télétravail :
+**Statut Actuel** : Actuellement en alternance en tant qu'**Assistant Pédagogique à l'EPITECH Paris**.
+**Opportunités Ciblées** : À la recherche d'opportunités en **CDI ou CDD dans le futur après mon alternance**, à Paris ou en télétravail.
 
-- **Rythme** : Adapté au programme Master of Science de l'**EPITECH Paris**.
 - **Statut Légal** : Autorisation complète et valide de travail en France.
 - **Postes Ciblés** :
   * Ingénieur DevOps / Cloud Infrastructure / Platform Engineer
   * Ingénieur Machine Learning / GenAI Specialist
   * Ingénieur Logiciel Back-End / Full-Stack
-- **Atouts Clés** : Expérience industrielle concrète, autonomie sur les pipelines CI/CD, leadership technique et rigueur pédagogique acquise à EPITECH Paris.
+- **Atouts Clés** : Expérience industrielle chez Brackets, autonomie sur les pipelines CI/CD, leadership technique et encadrement pédagogique à EPITECH Paris.
 - **Contact Direct** : \`${profile.email}\` | \`${profile.phone}\`
 
 ### Suggestions de questions :
 ? Quelles sont vos compétences et vos services en DevOps et Cloud ?
-~ Alternance 12 mois dès Septembre 2026 en Île-de-France ou télétravail
+~ Alternance à EPITECH Paris • Ouvert aux opportunités futures CDI/CDD
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
 ~ Anglais courant C1, Français professionnel B1.1 et Urdu natif`;
   }

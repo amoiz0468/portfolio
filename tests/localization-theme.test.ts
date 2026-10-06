@@ -124,7 +124,7 @@ describe('Localization & Theme: French Domain Classification', () => {
     assert.equal(EMOJI_REGEX.test(replyDevopsFr), false);
 
     const replyAlternanceFr = generateHumanFallbackReply([{ role: 'user', content: 'Recherchez-vous une alternance ?' }], 'fr');
-    assert.match(replyAlternanceFr, /Disponibilité & Recherche d'Alternance \(Septembre 2026\)/);
+    assert.match(replyAlternanceFr, /Statut Professionnel & Opportunités Futures \(CDI \/ CDD\)/);
     assert.equal(EMOJI_REGEX.test(replyAlternanceFr), false);
 
     const replyContactFr = generateHumanFallbackReply([{ role: 'user', content: 'Comment vous contacter ?' }], 'fr');

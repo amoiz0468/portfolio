@@ -159,9 +159,9 @@ export const values = [
 ];
 
 export const availability = {
-  status: 'Seeking 12-Month Alternance (from September 2026)',
+  status: 'Alternance at EPITECH Paris • Seeking future CDI/CDD',
   details:
-    'Pursuing MSc in IT at EPITECH Paris. Seeking a 12-month work-study (alternance / contrat de professionnalisation or apprentissage) starting September 2026, or CDI/CDD/internship leading to alternance. Student working rights and talent passport eligible.',
+    'Currently completing an alternance as Pedagogical Assistant at EPITECH Paris. Seeking future full-time CDI or CDD opportunities after completing the alternance. Full French working authorization, open to on-site, hybrid, remote, or relocation in Paris/France.',
   roles: [
     'Software Engineer (Full-Stack / Backend)',
     'DevOps & Cloud Engineer / DevSecOps',

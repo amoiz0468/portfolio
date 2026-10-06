@@ -653,11 +653,12 @@ I study and mentor at EPITECH Paris and am available for opportunities in Paris/
   }
 
   // 22. AVAILABILITY, ALTERNANCE & TARGET OPPORTUNITY
-  if (/hire|available|availability|opportunity|job|contract|internship|roles|work together|alternan|apprenti|work[\s-]*study|contrat de pro|september 2026|septembre 2026/i.test(q)) {
+  if (/hire|available|availability|opportunity|job|contract|internship|roles|work together|alternan|apprenti|work[\s-]*study|contrat de pro|september 2026|septembre 2026|cdi|cdd/i.test(q)) {
     const alternanceVariants = [
-      `### Availability & Target Opportunity (September 2026)
+      `### Current Status & Future Opportunities (CDI / CDD)
 
-**Current Status**: Actively seeking a **12-Month Alternance / Apprenticeship / Work-Study** starting from **September 2026** (or CDI/CDD) based in **Paris, France** or remote.
+**Current Status**: Currently completing an alternance as **Pedagogical Assistant at EPITECH Paris**.
+**Target Opportunity**: Looking for future full-time **CDI or CDD opportunities in the future after alternance**.
 
 **Target Roles**:
 - **Software Engineer (Backend / Full-Stack)**: Python (FastAPI, Django), TypeScript, React 18, Vue 3, Node.js
@@ -674,21 +675,21 @@ Reach Moiz directly at **${profile.email}** or on [LinkedIn](${profile.linkedin}
 
 ### Suggested Inquiries:
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?
-~ Available for a 12-Month Alternance in Paris starting September 2026
+~ Alternance at EPITECH Paris • Open to future CDI/CDD in Paris
 ? Do you have experiences of DevOps and what services do you offer as DevOps?
 ~ Full working authorization in France with C1 English & B1.1 French`,
 
-      `### Recruitment & Opportunity Summary (September 2026)
+      `### Recruitment & Career Status
 
-Moiz is actively preparing for a **12-Month Alternance starting September 2026** in Paris or remote, aligned with his MSc IT at **EPITECH Paris**.
+Moiz is currently completing an alternance as **Pedagogical Assistant at EPITECH Paris** while pursuing his MSc in Information Technology, and is looking for **future CDI or CDD opportunities** after completing the alternance.
 
 - **Focus Areas**: Backend Engineering (Python/FastAPI/Django), Cloud Infrastructure (Docker/AWS/GCP), and Agentic AI (LangGraph).
-- **Work Rights**: Valid authorization to work in France.
+- **Location & Work Rights**: Paris, France (on-site, hybrid, remote) with full French working authorization.
 - **Direct Reach**: [${profile.email}](mailto:${profile.email}) or [${profile.phone}](tel:${profile.phone.replace(/\\s+/g, '')}).
 
 ### Suggested Inquiries:
 ? Tell me about your featured projects (DoctorIQ, Brackets Genie, Ledgeroo, VIF).
-~ 12-Month Alternance starting September 2026 in Paris
+~ Currently in alternance at EPITECH • Open to future CDI/CDD
 ? What is your full backend and database tech stack?
 ~ Contact directly: ${profile.email}`,
     ];
