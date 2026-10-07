@@ -395,9 +395,9 @@ I lead engineering teams by combining technical clarity, transparent sprint comm
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?`;
   }
 
-  // 3. PASSIONS & HOBBIES (Cooking, Traveling, Poetry, Photography, Fitness, etc.)
+  // 3. PASSIONS & HOBBIES (Cooking, Traveling, Poetry, Photography, Fitness, Tech Deep Dives)
   if (
-    /passion|hobb(y|ies)|loisir|free time|outside of work|life beyond code|cooking|cook|food|travel|travelling|traveling|poesie|poetry|photograph(y|ie)|\b(sport|sports|gym)\b|chess/i.test(q) ||
+    /passion|hobb(y|ies)|loisir|free time|outside of work|life beyond code|cooking|cook|food|travel|travelling|traveling|poesie|poetry|photograph(y|ie)|\b(sport|sports|gym)\b/i.test(q) ||
     (/\bfitness\b/i.test(q) && !/tamiami/i.test(q))
   ) {
     return `### Passions & Life Beyond Code
@@ -410,7 +410,6 @@ Beyond software engineering and deep learning, I invest my energy in creative, e
 - **Photographie / Photography**: Capturing urban geometry, Parisian street life, and the interplay between architecture and natural lighting.
 - **Sport & Fitness**: Consistent strength conditioning, calisthenics, and cardiovascular conditioning. Builds mental discipline, physical resilience, and daily focus.
 - **Tech Deep Dives & ArXiv**: Reading foundational machine learning preprints, distributed system post-mortems, and experimenting with agentic frameworks.
-- **Chess & Strategy**: Solving tactical chess puzzles and strategy games that test pattern recognition and calculation under constraints.
 
 ### Suggested Inquiries:
 ? Why should a recruiter hire Muhammad Abdul Moiz for engineering roles?

@@ -77,7 +77,8 @@ test('Chatbot Engine: Intent Routing & Persona Accuracy', async (t) => {
     assert.match(reply, /Poésie|Poetry/i);
     assert.match(reply, /Photography/i);
     assert.match(reply, /Sport & Fitness/i);
-    assert.match(reply, /Chess/i);
+    assert.match(reply, /Tech Deep Dives|ArXiv/i);
+    assert.doesNotMatch(reply, /Chess/i);
     assert.match(reply, /### Suggested Inquiries:/i);
     assert.match(reply, /\?\s+Why should a recruiter hire Muhammad Abdul Moiz/i);
     assert.equal(EMOJI_REGEX.test(reply), false);

@@ -607,13 +607,6 @@ export const translations: Record<Language, Translations> = {
             'Reading foundational AI research papers, distributed system post-mortems, and experimenting with new agentic frameworks in personal sandboxes.',
           tag: 'Lifelong Learning',
         },
-        {
-          title: 'Chess & Strategy',
-          subtitle: 'Tactical pattern recognition',
-          description:
-            'Enjoying strategic chess puzzles and tactical games that exercise foresight, calculation under constraints, and structural pattern awareness.',
-          tag: 'Strategic Thinking',
-        },
       ],
     },
     aboutPage: {
@@ -1083,13 +1076,6 @@ Feel free to ask me anything about my background, engineering work at [Brackets 
           description:
             "Lecture des publications de recherche en IA, études de cas sur les pannes de systèmes distribués et prototypage régulier de nouveaux frameworks d'agents.",
           tag: 'Apprentissage Continu',
-        },
-        {
-          title: 'Échecs & Stratégie',
-          subtitle: 'Reconnaissance tactique de motifs',
-          description:
-            "Résolution de puzzles d'échecs et parties tactiques stimulant l'anticipation, le calcul sous contraintes et la vision stratégique globale.",
-          tag: 'Pensée Stratégique',
         },
       ],
     },

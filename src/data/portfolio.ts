@@ -216,11 +216,4 @@ export const passions = [
       'Reading foundational AI research papers, distributed system post-mortems, and experimenting with new agentic frameworks in personal sandboxes.',
     tag: 'Lifelong Learning',
   },
-  {
-    title: 'Chess & Strategy',
-    subtitle: 'Tactical pattern recognition',
-    description:
-      'Enjoying strategic chess puzzles and tactical games that exercise foresight, calculation under constraints, and structural pattern awareness.',
-    tag: 'Strategic Thinking',
-  },
 ];

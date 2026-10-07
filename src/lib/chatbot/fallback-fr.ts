@@ -284,7 +284,7 @@ Vous pouvez me joindre directement via les canaux suivants :
   }
 
   // 8. PASSIONS & CENTRES D'INTERET
-  if (/\b(passion|passions|loisir|loisirs|interet|interets|sport|cuisine|voyage|echecs|poesie|photographie)\b/i.test(q)) {
+  if (/\b(passion|passions|loisir|loisirs|interet|interets|sport|cuisine|voyage|poesie|photographie)\b/i.test(q)) {
     return `### Passions & Centres d'Intérêt au-delà du Code
 
 En dehors de l'ingénierie, je cultive des disciplines qui nourrissent la créativité, la rigueur et l'équilibre :
@@ -294,7 +294,7 @@ En dehors de l'ingénierie, je cultive des disciplines qui nourrissent la créat
 - **Poésie & Écriture** : Rigueur stylistique, concision et sens de la nuance.
 - **Photographie Urbaine** : Sens de la composition visuelle et de l'observation minutieuse.
 - **Sport & Fitness** : Constance, discipline d'entraînement et persévérance mentale.
-- **Jeu d'Échecs** : Pensée stratégique, anticipation des variantes et prise de décision sous contrainte de temps.
+- **Veille Technologique & ArXiv** : Lecture de publications de recherche en IA, études de pannes distribuées et prototypage régulier.
 
 ### Suggestions de questions :
 ? Pourquoi un recruteur devrait-il engager Muhammad Abdul Moiz ?
